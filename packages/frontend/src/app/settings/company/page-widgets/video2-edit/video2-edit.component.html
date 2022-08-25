@@ -1,0 +1,77 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.video2">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Video 2 (popup)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.video2.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.video2.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="videoURL">Video URL</label>
+                            <input [(ngModel)]="data.video2.videoURL" type="text" name="videoURL" id="videoURL" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
+                                    <p><i>Drag and Drop File for Video Image</i> </p>
+                                    <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="upload($event)" accept=".png,.jpg,.gif,.jpeg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div *ngFor="let f of dropFiles">
+                                    <app-video-image-upload-task [file]="f" [data]="data.video2.imageURL"></app-video-image-upload-task>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="progress" *ngIf="uploadProgress">
+                                    <div class="progress-bar bg-progress" role="progressbar" [ngStyle]="{'width': (uploadProgress | async) + '%'}" [attr.aria-valuenow]="(uploadProgress | async)"
+                                        [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="data && data.video2 && data.video2.imageURL && data.video2.imageURL.length">
+                    <div class="col">
+                        <div *ngFor="let e of data.video2.imageURL;let i = index">
+                            <i class="fa fa-times text-danger" aria-hidden="true" (click)="onDeleteFile(e, i)" style="cursor: pointer;"></i> &nbsp; <a href="{{e?.url}}" target="_blank" rel="noopener">
+                                {{e?.name}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 [ngStyle]="{'color': colorService.secondaryColor}" class="section__title mb-2"
+                    [ngStyle]="{'color': data?.color }">{{data?.activated_kits_title}}</h2>
+                <div class="card"
+                     *ngIf="(labOrderService.items) else nodata">
+                    <div class="card-header text-center"> Select Order <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                  id="basic-addon1"><i class="fa fa-filter"></i></span>
+                            <input [(ngModel)]="filteredData"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="Type to Filter"
+                                   aria-label="Username"
+                                   aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Kit Number</th>
+                                <th scope="col">Kit/s Ordered</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of labOrderService.items | async | labOrderFilter:filteredData | dateSortDesc; let i = index"
+                                (click)="onView(data)"
+                                style="cursor: pointer;">
+                                <th scope="row"
+                                    title="{{data?._id}}">{{data?.firstName}} {{data?.lastName}}</th>
+                                <td>{{data?.kitNumber}}</td>
+                                <td>
+                                    <ul class="list-group list-group-flush"
+                                        *ngIf="data.order && data.order.cart && data.order.cart.lineItems">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                                            *ngFor="let item of data.order.cart.lineItems; let i = index">
+                                            {{item?.product.title}} <span
+                                                  class="badge bg-primary rounded-pill">{{item?.quantity}}</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>{{data?.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ng-template #nodata>
+                    <div class="alert alert-light text-center"
+                         role="alert"> No data found. </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</section>

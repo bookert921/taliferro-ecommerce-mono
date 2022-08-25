@@ -1,0 +1,124 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.aboutProduct3">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">About Product (3)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.aboutProduct3.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.aboutProduct3.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bulletText1">Bullet 1 Text</label>
+                            <input [(ngModel)]="data.aboutProduct3.bulletText1" type="text" name="bulletText1" id="bulletText1" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bulletText2">Bullet 2 Text</label>
+                            <input [(ngModel)]="data.aboutProduct3.bulletText2" type="text" name="bulletText2" id="bulletText2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bulletText3">Bullet 3 Text</label>
+                            <input [(ngModel)]="data.aboutProduct3.bulletText3" type="text" name="bulletText3" id="bulletText3" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
+                                <p><i>Drag and Drop File for Image 1</i> </p>
+                                <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage1($event)" accept=".png,.jpg,.gif,.jpeg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div *ngFor="let f of dropFiles">
+                                <app-image1-upload-task [file]="f" [data]="data.aboutProduct3.imageURL1"></app-image1-upload-task>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="progress" *ngIf="uploadProgress">
+                                <div class="progress-bar bg-progress" role="progressbar" [ngStyle]="{'width': (uploadProgress | async) + '%'}" [attr.aria-valuenow]="(uploadProgress | async)"
+                                    [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="data && data.aboutProduct3 && data.aboutProduct3.imageURL1 && data.aboutProduct3.imageURL1.length">
+                        <div class="col">
+                            <div *ngFor="let e of data.aboutProduct3.imageURL1;let i = index">
+                                <i class="fa fa-times text-danger" aria-hidden="true" (click)="onDeleteImage1File(e, i)" style="cursor: pointer;"></i> &nbsp; <a href="{{e?.url}}" target="_blank"
+                                    rel="noopener"> {{e?.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="dropzone" dropzone (hovered)="toggleHover2($event)" (dropped)="onDrop2($event)" [class.hovering]="isHovering2">
+                                <p><i>Drag and Drop File for Image 2</i> </p>
+                                <input [(ngModel)]="resultsFile2" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage2($event)" accept=".png,.jpg,.gif,.jpeg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div *ngFor="let f of dropFiles2">
+                                <app-image1-upload-task [file]="f" [data]="data.aboutProduct3.imageURL2"></app-image1-upload-task>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="progress" *ngIf="uploadProgress2">
+                                <div class="progress-bar bg-progress" role="progressbar" [ngStyle]="{'width': (uploadProgress2 | async) + '%'}" [attr.aria-valuenow]="(uploadProgress2 | async)"
+                                    [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="data && data.aboutProduct3 && data.aboutProduct3.imageURL2 && data.aboutProduct3.imageURL2.length">
+                        <div class="col">
+                            <div *ngFor="let e of data.aboutProduct3.imageURL2;let i = index">
+                                <i class="fa fa-times text-danger" aria-hidden="true" (click)="onDeleteImage2File(e, i)" style="cursor: pointer;"></i> &nbsp; <a href="{{e?.url}}" target="_blank"
+                                    rel="noopener"> {{e?.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

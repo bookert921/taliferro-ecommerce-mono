@@ -1,0 +1,20 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col"><span (click)="back()"
+                  style="cursor: pointer;"><i class="fa fa-chevron-left  fa-2x text-muted"></i></span> </div>
+        <div class="col-md text-center mb-3">
+            <h1 [ngStyle]="{'color': colorService.darkBackground}">Associate Kit to Test</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <app-activated-kits (id)="onView($event)"
+                        [data]="data"></app-activated-kits>
+    <app-catalog [data]="data"
+                 [background]="background"
+                 (itemAdded)="totalUp()"></app-catalog>
+    <app-shopping-cart *ngIf="checkOutSection"
+                       [data]="data"
+                       [background]="background"></app-shopping-cart>
+    <!-- <app-micro-check-out [companyData]="data"
+                         [data]="cartService.cart"></app-micro-check-out> -->
+</div>

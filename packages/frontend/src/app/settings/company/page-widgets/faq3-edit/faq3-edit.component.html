@@ -1,0 +1,118 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.faq3">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Frequently Asked Questions (3)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.faq3.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.faq3.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqHeading1">FAQ Heading 1</label>
+                            <input [(ngModel)]="data.faq3.faqHeading1" type="text" name="faqHeading1" id="faqHeading1" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqDescription1">FAQ Description 1</label>
+                            <textarea [(ngModel)]="data.faq3.faqDescription1" type="text" name="faqDescription1" id="faqDescription1" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqHeading2">FAQ Heading 2</label>
+                            <input [(ngModel)]="data.faq3.faqHeading2" type="text" name="faqHeading2" id="faqHeading2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqDescription2">FAQ Description 2</label>
+                            <textarea [(ngModel)]="data.faq3.faqDescription2" type="text" name="faqDescription2" id="faqDescription2" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqHeading3">FAQ Heading 3</label>
+                            <input [(ngModel)]="data.faq3.faqHeading3" type="text" name="faqHeading3" id="faqHeading3" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqDescription3">FAQ Description 3</label>
+                            <textarea [(ngModel)]="data.faq3.faqDescription3" type="text" name="faqDescription3" id="faqDescription3" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
+                                <p><i>Drag and Drop Image</i> </p>
+                                <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage($event)" accept=".png,.jpg,.gif,.jpeg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div *ngFor="let f of dropFiles">
+                                <app-image1-upload-task [file]="f" [data]="data.faq3.imageURL"></app-image1-upload-task>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="progress" *ngIf="uploadProgress">
+                                <div class="progress-bar bg-progress" role="progressbar" [ngStyle]="{'width': (uploadProgress | async) + '%'}" [attr.aria-valuenow]="(uploadProgress | async)"
+                                    [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="data && data.faq3 && data.faq3.imageURL && data.faq3.imageURL.length">
+                        <div class="col">
+                            <div *ngFor="let e of data.faq3.imageURL;let i = index">
+                                <i class="fa fa-times text-danger" aria-hidden="true" (click)="onDeleteImageFile(e, i)" style="cursor: pointer;"></i> &nbsp; <a href="{{e?.url}}" target="_blank"
+                                    rel="noopener"> {{e?.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

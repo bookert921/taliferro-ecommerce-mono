@@ -1,0 +1,34 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="newData">
+    <div class="containter-fluid wow fadeInLeft mb-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Sub Category Option Name</h4>                
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="sortPosition">Sort Position</label>
+                            <input [(ngModel)]="newData.sortPosition" type="number" name="sortPosition" id="sortPosition" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="dataName">Name</label>
+                            <input [(ngModel)]="newData.name" type="text" name="dataName" id="dataName" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<app-sub-category-list  (id)="onEdit($event)"></app-sub-category-list>

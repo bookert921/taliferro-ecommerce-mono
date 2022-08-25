@@ -1,0 +1,82 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.howTo">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">How To (steps)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.howTo.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.howTo.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="header1">How To Heading 1</label>
+                            <input [(ngModel)]="data.howTo.header1" type="text" name="header1" id="header1" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="description1">How To Description 1</label>
+                            <textarea [(ngModel)]="data.howTo.description1" type="text" name="description1" id="description1" class="form-control form-control-lg" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="header2">How To Heading 2</label>
+                            <input [(ngModel)]="data.howTo.header2" type="text" name="header2" id="header2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="description2">How To Description 2</label>
+                            <textarea [(ngModel)]="data.howTo.description2" type="text" name="description2" id="description2" class="form-control form-control-lg" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="header3">How To Heading 3</label>
+                            <input [(ngModel)]="data.howTo.header3" type="text" name="header3" id="header3" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="description3">How To Description 3</label>
+                            <textarea [(ngModel)]="data.howTo.description3" type="text" name="description3" id="description3" class="form-control form-control-lg" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

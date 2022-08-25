@@ -1,0 +1,142 @@
+<div class="container-fluid mt-3">    
+    <div class="row">
+        <div class="col-md">
+            <ul class="list-group mb-3">    
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.type"><strong>Type: </strong> {{data.type}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.type">No customer type</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onType()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <img class="p-2"
+                         *ngIf="data && data.images && data.images[0]"
+                         src="{{data.images[0].url}}"
+                         alt="{{data.images[0].name}}"
+                         style="max-height: 32px;">
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="!(data && data.images && data.images[0])">No images found</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onImage()"><i class="fa fa-chevron-right fa-1x"></i></a>
+
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.displayName"><strong>Display Name: </strong> {{data.displayName}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.displayName">No display name</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onName()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.firstName"><strong>First Name: </strong> {{data.firstName}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.firstName">No first name</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onName()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.lastName"><strong>Last Name: </strong> {{data.lastName}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.lastName">No last name</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onName()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">    
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.gender"><strong>Gender: </strong>{{data.gender}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.gender">No gender</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onGender()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.dob"><strong>Date of Birth: </strong>{{data.dob}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.dob">No date of birth</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onDob()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">    
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.ccCompany">{{data.ccCompany}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.ccCompany">No Credit Card Company</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onCreditCard()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.ccNameOnCard">{{data.ccNameOnCard}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.ccNameOnCard">No name on card</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onCreditCard()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.ccNumber">{{data.ccNumber}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.ccNumber">No credit card number</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onCreditCard()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.ccExpDate">{{data.ccExpDate}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.ccExpDate">No credit card expiration</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onCreditCard()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">    
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span class="p-2"
+                          *ngIf="data && data.title"><strong>Title: </strong>{{data.title}}</span>
+                    <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                          *ngIf="data && !data.title">No Title</span>
+                    <a class="text-secondary text-opacity-25"
+                       style="cursor: pointer;"
+                       (click)="onTitle()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">
+                  <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
+                        <span class="p-2">Diagnostic </span>
+                        <div class="form-check form-switch">
+                              <input class="form-check-input"
+                                     type="checkbox"
+                                     id="flexSwitchCheckDefault"
+                                     [checked]="isDiagnostic"
+                                     (click)="setDiagnostic()">
+                        </div>
+                  </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data">
+    <div class="containter-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">LIS Number</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lis_number">LIS Number/s</label>
+                            <textarea [(ngModel)]="data.lis_number" name="lis_number" id="lis_number" cols="30" rows="10" class="form-control form-control-lg"></textarea>
+
+                            <!-- <input [(ngModel)]="data.lis_number" type="text" name="lis_number" id="lis_number" class="form-control form-control-lg" required autofocus> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>                        <button type="button" value="Cancel" class="btn btn-secondary ms-2" (click)="onCancel()">Cancel</button>    
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

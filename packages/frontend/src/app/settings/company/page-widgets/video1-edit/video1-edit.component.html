@@ -1,0 +1,50 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.video1">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Video 1 (embed)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.video1.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.video1.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="videoID">YouTube Video ID</label>
+                            <input [(ngModel)]="data.video1.videoID" type="text" name="videoID" id="videoID" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="imageURL">Video Image <small>(optional)</small> </label>
+                            <input [(ngModel)]="data.video1.imageURL" type="text" name="imageURL" id="imageURL" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

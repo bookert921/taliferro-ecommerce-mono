@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    match /carts/{cartId} {
+    	allow read, write: if true;
+    }
+    match /saved-carts/{savedCartsId} {
+    	allow read, write: if true;
+    }
+    match /lab-orders/{labOrderId} {
+      allow write: if true;
+    	allow read: if isSignedIn();
+      allow delete: if isSignedIn();
+    }
+    match /orders/{orderId} {
+    	allow read: if isSignedIn();
+      allow write: if true;
+    }
+    match /lis-practitioners/{pracID} {
+      allow read: if true;
+    }
+    match /categories/{categoryId} {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    match /daily-reports/{reportId} {
+      allow read: if isSignedIn() && isAdmin();
+    }
+    match /product-types/{productTypeId} {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    match /sub-categories/{subCategoryId} {
+    	allow read: if true;
+      allow write: if isSignedIn() && isAdmin();
+    }
+    match /product-dependencies/{productDependencyId} {
+    	allow read: if true;
+      allow write: if isSignedIn() && isAdmin();
+    }
+    match /contacts/{contactId} {
+    	allow read, write: if true;
+    }
+    match /products/{productId} {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    match /settings/{settingsId} {
+    	allow read: if true;
+      allow write: if isSignedIn();
+    }
+    match /test-kits/{testkitId} {
+    	allow read, write: if isSignedIn();
+    }
+    match /categories/{categoryId} {
+    	allow read: if true;
+    }
+    match /product-types/{productTypeId} {
+    	allow read: if true;
+    }
+    match /users/{userId} {
+    	allow read: if true;
+      allow create: if incomingData().email != '';
+      allow update, delete: if isOwner(userId); 
+    }
+    
+    
+    
+    /// Functions ///
+    function getUserData() {
+    	return get(/databases/$(database)/documents/users/$(request.auth.uid)).data
+    }
+    
+    function isAdmin() {
+    	return getUserData().roles.hasAny(['admin']);
+    }
+    function isSignedIn() {
+    	return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+    	return request.auth.uid == userId;
+    }
+    
+    function incomingData() {
+    	return request.resource.data;
+    }
+  }
+}

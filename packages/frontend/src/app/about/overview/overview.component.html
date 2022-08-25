@@ -1,0 +1,302 @@
+<div id="page" class="site">
+	<!-- Start Header -->
+	<header id="masthead" class="site-header">
+		<!-- Start Navigation -->
+		<nav id="site-navigation" class="navbar main-navigation nav-dark navbar-top">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="https://www.taliferro.com"> Taliferro Group </a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#products">Products</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#services">Services</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#about">About</a>
+						</li>
+					</ul>
+					<span class="navbar-text" style="color: #191919;"> 425.305.3748 </span>
+				</div>
+			</div>
+		</nav>
+		<!-- End Navigation -->
+		<div class="container-fluid header-content-3 header-content-color">
+			<div class="container header-container header-3">
+				<div class="row">
+					<div class="title-centered-content">
+						<div class="col-md-6 header-text">
+							<h1>e-Commerce</h1>
+							<div class="title-desc">
+								<p>In just a few minutes, you can start accepting sales and managing your business more efficiently today, with an online tool that manages the entire sales process.
+								</p>
+							</div>
+							<ul class="header-nav-buttons" *ngIf="!authService.firebaseUser else signedIn">
+								<li><a routerLink="/identity" class="button button-white" title="Sign In">Sign In</a></li>
+								<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
+							</ul>
+							<ng-template #signedIn>
+								<ul class="header-nav-buttons" *ngIf="!userService.user  else userAndSignedIn">
+									<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
+								</ul>
+								<ng-template #userAndSignedIn>
+									<ul class="header-nav-buttons" *ngIf="settingService.settings else noSettings">
+										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/shop/store"
+											class="button button-white" title="Slore">Your Store</a></li>
+										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/admin" class="button button-white-border"
+												title="Slore">Administration</a></li>
+									</ul>
+									<ng-template #noSettings>
+										<ul class="header-nav-buttons">
+											<li><a routerLink="/identity/bye" class="button button-white" title="Sign In">Sign Out</a></li>
+										</ul>
+	
+									</ng-template>
+								</ng-template>
+							</ng-template>
+						</div> <!-- .header-text -->
+					</div> <!-- .title-centered-content -->
+				</div> <!-- .row -->
+			</div> <!-- .container -->
+		</div> <!-- .container-fluid -->
+		<div class="header-round"></div>
+	</header>
+	<!-- End Header -->
+	<div id="content" class="site-content">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+				<a name="more"></a>
+				<section id="video---1" class="container-fluid section-block video">
+					<div class="container">
+						<div class="row">
+							<h2 class="wow fadeInUp">Why Taliferro Group e-Commerce</h2>
+							<div class="block-desc wow fadeInUp">
+								<p>Taliferro Group's co-founder explains what's different about our e-commerce platform.</p>
+							</div>
+							<div class="col-md-12 video-block">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe is="x-frame-bypass" class="embed-responsive-item" src="https://www.youtube.com/embed/fYppXcqWt88" frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End Video 1 -->
+				<!-- Start Features 5 -->
+				<section id="features---5" class="container-fluid section-block features bg-primary-color">
+					<div class="container">
+						<div class="row">
+							<h2 class="wow fadeInUp">Features</h2>
+							<div class="block-desc wow fadeInUp">
+								<p>The one thing that this e-commerce application that others don't is the ability to let you know when a customer should be solicited to purchase another order.</p>
+							</div>
+							<!-- Feature 1 -->
+							<div class="col-md-4 feature feature-bg wow fadeInUp">
+								<i class="icon-rocket"></i>
+								<h3>Single Page Catalog</h3>
+								<p>In addition to your product catalog, you can choose from a variety of page components to augment your catalog.</p>
+							</div>
+							<!-- Feature 2 -->
+							<div class="col-md-4 feature feature-bg wow fadeInUp">
+								<i class="icon-diamond"></i>
+								<h3>Cloud</h3>
+								<p>No hardware or software to maintain. All updates are automatic, your data is in good hands and backed by the Google Cloud Platform.</p>
+							</div>
+							<!-- Feature 3 -->
+							<div class="col-md-4 feature feature-bg wow fadeInUp">
+								<i class="icon-refresh"></i>
+								<h3>Purchase Authentication</h3>
+								<p>Use your Apple ID to sign in. If mobile and iOS, use your face or fingerprint. Facebook and Google authentication also available.</p>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End Features 5 -->
+				<!-- Start About Block 2 -->
+				<section id="about---2" class="container-fluid section-block about-2">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-7 col-xs-12">
+								<div class="about-features wow fadeInUp">
+									<!-- Feature block 1 -->
+									<div class="feature-box feature-box-primary">
+										<i class="icon-layers"></i> <!-- icon -->
+										<p>User-friendly Interface</p>
+									</div>
+									<!-- Feature block 2 -->
+									<div class="feature-box feature-box-primary">
+										<i class="icon-clock"></i> <!-- icon -->
+										<p>Easy Setup Process</p>
+									</div>
+									<!-- Feature block 3 -->
+									<div class="feature-box feature-box-primary">
+										<i class="icon-equalizer"></i> <!-- icon -->
+										<p>Full UI Customization</p>
+									</div>
+									<!-- Feature block 4 -->
+									<div class="feature-box feature-box-primary">
+										<i class="icon-credit-card"></i> <!-- icon -->
+										<p>Stripe Integration</p>
+									</div>
+								</div> <!-- .about-features -->
+							</div>
+							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
+								<h2 class="wow fadeInUp">SOMETIME SIMPLICITY IS A GOOD THING</h2>
+								<p class="wow fadeInUp">You won't find a simpler e-commerce platform. We have used and developed many e-commerce platforms, but there was always lingering in the back of our minds, is there
+									an easier way. Well, hear is our attempt at balance and features.</p>
+								<a routerLink="/shop/store/31e2rvCZiYgxf7lEXxX0" class="button button-full wow fadeInUp" title="button">Preview</a>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End About Block 2 -->
+				<section id="how-to-use---2" class="container-fluid section-block how-to-use-2 color-block">
+					<div class="container">
+						<div class="row">
+							<h2 class="wow fadeInUp">How to get started</h2>
+							<div class="block-desc">
+								<p>Our goal is is get you selling in 30 minutes or less.</p>
+							</div>
+							<div class="col-md-4 how-to-block-2 wow fadeInUp">
+								<span class="number">1</span>
+								<h3>Stripe</h3>
+								<p>Open a Stripe account if you don't already have one to accept payments. </p>
+							</div>
+							<div class="col-md-4 how-to-block-2 wow fadeInUp">
+								<span class="number">2</span>
+								<h3>Sign Up</h3>
+								<p>Click the sign-up button to create an account. Make sure you verify your email address.</p>
+							</div>
+							<div class="col-md-4 how-to-block-2 wow fadeInUp">
+								<span class="number">3</span>
+								<h3>Setup</h3>
+								<p>Once you're logged in, click settings and fill in the labels.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- Start Download 2 -->
+				<section id="download---2" class="container-fluid section-block download-2 download-parallax">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 download-center-text">
+								<h2 class="wow fadeIn">TRY IT OUT</h2>
+								<p class="wow fadeInUp">Contact us to arrange a product demonstration. The best move you'll ever make.</p>
+								<a href="tel:425.305.3748" class="button button-full wow fadeIn">Request a Demo</a>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End Download 2 -->
+				<!-- Start About Block 5 -->
+				<section id="about---5" class="container-fluid section-block about-5 color-block">
+					<div class="container">
+						<div class="row">
+							<!-- Text block -->
+							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
+								<h2 class="wow lightSpeedInLeft">MULTIPLE INDUSTRY SUPPORT <span class="badge badge-primary">Beta</span></h2>
+								<p class="wow lightSpeedInRight">From a simple startup to a complex enterprise operation. You can determine the amount of complexity or simplicity you want. Choose either simple selling or price
+									dependent selling. Set the look and feel specific to your business. Find information fast. Our search is robust and quick. Never say again you can't find a piece of
+									information.</p>
+							</div>
+							<!-- Image block -->
+							<div class="col-md-6 col-sm-7 col-xs-12">
+								<div class="about-image-block">
+									<div class="about-image wow fadeInUp">
+										<img src="/assets/images/overview1.png" alt="e-commerce platform for small business">
+										<div class="ui">
+											<img src="/assets/images/overview2.png" data-aos="fade-up" alt="e-commerce platform for enterprises">
+										</div>
+									</div> <!-- .about-image -->
+								</div> <!-- .about-features -->
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End About Block 5 -->
+				<!-- Start Integration -->
+				<section id="integration---1" class="container-fluid section-block integration">
+					<div class="container">
+						<div class="row">
+							<h2 class="wow fadeInUp">Integration</h2>
+							<div class="block-desc wow fadeInUp">
+								<p>Achieving any overall business objective, such as retaining customers, requires a seamless flow of information between all business functions. Integration can
+									dissolve barriers to communication, reveal opportunities for revenue growth, and help remove expenses.</p>
+							</div>
+							<!-- Block 1 -->
+							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+								<div class="border-box wow fadeInUp">
+									<div class="integration-img">
+										<i class="fa fa-apple" aria-hidden="true"></i>
+									</div>
+									<div class="integration-text">
+										<h3>Apple</h3>
+										<p><small>Authentication</small></p>
+									</div>
+								</div>
+							</div> <!-- .integration-block -->
+							<!-- Block 2 -->
+							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+								<div class="border-box wow fadeInUp">
+									<div class="integration-img">
+										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+									</div>
+									<div class="integration-text">
+										<h3>Shopify</h3>
+										<p><small> e-Commerce</small></p>
+									</div>
+								</div>
+							</div> <!-- .integration-block -->
+							<!-- Block 3 -->
+							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+								<div class="border-box wow fadeInUp">
+									<div class="integration-img">
+										<i class="fa fa-cc-stripe" aria-hidden="true"></i>
+									</div>
+									<div class="integration-text">
+										<h3>Stripe</h3>
+										<p><small>Payments</small> </p>
+									</div>
+								</div>
+							</div> <!-- .integration-block -->
+							<!-- Block 4 -->
+							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+								<div class="border-box wow fadeInUp">
+									<div class="integration-img">
+										<i class="fa fa-facebook-official" aria-hidden="true"></i>
+									</div>
+									<div class="integration-text">
+										<h3>Facebook</h3>
+										<p><small>Leads</small></p>
+									</div>
+								</div>
+							</div> <!-- .integration-block -->
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End Integration -->
+			</main>
+		</div> <!-- #primary -->
+	</div> <!-- #content -->
+	<!-- Start Footer -->
+	<footer id="colophon" class="container-fluid site-footer footer-color mt-auto">
+		<div class="container footer-container site-top-footer wow fadeInUp">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 bottom-footer">
+					<div class="col-md-12 col-sm-12 copy-text">
+						<p class="text-center">© Copyright Taliferro. Taliferro ® Is Registered In The U.S. Patent And Trademark Office. 425.305.3748. | <a
+								href="http://www.taliferro.com/privacy-policy" style="color:aliceblue">Privacy Policy</a> | <a href="http://www.taliferro.com/terms-of-service"
+								style="color:aliceblue">Terms of Service</a> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End Footer -->
+</div>

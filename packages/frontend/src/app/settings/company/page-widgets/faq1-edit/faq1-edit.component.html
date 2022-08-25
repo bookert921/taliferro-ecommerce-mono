@@ -1,0 +1,85 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.faq1">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Frequently Asked Questions (1)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.faq1.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.faq1.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqHeading1">FAQ Heading 1</label>
+                            <input [(ngModel)]="data.faq1.faqHeading1" type="text" name="faqHeading1" id="faqHeading1" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqDescription1">FAQ Description 1</label>
+                            <textarea [(ngModel)]="data.faq1.faqDescription1" type="text" name="faqDescription1" id="faqDescription1" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqHeading2">FAQ Heading 2</label>
+                            <input [(ngModel)]="data.faq1.faqHeading2" type="text" name="faqHeading2" id="faqHeading2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqDescription2">FAQ Description 2</label>
+                            <textarea [(ngModel)]="data.faq1.faqDescription2" type="text" name="faqDescription2" id="faqDescription2" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqHeading3">FAQ Heading 3</label>
+                            <input [(ngModel)]="data.faq1.faqHeading3" type="text" name="faqHeading3" id="faqHeading3" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="faqDescription3">FAQ Description 3</label>
+                            <textarea [(ngModel)]="data.faq1.faqDescription3" type="text" name="faqDescription3" id="faqDescription3" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

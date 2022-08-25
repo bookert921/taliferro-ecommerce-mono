@@ -1,0 +1,60 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.dependency">
+    <div class="containter-fluid wow fadeInLeft mb-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Product Dependency Pricing</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-check form-switch">
+                            <input [(ngModel)]="data.dependency.priceDependent" class="form-check-input" type="checkbox" role="switch" id="priceDependent"  name="priceDependent">
+                            <label class="form-check-label" for="priceDependent">Price Dependent?</label>
+                          </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="category">Dependency Code</label>
+                            <select [(ngModel)]="data.dependency.dependencyCode" name="dependencyCode" id="dependencyCode" class="form-select form-select-lg" required>
+                                <option value="" selected>Choose Code</option>
+                                <option *ngFor="let t of dependencyCodeService.items | async | nameSort" value="{{t.name}}">{{t.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="dataPrice">Price</label>
+                            <input [(ngModel)]="data.dependency.price" type="number" name="dataPrice" id="dataPrice" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="salePrice">Sale Price</label>
+                            <input [(ngModel)]="data.dependency.salePrice" type="number" name="salePrice" id="salePrice" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-check">
+                            <input [(ngModel)]="data.dependency.onSale" type="checkbox" name="onSale" id="onSale" class="form-check-input">
+                            <label class="form-check-label" for="onSale">On Sale</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

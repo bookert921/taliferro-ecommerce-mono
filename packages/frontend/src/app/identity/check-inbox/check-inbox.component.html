@@ -1,0 +1,29 @@
+<section class="container-pages ta-vertical-center">
+    <div class="card pages-card col-lg-6 col-md-6 col-sm-6">
+        <div class="card-body ">
+            <div class="text-center" *ngIf="!authService.emailSent">
+                <i class="fa fa-cog fa-spin fa-5x fa-fw"></i>
+            </div>
+            <div class="text-center mt-2" *ngIf="!authService.emailSent">
+                <h3>Working . . .</h3>
+            </div>
+
+            <div class="text-center" *ngIf="authService.emailSent">
+                <h1>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                </h1>
+            </div>
+
+            <div class="h4 text-center wow fadeInDown" *ngIf="authService.emailSent"><strong>Check Your Email</strong>
+            </div>
+            <div class="small text-center text-dark wow fadeInDown" *ngIf="authService.emailSent"> An email has been
+                sent to you to validate your identity. </div>
+
+            <div class="text-center wow fadeIn" *ngIf="contactLink">
+
+                <a (click)="back()" class="text-theme" style="cursor: pointer;"><i class="fa fa-chevron-left" aria-hidden="true"></i> Go Back</a>
+
+            </div>
+        </div>
+    </div>
+</section>

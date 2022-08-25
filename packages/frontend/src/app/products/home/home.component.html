@@ -1,0 +1,44 @@
+<div class="container-fluid mt-3">
+    <div class="row mb-2">
+        <div class="col-md text-start">
+            <span *ngIf="!isEditMode" (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left  fa-2x text-muted"></i></span> <a *ngIf="isEditMode"
+                (click)="list()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-1x"></i></a>
+        </div>
+        <div class="col-md text-center">
+            <h1 [ngStyle]="{'color': colorService.darkBackground}">Products</h1>
+        </div>
+        <div class="col-md text-end">
+            <button type="button" class="btn btn-success" (click)="onDashboard()">Administration</button>
+            <button type="button" class="btn btn-primary" (click)="onNew()">Create</button>
+            <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="!isEditMode">
+        <div class="col-md-12 no-print">
+            <app-product-list (id)="onView($event)"></app-product-list>
+        </div>
+    </div>
+    <div class="row" *ngIf="isEditMode">
+        <div class="col-md-6">
+            <app-product-view [data]="data" [isDiagnostic]="isDiagnostic" (editItem)="onEdit($event)"></app-product-view>
+        </div>
+        <div class="col-md-6">
+            <app-product-edit-sub-category-option [data]="data" *ngIf="isProductSubCategory"></app-product-edit-sub-category-option>
+            <app-product-edit-price-dependencies [data]="data" *ngIf="isProductPriceDepency" (done)="editReset()"></app-product-edit-price-dependencies>
+            <app-product-sub-type-edit [data]="data" *ngIf="isProductSubType"></app-product-sub-type-edit>
+            <app-product-edit-active [data]="data" *ngIf="isProductActive" (done)="editReset()"></app-product-edit-active>
+            <app-product-edit-type [data]="data" *ngIf="isProductType" (done)="editReset()"></app-product-edit-type>
+            <app-product-edit-category [data]="data" *ngIf="isProductCategory" (done)="editReset()"></app-product-edit-category>
+            <app-product-edit-description [data]="data" *ngIf="isProductDescription" (done)="editReset()"></app-product-edit-description>
+            <app-product-edit-dimensions [data]="data" *ngIf="isProductDimensions" (done)="editReset()"></app-product-edit-dimensions>
+            <app-product-edit-image [data]="data" *ngIf="isProductImage" (done)="editReset()"></app-product-edit-image>
+            <app-product-edit-manufacturer [data]="data" *ngIf="isProductManufacturer" (done)="editReset()"></app-product-edit-manufacturer>
+            <app-product-edit-name [data]="data" *ngIf="isProductName" (done)="editReset()"></app-product-edit-name>
+            <app-product-edit-price [data]="data" *ngIf="isProductPrice" (done)="editReset()"></app-product-edit-price>
+            <app-product-edit-quantity [data]="data" *ngIf="isProductQuantity" (done)="editReset()"></app-product-edit-quantity>
+            <app-product-edit-sku [data]="data" *ngIf="isProductSku" (done)="editReset()"></app-product-edit-sku>
+            <app-product-edit-stock [data]="data" *ngIf="isProductStock" (done)="editReset()"></app-product-edit-stock>
+            <pre *ngIf="isDiagnostic" >{{data | json}}</pre>
+        </div>
+    </div>
+</div>

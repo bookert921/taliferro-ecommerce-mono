@@ -1,0 +1,48 @@
+<section id="features---2" class="section features pb-5"
+  [ngClass]="{'color-block': (settingService.settings && settingService.settings.colorBlock)}" *ngIf="data && data.features1">
+  <div class="container">
+    <h2 class="section__title pb-2" [ngStyle]="{'color': colorService.secondaryColor}">{{data?.features1?.headerText}}
+    </h2>
+    <div class="row wow fadeInUp" [ngClass]="{'home2': !(settingService.settings && settingService.settings.colorBlock)}">
+      <div class="block-desc text-muted text-center">
+        <p>{{data.features1.descriptionText}}</p>
+      </div>
+      <div class="col-md-4 feature feature-center feature-second-color feature-border">
+        <span style="cursor: pointer;" (click)="gotoPage(data.features1.featureLink1)"
+          *ngIf="data.features1.featureLink1">
+          <i [ngClass]="data.features1.featureIcon1" aria-hidden="true"></i>
+          <h3>{{data.features1.featureHeading1}}</h3>
+        </span>
+        <span *ngIf="!data.features1.featureLink1">
+          <i [ngClass]="data.features1.featureIcon1" aria-hidden="true"></i>
+          <h3>{{data.features1.featureHeading1}}</h3>
+        </span>
+        <div innerHTML="">{{data.features1.featureDescription1}}</div>
+      </div>
+      <div class="col-md-4 feature feature-center feature-second-color feature-border">
+        <span style="cursor: pointer;" (click)="gotoPage(data.features1.featureLink2)"
+          *ngIf="data.features1.featureLink2">
+          <i [ngClass]="data.features1.featureIcon2" aria-hidden="true"></i>
+          <h3>{{data.features1.featureHeading2}}</h3>
+        </span>
+        <span *ngIf="!data.features1.featureLink2">
+          <i [ngClass]="data.features1.featureIcon2" aria-hidden="true"></i>
+          <h3>{{data.features1.featureHeading2}}</h3>
+        </span>
+        <div innerHTML="{{data.features1.featureDescription2}}"></div>
+      </div>
+      <div class="col-md-4 feature feature-center feature-second-color feature-border">
+        <span style="cursor: pointer;" (click)="gotoPage(data.features1.featureLink3)"
+          *ngIf="data.features1.featureLink3">
+          <i [ngClass]="data.features1.featureIcon3" aria-hidden="true"></i>
+          <h3>{{data.features1.featureHeading3}}</h3>
+        </span>
+        <span *ngIf="!data.features1.featureLink3">
+          <i [ngClass]="data.features1.featureIcon3" aria-hidden="true"></i>
+          <h3>{{data.features1.featureHeading3}}</h3>
+        </span>
+        <div innerHTML="{{data.features1.featureDescription3}}"></div>
+      </div>
+    </div>
+  </div>
+</section>

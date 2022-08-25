@@ -1,0 +1,367 @@
+<div class="container-fluid pagebreak">
+    <div class="row">
+        <div class="col-md-4" style="width: 33%;">
+            <div class="card red">
+                <div class="card-header">Practitioner</div>
+                <div class="card-body">
+                    <div *ngIf="data && data.user && data.user.practitionerName">
+                        <div>{{data?.user?.practitionerName}}</div>
+                        <div>{{data?.user?.practitioner_streetAddress1}} {{data.user?.practitioner_streetAddress2}}</div>
+                        <div>{{data?.user?.practitioner_city}} {{data?.user?.practitioner_province}}
+                            {{data?.user?.practitioner_zip}}</div>
+                        <div>{{data?.user?.customerId}}</div>
+                    </div>
+                    <div *ngIf="!(data && data.user && data.user.practitionerName)">
+                        <div>{{settingService?.settings?.name}}</div>
+                        <div>{{settingService?.settings?.address}}</div>
+                        <div>{{settingService?.settings?.city}} {{settingService?.settings?.province}}
+                            {{settingService?.settings?.zip}}</div>
+                        <div>{{settingService?.settings?._id}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="width: 33%;">
+            <div class="card grey">
+                <div class="card-header">Specimen</div>
+                <div class="card-body">
+                    <div class="row"><div class="col"><strong>Date Collected: </strong></div><div class="col no-print"><hr></div> </div>
+                    <div class="row"><div class="col"><strong>Time Collected: </strong></div><div class="col no-print"><hr></div> </div>
+                    <div class="row"><div class="col"><strong>Frozen: </strong></div><div class="col no-print"><hr></div></div>
+                    <div class="row"><div class="col"><strong>Refrigerated: </strong></div><div class="col no-print"><hr></div></div>
+                    <div class="row"><div class="col"><strong>Ambient Temperature: </strong></div><div class="col no-print"><hr></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="width: 33%;">
+            <div class="card grey">
+                <div class="card-header">Laboratory Use</div>
+                <div class="card-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="dbs">
+                                    <label class="form-check-label" for="dbs"> DBS </label>
+                                </div>
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="bt">
+                                    <label class="form-check-label" for="bt"> BT </label>
+                                </div>
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="st">
+                                    <label class="form-check-label" for="st"> ST </label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="uc">
+                                    <label class="form-check-label" for="us"> UC </label>
+                                </div>
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="sst">
+                                    <label class="form-check-label" for="sst"> SST </label>
+                                </div>
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="nps">
+                                    <label class="form-check-label" for="nps"> NPS </label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="ops">
+                                    <label class="form-check-label" for="ops"> OPS </label>
+                                </div>
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="npa">
+                                    <label class="form-check-label" for="npa"> NPA </label>
+                                </div>
+                                <div class="form-check smallText">
+                                    <input class="form-check-input" type="checkbox" value="" id="mts">
+                                    <label class="form-check-label" for="mts"> MTS </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="npw">
+                                    <label class="form-check-label" for="npw"> NPW </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12" style="min-height: 15px;"><strong>Notes</strong>
+                        <span *ngIf="data.lis_number"><br> {{data.lis_number}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-7" style="width: 67%;">
+            <div class="card grey">
+                <div class="card-header">Patient (all fields required except Passport # for Covid-19 tests)</div>
+                <div class="card-body">
+                    <div *ngIf="data && data.user">
+                        <div *ngIf="data.user && data.user.firstName"><strong>First Name 名字:</strong>
+                            {{data?.user?.firstName}} </div>
+                        <div *ngIf="data.user && data.user.middle_name"><strong>Middle Name: </strong>
+                            {{data.user.middle_name}}</div>
+                        <div *ngIf="data.user && data.user.lastName"><strong>Last Name 姓:
+                            </strong>{{data?.user?.lastName}}</div>
+                        <div *ngIf="data.user && data.user.gender"><strong>Gender 性别: </strong> {{data.user.gender}}
+                        </div>
+                        <div *ngIf="data.user && data.user.dob"><strong>Date of Birth 出生日期: </strong> {{data.user.dob}}
+                        </div>
+                        <div *ngIf="data.user && data.user.streetAddress1"><strong>Address 地址: </strong>
+                            {{data.user.streetAddress1}} {{data?.user?.streetAddress2}} {{data?.user?.city}}
+                            {{data?.user?.province}} {{data?.user?.zip}}</div>
+                        <div *ngIf="data.user && data.user.phoneNumber"><strong>Phone:
+                            </strong>{{data.user.phoneNumber}}</div>
+                        <div *ngIf="data.user && data.user.email"><strong>Email: </strong>{{data.user.email}}</div>
+                    </div>
+                    <div *ngIf="data && data.appointment">
+                        <div *ngIf="!data.user">
+                            <div *ngIf="data.appointment.firstName"><strong>First Name 名字: </strong>
+                                {{data?.appointment?.firstName}} </div>
+                            <div *ngIf="data.appointment.lastName"><strong>Last Name 姓:
+                                </strong>{{data?.appointment?.lastName}}</div>
+                            <div><strong>Gender 性别: </strong>_________</div>
+                            <div><strong>Date of Birth 出生日期: </strong> _________</div>
+                            <div *ngIf="data.appointment.phone"><strong>Phone: </strong>{{data?.appointment?.phone}}
+                            </div>
+                            <div *ngIf="data.appointment.email"><strong>Test results will be sent to this email :
+                                </strong>{{data?.appointment?.email}}</div>
+                        </div>
+                        <div *ngIf="data.appointment.type"><strong>Type:</strong> {{data.appointment.type}}</div>
+                        <div *ngIf="data.appointment.category"><strong>Category:</strong>{{data.appointment.category}}
+                        </div>
+                    </div>
+                    <div><strong>Updated:</strong> {{data?.lastUpdated | date}}</div>
+                    <div><strong>Order ID:</strong> {{data?._id}} </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5" style="width: 33%;">
+            <div class="card green">
+                <div class="card-header">Payment</div>
+                <div class="card-body">
+                    <div *ngIf="(data.appointment && data.appointment.amountPaid)">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" checked id="prepaid">
+                            <label class="form-check-label" for="prepaid"> Prepaid Online </label>
+                        </div>
+                    </div>
+                    <div *ngIf="!(data.appointment && data.appointment.amountPaid)">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="prepaid">
+                            <label class="form-check-label" for="prepaid"> Prepaid Online </label>
+                        </div>
+                        <div><strong>Check Number: </strong>
+                            <span
+                                *ngIf="data && data.cart && data.cart.paymentDetails && data.cart.paymentDetails.ccNumber && (data.cart.paymentDetails.ccNumber.length)">
+                                ***********{{data?.cart?.paymentDetails?.ccNumber | slice:-4}}<br>
+                            </span>
+                            <span
+                                *ngIf="!(data && data.cart && data.cart.paymentDetails && data.cart.paymentDetails.ccNumber && (data.cart.paymentDetails.ccNumber.length))">
+                                __________<br>
+                            </span>
+                        </div>
+                        <div><strong>Card Holder Name: </strong>
+                            <span
+                                *ngIf="data && data.cart && data.cart.paymentDetails && data.cart.paymentDetails.ccNameOnCard">{{data?.cart?.paymentDetails?.ccNameOnCard}}</span>
+                            <span
+                                *ngIf="!(data && data.cart && data.cart.paymentDetails && data.cart.paymentDetails.ccNameOnCard)">__________</span>
+                        </div>
+                        <div><strong>Expiration Date: </strong>
+                            <span
+                                *ngIf="data && data.cart && data.cart.paymentDetails && data.cart.paymentDetails.ccExpDate">{{data?.cart?.paymentDetails?.ccExpDate}}</span>
+                            <span
+                                *ngIf="!(data && data.cart && data.cart.paymentDetails && data.cart.paymentDetails.ccExpDate)">__________</span>
+                        </div>
+                    </div>
+                    <div><strong>Amount: </strong>
+                        <span *ngIf="data.appointment && data.appointment.amountPaid">
+                            <span>{{data.appointment.amountPaid}}</span>
+                        </span>
+                        <span *ngIf="!(data.appointment && data.appointment.amountPaid)">
+                            <span *ngIf="data && data.cart && data.cart.amount">{{data?.cart?.amount | currency}}</span>
+                            <span *ngIf="!(data && data.cart && data.cart.amount)">__________</span>
+                        </span>
+                    </div>
+                    <div class="row"><div class="col-md-4"><strong>Signature: </strong></div>
+                    <div class="col-md-8 no-print"><hr></div></div>
+                </div>
+            </div>
+            <div class="card grey mt-1" *ngIf="data.appointment">
+                <div class="card-header">Appointment</div>
+                <div class="card-body">
+                    <div *ngIf="data.appointment && data.appointment.calendar">{{data.appointment?.calendar}}
+                    </div>
+                    <div *ngIf="data.appointment && data.appointment.date"><strong>Date: </strong> {{data.appointment?.date}} / {{data.appointment?.time}}
+                        - {{data.appointment?.endTime}}</div>
+                    <div *ngIf="data.appointment">
+                        <strong>Canceled: </strong> {{data.appointment?.canceled}}
+                    </div>
+                    <div *ngIf="data.appointment && data.appointment.calendarID">
+                        <strong>Calendar ID: </strong> {{data.appointment?.calendarID}}
+                    </div>
+                    <div *ngIf="data.appointment && data.appointment.id">
+                        <strong>Appointment ID: </strong> {{data.appointment?.id}}
+                    </div>
+
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6" style="width: 50%;">
+            <div class="card grey">
+                <div class="card-header">COVID-19 Laboratory Use</div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="select">
+                                    <label class="form-check-label" for="select"> Select </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Specimen Type</strong>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="nasopharyngeal">
+                                    <label class="form-check-label" for="nasopharyngeal"> Nasopharyngeal Swab </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" style="width: 50%;">
+            <div class="card blue">
+                <div class="card-header">Identification</div>
+                <div class="card-body">
+                    <div><strong>Nationality | 国籍:</strong> {{data?.user?.nationality}}</div>
+                    <div><strong>Passport Number for Traveler | 护照号:</strong> {{data?.user?.passportNumber}}</div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="photo">
+                        <label class="form-check-label" for="photo"> Photo ID/ Passport Checked </label>
+                    </div>
+                    <!-- <div *ngIf="data && data.user && data.user.license && data.user.license.imageURL && data.user.license.imageURL.length && (data.user.license.imageURL.length > 0)">
+                        <div *ngFor="let k of data.user.license.imageURL">
+                            <img src="{{k.url}}" alt="" class="img-thumbnail" style="max-height: 150px;">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2 smallText">
+        <div class="col-md-6" style="width: 50%;">
+            <div *ngIf="(data && data.user && data.user.vaccinated) else answerQuestion">
+                Vaccinated against COVID-19?
+                <br>接种了 COVID-19 疫苗? 有/没有
+                <div>
+                    <span *ngIf="data.user.vaccinated">Yes</span>
+                    <span *ngIf="!data.user.vaccinated">No</span>
+                </div>
+            </div>
+            <ng-template #answerQuestion>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" value="" id="vaccinated">
+                    <label class="form-check-label" for="vaccinated"> Vaccinated against COVID-19?
+                        Yes / No
+                        <br>接种了 COVID-19 疫苗? 有/没有 </label>
+                </div>
+            </ng-template>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="" id="exposure">
+                <label class="form-check-label" for="exposure">Have you had a know COVID-19 exposure? Yes / No<br>有没有接触
+                    Covid-19 病例? 有/没有 </label>
+            </div>
+            <div class="mb-2">If so, when was the exposure?<br>如果有,什么时候?
+                <ng-template #explanation1>
+                    _________________________________
+                </ng-template>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="" id="symptons">
+                <label class="form-check-label" for="symptons">Do you have symptons consistent with COVID-19 exposure
+                    (fever/cough)? Yes / No<br>您是否有与 COVID-19相符的症状(发烧、咳嗽)? 有/没有 </label>
+            </div>
+            <div>If so, when did symptons start?<br>如果有，症状是什么时候开始的? _________________________________</div>
+        </div>
+        <div class="col-md-6" style="width: 50%;">
+            <div class="mb-2">Please sign your initials to indicate that you have read, understand, and agree to the
+                terms of the Informed Consent for Laboratory Testing
+                <div *ngIf="(data && data.user && data.user.signature1) else signature1">
+                    <span><i>{{data?.user?.signature1}}</i></span>
+                </div>
+                <ng-template #signature1>
+                    _________
+                </ng-template>
+                请签署您的姓名首字母以表明您已阅读、理解并同意实验室测试知情同意书的条款
+            </div>
+            <div class="mb-2"> Please sign your initials to indicate that you have read, understand, and agree to the
+                terms of the Authorization for Disclosure of Protected Health Information:
+                <div *ngIf="(data && data.user && data.user.signature2) else signature2">
+                    <span><i>{{data?.user?.signature2}}</i></span>
+                </div>
+                <ng-template #signature2>
+                    _________<br>
+                </ng-template>
+                请签署您的姓名首字母以表明您已阅读、理解并同意披露受保护健康信息授权的条款
+            </div>
+            <div> Please sign your initials to indicate that you consent to have your test results shared with the
+                Chinese consulate:
+                <div *ngIf="(data && data.user && data.user.signature3) else signature3">
+                    <span><i>{{data?.user?.signature3}}</i></span>
+                </div>
+                <ng-template #signature3>
+                    _________<br>
+                </ng-template>
+                请签署您的姓名首字母以表明您同意将您的测试结果发送给中国领事馆
+            </div>
+        </div>
+    </div>
+    <!-- <hr style="border-top: 1px dashed gainsboro;"> -->
+    <!-- <div class="row">
+        <div class="col-6">
+            <div class="card grey">
+                <div class="card-body">
+                    <div *ngIf="data && data.user">
+                        <span *ngIf="data.user && data.user.firstName">{{data?.user?.firstName}} </span>
+                        <span *ngIf="data.user && data.user.lastName">{{data?.user?.lastName}}</span>
+                        <span class="ms-2" *ngIf="data.user && data.user.dob"> {{data.user.dob}}</span>
+                    </div>
+                    <div *ngIf="data && data.appointment">
+                        <div *ngIf="!data.user">
+                            <span *ngIf="data.appointment.firstName"> {{data?.appointment?.firstName}} </span>
+                            <span *ngIf="data.appointment.lastName">{{data?.appointment?.lastName}}</span>
+                        </div>
+                    </div>
+                    <div> {{data?._id}} </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card grey">
+                <div class="card-body">
+                    <div *ngIf="data && data.user">
+                        <span *ngIf="data.user && data.user.firstName">{{data?.user?.firstName}} </span>
+                        <span *ngIf="data.user && data.user.lastName">{{data?.user?.lastName}}</span>
+                        <span class="ms-2" *ngIf="data.user && data.user.dob"> {{data.user.dob}}</span>
+                    </div>
+                    <div *ngIf="data && data.appointment">
+                        <div *ngIf="!data.user">
+                            <span *ngIf="data.appointment.firstName"> {{data?.appointment?.firstName}} </span>
+                            <span *ngIf="data.appointment.lastName">{{data?.appointment?.lastName}}</span>
+                        </div>
+                    </div>
+                    <div> {{data?._id}} </div>
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

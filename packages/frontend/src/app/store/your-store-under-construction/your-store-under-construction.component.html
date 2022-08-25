@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg" style="background-color: white;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://www.taliferro.com" style="color: #191919;">
+      <img src="https://www.taliferro.com/assets/images/taliferro-group-logo.png" alt="" width="48" height="48" class="d-inline-block align-text-top"> Taliferro Group </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" style="color:#737373" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#services">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#about">About</a>
+        </li>
+      </ul>
+      <span class="navbar-text" style="color: #191919;"> 425.305.3748 </span>
+    </div>
+  </div>
+</nav>
+<section class="container-pages ta-vertical-center">
+  <div class="card pages-card col-lg-6 col-md-6 col-sm-6">
+    <div class="card-body ">
+      <div class="text-center"><a routerLink="/" title="Return Home"> <img src="/assets/images/taliferro-group-logo-small.png" alt="Taliferro Group"> </a>
+        
+      </div>
+      <div class="h4 text-center text-theme wow fadeIn" *ngIf="isUserSite"><strong>{{settingService?.settings?.name}}</strong></div>
+      <div class="h4 text-center text-theme wow fadeIn" *ngIf="!isUserSite"><strong>Hi!</strong></div>
+      <div class="small text-center text-dark wow fadeIn" *ngIf="!authService.firebaseUser"> Create Your Own Store by signing up</div>
+      <div class="small text-center text-dark wow fadeIn" *ngIf="authService.firebaseUser"> Select Your Path</div>
+      <div class="text-center wow fadeIn" *ngIf="isUserSite">
+        <small>
+          <a routerLink="/" class="btn  btn-theme text-white text-center">e-Commerce Home</a>
+          <a routerLink="/admin" class="btn  btn-theme text-white text-center">Administration</a>
+        </small>
+      </div>
+      <div class="text-center wow fadeIn" *ngIf="!isUserSite">
+        <small>
+          <a *ngIf="!authService.firebaseUser" href="https://passwordless.taliferro.com/sign-up" class="btn  btn-theme text-white text-center">Sign Up</a>
+          <a *ngIf="!authService.firebaseUser && !settingService.settings" routerLink="/identity" class="btn  btn-theme text-white text-center">Sign In</a>
+          <a *ngIf="authService.firebaseUser && settingService.settings" routerLink="/shop/store/{{settingService.settings._id}}" class="btn  btn-theme text-white text-center">Sign In</a>
+          <a *ngIf="authService.firebaseUser && !settingService.settings" routerLink="/my" class="btn  btn-theme text-white text-center">Dashboard</a>
+        </small>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="colophon" class="container-fluid site-footer footer-color mt-auto">
+  <div class="container footer-container site-top-footer">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 bottom-footer">
+        <div class="col-md-12 col-sm-12 copy-text">
+          <p class="text-center">© Copyright Taliferro. Taliferro ® Is Registered In The U.S. Patent And Trademark Office. 425.305.3748. | <a href="http://www.taliferro.com/privacy-policy"
+              style="color:aliceblue">Privacy Policy</a> | <a href="http://www.taliferro.com/terms-of-service" style="color:aliceblue">Terms of Service</a> | <a style="color:aliceblue"
+              routerLink="/admin">Administration</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

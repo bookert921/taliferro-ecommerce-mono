@@ -1,0 +1,55 @@
+<section id="faq---3" class="section faq pb-5" [ngClass]="{'color-block': (settingService.settings && settingService.settings.colorBlock)}" *ngIf="data && data.faq3">
+  <div class="container wow fadeInUp">
+    <h2 class="section__title mb-2" [ngStyle]="{'color': colorService.secondaryColor}">{{data?.faq3?.headerText}}</h2>
+    <div class="row wow fadeInUp" [ngClass]="{'home2': !(settingService.settings && settingService.settings.colorBlock)}">
+      <div class="block-desc text-muted text-center">
+        <div innerHTML="{{data.faq3?.descriptionText}}"></div>
+      </div>
+      <div class="col-md-6">
+        <img src="{{data.faq3.imageURL[0]?.url}}" alt="{{data.faq3.headerText}}" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <div id="accordion-2" class="panel-group faq-group" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h4 class="panel-title">
+                <a role="button" > {{data.faq3?.faqHeading1}} </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion-2">
+              <div class="accordion-body">
+                <p> {{data.faq3?.faqDescription1}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <h4 class="panel-title">
+                <a role="button" >
+                  {{data.faq3?.faqHeading2}} </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion-2">
+              <div class="accordion-body">
+                <p> {{data.faq3?.faqDescription2}} </p>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+              <h4 class="panel-title">
+                <a  role="button" >
+                  {{data.faq3?.faqHeading3}} </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordion-2">
+              <div class="accordion-body">
+                <p> {{data.faq3?.faqDescription3}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<section id="faq---1" class="section faq pb-5" [ngClass]="{'color-block': (settingService.settings && settingService.settings.colorBlock)}" *ngIf="data && data.faq2">
+  <div class="container wow fadeInUp">
+    <h2 class="section__title mb-2" [ngStyle]="{'color': colorService.secondaryColor}">{{data?.faq2?.headerText}}</h2>
+    <div class="row  wow fadeInUp" [ngClass]="{'home2': !(settingService.settings && settingService.settings.colorBlock)}">
+      <div class="block-desc text-muted text-center mb-2" innerHTML="{{data.faq2.descriptionText}}">
+      </div>
+      <div class="col-md-6 faq-block">
+        <div innerHTML="{{data.faq2.faqDescription1}}"></div>
+      </div>
+      <div class="col-md-6 faq-block">
+        <h3>{{data.faq2.faqHeading2}}</h3>
+        <div innerHTML="{{data.faq2.faqDescription2}}"></div>
+      </div>
+      <div class="col-md-6 faq-block">
+        <h3>{{data.faq2.faqHeading3}}</h3>
+        <div innerHTML="{{data.faq2.faqDescription3}}"></div>
+      </div>
+      <div class="col-md-6 faq-block">
+        <h3>{{data.faq2.faqHeading4}}</h3>
+        <div innerHTML="{{data.faq2.faqDescription4}}"></div>
+      </div>
+    </div>
+  </div>
+</section>

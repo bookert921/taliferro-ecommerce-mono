@@ -1,0 +1,39 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="containter-fluid wow fadeInLeft mb-3">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Product Sub Category Pricing</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <i>Select which sub categories the Product is dependent upon, then enter a price.</i>
+                        <div class="form-group" *ngIf="options && options.values.length">
+                            <div class="form-check" *ngFor="let s of options.values">
+                                <input class="form-check-input" type="checkbox" value="{{s.name}}" id="{{s.name}}" name="{{s.name}}" [(ngModel)]="s.checked">
+                                <label class="form-check-label" for="{{s.name}}">
+                                  {{s.name}}
+                                </label>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="dataPrice">Price</label>
+                            <input [(ngModel)]="options.price" type="number" name="dataPrice" id="dataPrice" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<app-product-sub-category-option-list (id)="onEdit($event)" (deleteAction)="onDelete()" [data]="data"></app-product-sub-category-option-list>

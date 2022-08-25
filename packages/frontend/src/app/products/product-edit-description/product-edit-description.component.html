@@ -1,0 +1,41 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="containter-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Product Desription</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="short_description">Short Description</label>
+                            <input [(ngModel)]="data.description.short" type="text" name="short_description" id="short_description" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="long_description">Long Description</label>
+                            <textarea [(ngModel)]="data.description.long" name="long_description" id="long_description" cols="30" rows="10" class="form-control form-control-lg"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="specifics">Specifics</label>
+                            <textarea [(ngModel)]="data.description.specifics" name="specifics" id="specifics" cols="30" rows="10" class="form-control form-control-lg"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

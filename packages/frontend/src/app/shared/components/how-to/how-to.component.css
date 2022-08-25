@@ -1,0 +1,67 @@
+.how-to-use h3 {
+    position     : relative;
+    text-align   : left;
+    font-size    : 1.25rem;
+    line-height  : 1.5rem;
+    margin-bottom: 0;
+}
+
+.how-to-use h3 span.number {
+    position             : relative;
+    display              : inline-block;
+    top                  : 0;
+    font-size            : 1.25rem;
+    line-height          : 1;
+    font-weight          : 900;
+    text-align           : center;
+    padding              : 0.75rem 0.75rem;
+    color                : #fff;
+    -webkit-border-radius: 50px;
+    -moz-border-radius   : 50px;
+    border-radius        : 50px;
+    margin-right         : 7px;
+}
+
+.how-to-use h3 span.number span {
+    position   : relative;
+    display    : inline-block;
+    top        : 0;
+    width      : 1em;
+    font-size  : 1.25rem;
+    line-height: 1;
+    font-weight: 900;
+    text-align : center;
+}
+
+.how-to-use .how-to-block p {
+    padding-left: 3.2rem;
+}
+
+.how-to-use-2 h3 {
+    font-size   : 1.25rem;
+    line-height : 3rem;
+    margin      : 0;
+    padding-left: 4rem;
+}
+
+.how-to-use-2 .how-to-block-2 {
+    position  : relative;
+    margin-top: 1.5rem;
+}
+
+.how-to-use-2 .how-to-block-2 .number {
+    position   : absolute;
+    top        : 1.5rem;
+    font-size  : 5.96rem;
+    font-weight: 900;
+    color      : #909aaf;
+    opacity    : 0.15;
+}
+
+.how-to-use-2 .how-to-block-2 p {
+    padding-left: 4rem;
+}
+
+.color-block {
+    background-color: rgba(255, 255, 255, 0.01);
+}

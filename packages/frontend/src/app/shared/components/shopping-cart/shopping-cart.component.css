@@ -1,0 +1,274 @@
+.color-block {
+  background-color: rgba(255, 255, 255, 0.3)
+}
+
+.table-responsive {
+  display                   : block;
+  width                     : 100%;
+  overflow-x                : auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style        : -ms-autohiding-scrollbar;
+}
+
+.row--grid {
+  overflow: hidden;
+  position: relative;
+}
+
+.row--grid .col-12 {
+  transition: 0.6s;
+}
+
+.fadex-enter {
+  opacity: 0;
+}
+
+.fadex-enter-active {
+  transition: opacity 0.6s;
+  position  : relative;
+  z-index   : 1;
+}
+
+.fadex-enter-to {
+  opacity: 1;
+}
+
+.fadex-leave {
+  opacity: 1;
+}
+
+.fadex-leave-active {
+  transition: opacity 0.6s;
+  position  : absolute;
+  z-index   : -1;
+}
+
+.fadex-leave-to {
+  opacity: 0;
+}
+
+.fadez-enter-active,
+.fadez-leave-active {
+  transition: opacity 0.6s;
+}
+
+.fadez-enter,
+.fadez-leave-to {
+  opacity: 0;
+}
+
+.cart {
+  position        : relative;
+  display         : flex;
+  flex-direction  : column;
+  justify-content : space-between;
+  align-items     : flex-start;
+  margin-top      : 30px;
+  border-radius   : 20px;
+  background-color: #fff;
+  box-shadow      : 0 0 24px 0 rgba(47, 170, 247, 0.04);
+  padding         : 20px;
+}
+
+.cart__table {
+  width        : 100%;
+  min-width    : 600px;
+  margin-bottom: 30px;
+  position     : relative;
+}
+
+.cart__table th {
+  font-size  : 16px;
+  font-weight: 400;
+  color      : #848c9f;
+  line-height: 100%;
+  padding    : 0 20px 15px 0;
+}
+
+.cart__table th:last-child {
+  width  : 24px;
+  padding: 0 0 15px 0;
+}
+
+.cart__table td {
+  font-size  : 16px;
+  font-weight: 400;
+  color      : #444;
+  padding    : 10px 20px 10px 0;
+}
+
+.cart__table td:first-child {
+  width: 200px;
+}
+
+.cart__table td:last-child {
+  width  : 24px;
+  padding: 10px 0;
+}
+
+.cart__img {
+  width           : 160px;
+  height          : auto;
+  display         : flex;
+  flex-direction  : row;
+  justify-content : center;
+  align-items     : center;
+  background-color: transparent;
+  border-radius   : 10px;
+  overflow        : hidden;
+}
+
+.cart__img img {
+  width : 160px;
+  height: auto;
+}
+
+.cart__delete {
+  display        : flex;
+  flex-direction : row;
+  justify-content: center;
+  align-items    : center;
+  width          : 24px;
+  height         : 24px;
+}
+
+.cart__delete svg {
+  stroke    : #848c9f;
+  width     : 24px;
+  height    : auto;
+  transition: 0.6s;
+}
+
+.cart__delete:hover svg {
+  stroke: #2faaf7;
+}
+
+.cart__price {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size  : 16px;
+  color      : #848c9f;
+}
+
+.cart__info {
+  display        : flex;
+  flex-direction : row;
+  justify-content: space-between;
+  align-items    : flex-end;
+  flex-wrap      : wrap;
+  width          : 100%;
+}
+
+.cart__total {
+  display        : flex;
+  flex-direction : column;
+  justify-content: flex-start;
+  align-items    : flex-start;
+}
+
+.cart__total p {
+  font-size    : 14px;
+  color        : #848c9f;
+  margin-bottom: 10px;
+}
+
+.cart__total span {
+  font-size  : 26px;
+  color      : #444;
+  line-height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.cart__systems {
+  display        : flex;
+  flex-direction : row;
+  justify-content: flex-start;
+  align-items    : center;
+  font-size      : 24px;
+  color          : rgba(132, 140, 159, 0.8);
+  width          : 100%;
+  margin-top     : 20px;
+}
+
+.cart__systems i {
+  margin-right: 15px;
+}
+
+.cart__systems i:last-child {
+  margin-right: 0;
+}
+
+.cart__quantity {
+  display        : flex;
+  flex-direction : row;
+  justify-content: flex-start;
+  align-items    : center;
+}
+
+.cart__quantity button {
+  display         : flex;
+  flex-direction  : row;
+  justify-content : center;
+  align-items     : center;
+  height          : 34px;
+  width           : 34px;
+  color           : #2faaf7;
+  font-size       : 20px;
+  background-color: #edf6fb;
+}
+
+.cart__quantity button:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.cart__quantity button:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.cart__quantity button:hover {
+  color: #2cb9a9;
+}
+
+.cart__quantity input {
+  height        : 34px;
+  width         : 48px;
+  text-align    : center;
+  font-size     : 14px;
+  color         : #444;
+  border        : none;
+  border-top    : 1px solid #edf6fb;
+  border-bottom : 1px solid #edf6fb;
+  pointer-events: none;
+  cursor        : default;
+}
+
+.cart__empty {
+  position        : relative;
+  background-color: #edf6fb;
+  margin-bottom   : 0;
+  border-radius   : 20px;
+  display         : flex;
+  flex-direction  : row;
+  justify-content : center;
+  align-items     : center;
+  width           : 100%;
+  height          : 110px;
+  border          : 2px dashed rgba(132, 140, 159, 0.2);
+  font-size       : 14px;
+  color           : #848c9f;
+  font-weight     : 400;
+}
+
+@media (min-width: 768px) {
+  .cart__systems {
+    margin-top: 0;
+    width     : auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .cart {
+    padding: 40px;
+  }
+}

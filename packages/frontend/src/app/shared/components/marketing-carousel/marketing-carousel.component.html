@@ -1,0 +1,28 @@
+<div id="marketingCarouselIndicators" class="carousel slide" data-bs-ride="carousel" *ngIf="data && data.files">
+  <div class="carousel-indicators">
+    <button *ngFor="let x of data.files; let i = index" type="button" data-bs-target="#marketingCarouselIndicators" [attr.data-bs-slide-to]="i" [ngClass]="{'active': (i===0)}" aria-current="true"
+      [attr.aria-label]="'Slide' + i"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item" [ngClass]="{'active': (y===0)}" *ngFor="let item of data.files; let y = index" data-bs-interval="10000">
+      <img src="{{item.url}}" class="d-block w-100" alt="item?.name">
+      <div class="carousel-caption d-none d-md-block">
+        <div *ngIf="data && (y==0)">
+          <div class="home__content mx-auto">
+            <h1  *ngIf="data" style="text-shadow: 3px 10px 10px #000000;" class="mx-auto">{{data?.title}}</h1>
+            <div class="home text-dark" innerHTML="{{data?.description}}"></div>
+            <a *ngIf="data && data.orderButtonText" href="#catalog" class="home__btn mx-auto" [ngStyle]="{'background-color': data?.color}">{{data?.orderButtonText}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#marketingCarouselIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#marketingCarouselIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

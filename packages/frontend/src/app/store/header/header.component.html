@@ -1,0 +1,2 @@
+<app-inline-box-nav *ngIf="(company && !company.colorBlock) || !company" [data]="company" [isHome]="isHome" [isSpecialHome]="isSpecialHome" [isSignIn]="isSignIn" [color]="color"></app-inline-box-nav>
+<app-static-top-nav *ngIf="company && company.colorBlock" [data]="company" [isHome]="isHome" [isSignIn]="isSignIn" [isSpecialHome]="isSpecialHome" [color]="color"></app-static-top-nav>

@@ -1,0 +1,57 @@
+<section id="features---7" class="section features features-with-image  pb-5" [ngClass]="{'color-block': (settingService.settings && settingService.settings.colorBlock)}" *ngIf="data && data.features3">
+    <div class="container">
+      <h2 class="section__title mb-2" [ngStyle]="{'color': colorService.secondaryColor}">{{data?.features3?.headerText}}</h2>
+      <div class="row  wow fadeInUp" [ngClass]="{'home2': !(settingService.settings && settingService.settings.colorBlock)}">
+  
+        <div class="block-desc  text-muted text-center">
+          <p>{{data.features3.descriptionText}}</p>
+        </div>
+  
+        <div class="col-md-4 left-block">
+  
+          <div class="feature feature-primary-color">
+            <i [ngClass]="data.features3.featureIcon1" aria-hidden="true"></i>
+            <h3>{{data.features3.featureHeading1}}</h3>
+            <div innerHTML="{{data.features3.featureDescription1}}"></div>
+          </div>
+  
+          <div class="feature feature-primary-color">
+            <i [ngClass]="data.features3.featureIcon2" aria-hidden="true"></i>
+            <h3>{{data.features3.featureHeading2}}</h3>
+            <div innerHTML="{{data.features3.featureDescription2}}"></div>
+          </div>
+  
+          <div class="feature feature-primary-color">
+            <i [ngClass]="data.features3.featureIcon3" aria-hidden="true"></i>
+            <h3>{{data.features3.featureHeading3}}</h3>
+            <div innerHTML="{{data.features3.featureDescription3}}"></div>
+          </div>
+  
+        </div>
+        <div class="col-md-4 image-block">
+          <img class="img-fluid" src="{{data.features3.imageURL[0].url}}" alt="image">
+        </div>
+  
+        <div class="col-md-4 right-block">
+          <div class="feature feature-primary-color">
+            <i [ngClass]="data.features3.featureIcon4" aria-hidden="true"></i>
+            <h3>{{data.features3.featureHeading4}}</h3>
+            <div innerHTML="{{data.features3.featureDescription4}}"></div>
+          </div>
+          <div class="feature feature-primary-color">
+            <i [ngClass]="data.features3.featureIcon5" aria-hidden="true"></i>
+            <h3>{{data.features3.featureHeading5}}</h3>
+            <div innerHTML="{{data.features3.featureDescription5}}"></div>
+          </div>
+          <div class="feature feature-primary-color">
+            <i [ngClass]="data.features3.featureIcon6" aria-hidden="true"></i>
+            <h3>{{data.features3.featureHeading6}}</h3>
+            <div innerHTML="{{data.features3.featureDescription6}}"></div>
+          </div>
+  
+        </div>
+  
+      </div> 
+    </div> 
+  </section>
+  

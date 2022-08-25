@@ -1,0 +1,146 @@
+<app-inline-box-nav *ngIf="(settingService.settings && !settingService.settings.colorBlock)" [data]="settingService.settings" [isHome]="false"></app-inline-box-nav>
+<app-static-top-nav *ngIf="settingService.settings && settingService.settings.colorBlock" [data]="settingService.settings" [isHome]="false"></app-static-top-nav>
+<div class="container mt-2">
+    <div class="row">
+        <div class="col wow fadeInDown"><span routerLink="/" style="cursor: pointer;"><i
+                    class="fa fa-chevron-left  fa-2x text-muted"></i></span> </div>
+        <div class="col-md text-center mb-3">
+            <h1 [ngStyle]="{'color': colorService.darkBackground}">Welcome</h1>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md wow fadeInDown">
+            <div class="card">
+                <div class="card-header" *ngIf="userService.authService.firebaseUser && (userService.authService.firebaseUser.photoURL || userService.user?.firstName)">
+                    <img *ngIf="userService.authService.firebaseUser && userService.authService.firebaseUser.photoURL"
+                        src="{{userService.authService.firebaseUser.photoURL}}" alt="" class="img-thumbnail"
+                        style="max-height: 32px;">
+                    <span *ngIf="userService.user && userService.user.displayName"> {{userService.user.displayName}}</span>   
+                    <span *ngIf="!(userService.user && userService.user.displayName)">{{userService.user?.firstName}}
+                        {{userService.user?.lastName}}</span>
+                        
+                </div>
+                <div class="card-body">
+                    <div *ngIf="userService.user && userService.user.email">{{userService.user.email}} </div>
+                    <div *ngIf="userService.user && userService.user.temp && userService.user.temp.userType && (userService.user.temp.userType === 'practitioner')"
+                        class="alert alert-primary">
+                        <h4 class="alert-heading" *ngIf="userService.user.temp && userService.user.temp.practitionerName">
+                            {{userService?.user?.temp.practitionerName}}</h4>
+                        <div class="text-capitalize" *ngIf="userService.user && userService.user.temp && userService.user.temp.userType">
+                            {{userService.user.temp.userType}} <span *ngIf="userService.user && userService.user.temp.customerId">{{userService.user.temp.customerId}}
+                            </span>
+                            <hr>
+                        </div>
+                        
+                        <div>
+                            <span
+                                *ngIf="userService.user && userService.user.temp && userService.user.temp.pracFirstName">{{userService.user.temp?.pracFirstName}} </span>
+                            <span
+                                *ngIf="userService.user && userService.user.temp && userService.user.temp.pracLastName">{{userService.user.temp?.pracLastName}}</span>
+                        </div>
+                        <div *ngIf="userService.user && userService.user.temp.npi">{{userService.user.temp?.npi}}</div>
+                    </div>
+                    <div class="fw-bold" *ngIf="userService.user && userService.user.temp && userService.user.temp.companyName">
+                        {{userService?.user?.temp.companyName}}</div>
+                    <div *ngIf="userService.user && userService.user.temp && userService.user.temp.phoneNumber">{{userService.user.temp.phoneNumber}}
+                    </div>
+                    <div *ngIf="userService.user && userService.user.roles"> <hr> <span class="text-capitalize text-info" style="font-size: x-small;"> {{userService?.user?.roles}} </span> </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md wow fadeInDown"
+            *ngIf="userService.user && userService.user.temp && (userService.user.temp.country || userService.user.temp.streetAddress1 || userService.user.temp.streetAddress2 || userService.user.temp.city || userService?.user?.temp.province || userService?.user?.temp.zip)">
+            <div class="card">
+                <div class="card-header">
+                    <div *ngIf="userService.user && userService.user.temp.country">{{userService.user.temp.country}}</div>
+                </div>
+                <div class="card-body">
+                    <div *ngIf="userService.user && userService.user.temp.streetAddress1">{{userService.user.temp.streetAddress1}} <span
+                            *ngIf="userService.user && userService.user.temp.streetAddress2">{{userService.user.temp.streetAddress2}}</span>
+                    </div>
+                    <div *ngIf="userService.user && userService.user.temp.city">{{userService.user.temp.city}}
+                        {{userService?.user?.temp.province}} {{userService.user.temp.zip}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="userService.lastOrderID">
+        <div class="col text-center wow fadeInUp">
+            <p>Order <strong>{{userService.lastOrderID}}</strong> processed. Click orders to check the status.</p>
+        </div>
+    </div>
+    <div class="row"
+        *ngIf="userService.user && userService.user.temp && userService.user.temp.userType && (userService.user.temp.userType === 'practitioner')">
+        <div class="col">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/my/profile"> <i class="fa fa-address-card-o"
+                            aria-hidden="true"></i> Profile</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/my/profile"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/my/orders"><i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i> Orders</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/my/orders"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft"
+                    *ngIf="userService.user  && userService.user.temp.userType && (userService.user.temp.userType === 'practitioner')">
+                    <a class="text-dark p-2" routerLink="/carts/pending"><i class="fa fa-money" aria-hidden="true"></i>
+                        Pending Orders</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/carts/pending"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/my/lab-orders"><i class="fa fa-flask" aria-hidden="true"></i>
+                        Lab Tests and Results</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/my/lab-orders"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row"
+        *ngIf="!(userService.user && userService.user.temp &&  userService.user.temp.userType && (userService.user.temp.userType === 'practitioner'))">
+        <div class="col">
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/my/profile"> <i class="fa fa-address-card-o"
+                            aria-hidden="true"></i> Profile</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/my/profile"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/my/orders"><i class="fa fa-shopping-cart"
+                            aria-hidden="true"></i> Orders</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/my/orders"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul>
+            <!-- <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/activate"> <i class="fa fa-play" aria-hidden="true"></i>
+                        Activate Kit </a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/activate"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <a class="text-dark p-2" routerLink="/my/lab-orders"><i class="fa fa-flask" aria-hidden="true"></i>
+                        Lab Tests and Results</a>
+                    <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/my/lab-orders"><i
+                            class="fa fa-chevron-right fa-1x"></i></a>
+                </li>
+            </ul> -->
+
+        </div>
+    </div>
+</div>

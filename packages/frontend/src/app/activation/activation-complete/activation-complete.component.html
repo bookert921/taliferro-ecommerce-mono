@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div>
+                <h1 [ngStyle]="{'color': colorService.darkBackground}">Kit Activated</h1>
+            </div>
+            <div class="text-center text-dark"> 
+                <p>You can collect your sample now.</p>
+                <p>For instructions on how to collect your blood sample, please refer to the instructions included with the kit.</p>
+                <p class="text-center mt-5">
+                    <a (click)="onReturnToProfile()" style="cursor: pointer;" class="m-3">Return to Profile</a>
+                    <a  (click)="onAnother()" class="m-3"
+                       style="cursor: pointer;">Activate Another</a>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<section id="about---6" class="section about-6 pb-5" [ngClass]="{'color-block': (settingService.settings && settingService.settings.colorBlock)}" *ngIf="data && data.aboutProduct2">
+  <div class="container">
+    <h2 class="section__title mb-2  wow fadeInUp text-capitalize" [ngStyle]="{'color': colorService.secondaryColor}">{{data.aboutProduct2?.headerText}}</h2>
+    <div class="row">
+      <div class="col" [ngClass]="{'home2': !(settingService.settings && settingService.settings.colorBlock)}">
+        <div class="container wow fadeInUp">
+          <div class="row">
+            <div class="col-md-6 col-sm-7 col-xs-12">
+              <div class="about-image-block">
+                <div class="about-image">
+                  <img src="{{data?.aboutProduct2?.imageURL1[0]?.url}}" alt="{{data.aboutProduct2?.headerText}}">
+                  <div class="ui">
+                    <img class="img-thumbnail" src="{{data?.aboutProduct2?.imageURL2[0]?.url}}" alt="{{data.aboutProduct2?.descriptionText}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-5 col-xs-12 about-text">
+              <div class="mb-3 text-muted" innerHTML="{{data.aboutProduct2?.descriptionText}}"></div>
+              <ul>
+                <li><i class="fa fa-check" aria-hidden="true"></i> {{data.aboutProduct2?.bulletText1}}</li>
+                <li><i class="fa fa-check" aria-hidden="true"></i> {{data.aboutProduct2?.bulletText2}}</li>
+                <li><i class="fa fa-check" aria-hidden="true"></i> {{data.aboutProduct2?.bulletText3}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

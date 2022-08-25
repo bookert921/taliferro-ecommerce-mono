@@ -1,0 +1,185 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="containter-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Are you a Practitioner?</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input [(ngModel)]="data.temp.userType" class="form-check-input" type="radio" name="userType" id="userType1" value="practitioner">
+                            <label class="form-check-label" for="userType1"> Practitioner </label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input [(ngModel)]="data.temp.userType" class="form-check-input" type="radio" name="userType" id="userType2" value="patient">
+                            <label class="form-check-label" for="userType2"> Patient </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="practitionerName">Practice Name</label>
+                            <input [(ngModel)]="data.temp.practitionerName" type="text" name="practitionerName" id="practitionerName" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="practitioner_streetAddress1">Practice streetAddress1</label>
+                            <input [(ngModel)]="data.temp.practitioner_streetAddress1" type="text" name="practitioner_streetAddress1" id="practitioner_streetAddress1" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="practitioner_streetAddress2">Practice streetAddress2</label>
+                            <input [(ngModel)]="data.temp.practitioner_streetAddress2" type="text" name="practitioner_streetAddress2" id="practitioner_streetAddress2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="practitioner_city">Practice City</label>
+                            <input [(ngModel)]="data.temp.practitioner_city" type="text" name="practitioner_city" id="practitioner_city" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="practitioner_province">Practice Province</label>
+                            <select [(ngModel)]="data.temp.practitioner_province" name="practitioner_province" id="practitioner_province" class="form-select form-select-lg" required>
+                                <option value="" selected disabled hidden>Choose State or Province</option>
+                                <option value="AL">Alabama [AL]</option>
+                                <option value="AK">Alaska [AK]</option>
+                                <option value="AS">American Samoa [AS]</option>
+                                <option value="AZ">Arizona [AZ]</option>
+                                <option value="AR">Arkansas [AR]</option>
+                                <option value="CA">California [CA]</option>
+                                <option value="CO">Colorado [CO]</option>
+                                <option value="CT">Connecticut [CT]</option>
+                                <option value="DE">Delaware [DE]</option>
+                                <option value="DC">District of Columbia [DC]</option>
+                                <option value="FM">Federated States Of Micronesia [FM]</option>
+                                <option value="FL">Florida [FL]</option>
+                                <option value="GA">Georgia [GA]</option>
+                                <option value="GU">Guam [GU]</option>
+                                <option value="HI">Hawaii [HI]</option>
+                                <option value="ID">Idaho [ID]</option>
+                                <option value="IL">Illinois [IL]</option>
+                                <option value="IN">Indiana [IN]</option>
+                                <option value="IA">Iowa [IA]</option>
+                                <option value="KS">Kansas [KS]</option>
+                                <option value="KY">Kentucky [KY]</option>
+                                <option value="LA">Louisiana [LA]</option>
+                                <option value="ME">Maine [ME]</option>
+                                <option value="MH">Marshall Islands [MH]</option>
+                                <option value="MD">Maryland [MD]</option>
+                                <option value="MA">Massachusetts [MA]</option>
+                                <option value="MI">Michigan [MI]</option>
+                                <option value="MN">Minnesota [MN]</option>
+                                <option value="MS">Mississippi [MS]</option>
+                                <option value="MO">Missouri [MO]</option>
+                                <option value="MT">Montana [MT]</option>
+                                <option value="NE">Nebraska [NE]</option>
+                                <option value="NV">Nevada [NV]</option>
+                                <option value="NH">New Hampshire [NH]</option>
+                                <option value="NJ">New Jersey [NJ]</option>
+                                <option value="NM">New Mexico [NM]</option>
+                                <option value="NY">New York [NY]</option>
+                                <option value="NC">North Carolina [NC]</option>
+                                <option value="ND">North Dakota [ND]</option>
+                                <option value="OH">Ohio [OH]</option>
+                                <option value="OK">Oklahoma [OK]</option>
+                                <option value="OR">Oregon [OR]</option>
+                                <option value="PW">Palau [PW]</option>
+                                <option value="PA">Pennsylvania [PA]</option>
+                                <option value="PR">Puerto Rico [PR]</option>
+                                <option value="RI">Rhode Island [RI]</option>
+                                <option value="SC">South Carolina [SC]</option>
+                                <option value="SD">South Dakota [SD]</option>
+                                <option value="TN">Tennessee [TN]</option>
+                                <option value="TX">Texas [TX]</option>
+                                <option value="UT">Utah [UT]</option>
+                                <option value="VT">Vermont [VT]</option>
+                                <option value="VI">Virgin Islands [VI]</option>
+                                <option value="VA">Virginia [VA]</option>
+                                <option value="WA">Washington [WA]</option>
+                                <option value="WV">West Virginia [WV]</option>
+                                <option value="WI">Wisconsin [WI]</option>
+                                <option value="WY">Wyoming [WY]</option>
+                                <option value="">---------------------------------------------</option>
+                                <option value="AB">Alberta [AB]</option>
+                                <option value="BC">British Columbia [BC]</option>
+                                <option value="MB">Manitoba [MB]</option>
+                                <option value="NB">New Brunswick [NB]</option>
+                                <option value="NF">Newfoundland and Labrador [NF]</option>
+                                <option value="NT">Northwest Territories [NT]</option>
+                                <option value="NS">Nova Scotia [NS]</option>
+                                <option value="NU">Nunavut [NU]</option>
+                                <option value="ON">Ontario [ON]</option>
+                                <option value="PE">Prince Edward Island [PE]</option>
+                                <option value="QC">Quebec [QC]</option>
+                                <option value="SK">Saskatchewan [SK]</option>
+                                <option value="YT">Yukon Territory [YT]</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="practitioner_zip">Practice Zip</label>
+                            <input [(ngModel)]="data.temp.practitioner_zip" type="text" name="practitioner_zip" id="practitioner_zip" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="npi">NPI</label>
+                            <input [(ngModel)]="data.temp.npi" type="text" name="npi" id="npi" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="customerId">Practitioner Number</label>
+                            <input [(ngModel)]="data.temp.customerId" type="text" name="customerId" id="customerId" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="pracFirstName">Practitioner First Name</label>
+                            <input [(ngModel)]="data.temp.pracFirstName" type="text" name="pracFirstName" id="pracFirstName" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2" *ngIf="data.temp.userType === 'practitioner'">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="pracLastName">Practitioner Last Name</label>
+                            <input [(ngModel)]="data.temp.pracLastName" type="text" name="pracLastName" id="pracLastName" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

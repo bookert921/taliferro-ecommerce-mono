@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col">
+        <div class="progress" *ngIf="uploadProgress">
+            <div class="progress-bar bg-progress" role="progressbar"
+                [ngStyle]="{'width': (uploadProgress | async) + '%'}" [attr.aria-valuenow]="(uploadProgress | async)"
+                [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+
+        </div>
+        <div *ngIf="file"><strong>File Name:</strong> 
+            <i class="fa fa-cloud-upload" aria-hidden="true"></i> {{file?.name}} <span class="text-primary"></span> 
+        </div>
+    </div>
+</div>

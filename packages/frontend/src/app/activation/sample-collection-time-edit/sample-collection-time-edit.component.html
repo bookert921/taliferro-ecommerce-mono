@@ -1,0 +1,26 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div *ngIf="data" class="form-group m-2"> <label for="dateCollected">Collection Date</label>
+                    <input [(ngModel)]="data.dateCollected" id="dateCollected" name="dateCollected" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off"
+                        class="form-control form-control-lg" type="date" required>
+                </div>
+                <div *ngIf="data" class="form-group m-2"> <label for="timeCollected">Collection Time</label>
+                    <input [(ngModel)]="data.timeCollected" id="timeCollected" name="timeCollected" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off"
+                        class="form-control form-control-lg" type="time" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group form-actions">
+                    <button type="button" class="btn btn-primary  m-2" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                        (click)="back()">Back</button>
+                    <button type="submit" class="btn btn-primary  m-2" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                        [disabled]="!dataForm.form.valid">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

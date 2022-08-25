@@ -1,0 +1,54 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <section class="section">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col"><span (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left  fa-2x text-muted"></i></span> </div>
+                <div class="col-md text-center mb-3">
+                    <h1  [ngStyle]="{'color': colorService.darkBackground}">Activate Test Kit</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row" *ngIf="errorMessage">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert"> {{errorMessage}} </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card mx-auto">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md">
+                                    <app-kit-number-edit *ngIf="isKitNumberEdit" [data]="data" (done)="onName()" (goBack)="onGoBack($event)" (labOrderFound)="onLabOrderFound($event)">
+                                    </app-kit-number-edit>
+                                    <app-order-name-edit *ngIf="isNameEdit" [data]="data" (done)="onDob()" (goBack)="onGoBack($event)"></app-order-name-edit>
+                                    <app-order-dob-edit *ngIf="isDobEdit" [data]="data" (done)="onGender()" (goBack)="onGoBack($event)"></app-order-dob-edit>
+                                    <app-order-gender-edit *ngIf="isGenderEdit" [data]="data" (done)="onTimeCollected()" (goBack)="onGoBack($event)"></app-order-gender-edit>
+                                    <app-sample-collection-time-edit *ngIf="isTimeCollectedEdit" [data]="data" (done)="onPhone()" (goBack)="onGoBack($event)">
+                                    </app-sample-collection-time-edit>
+                                    <app-order-phone-edit *ngIf="isPhoneEdit" [data]="data" (done)="onEmail()" (goBack)="onGoBack($event)"></app-order-phone-edit>
+                                    <app-order-email-edit *ngIf="isEmailEdit" [data]="data" (done)="onAddress()" (goBack)="onGoBack($event)"></app-order-email-edit>
+                                    <app-order-address-edit *ngIf="isAddressEdit" [data]="data" (done)="onSummary()" (goBack)="onGoBack($event)"></app-order-address-edit>
+                                    <app-lab-order-summary *ngIf="isSummaryView" [data]="data" [allDataEntered]="allDataEntered" (done)="onThankYou()" (goBack)="onGoBack($event)">
+                                    </app-lab-order-summary>
+                                    <app-activation-complete *ngIf="isActivated" (done)="onStartOver()"></app-activation-complete>
+                                    <div class="input-group mb-3 mt-3" *ngIf="isOrderEdit">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                        <input [(ngModel)]="orderId" tabindex="1" type="text" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off" id="orderId" name="orderId"
+                                            placeholder="Enter Your Order Number" class="form-control" autofocus required>
+                                    </div>
+                                    <div class="row mt-2" *ngIf="isOrderEdit">
+                                        <div class="col text-center">
+                                            <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                                                [disabled]="!dataForm.form.valid">Start Activation</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

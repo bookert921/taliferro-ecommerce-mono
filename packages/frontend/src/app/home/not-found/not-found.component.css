@@ -1,0 +1,22 @@
+.container-server-errors {
+    display   : flex;
+    background: #fff;
+  }
+  .server-errors {
+    z-index   : 9999 !important;
+    margin-top: 100px;
+  }
+  
+  .server-errors .status-error {
+    font-size : 6rem;
+  }
+  
+  .server-errors .status-text-1 {
+    font-size    : 4rem;
+    margin-bottom: -40px;
+  }
+  
+  .server-errors .status-text-2 {
+    font-size : 1rem;
+  }
+  

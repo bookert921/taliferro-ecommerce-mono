@@ -1,0 +1,86 @@
+<div class="container mt-3"
+     *ngIf="data">
+    <div class="row">
+        <div class="col  text-end">
+            <span (click)="onClose()"
+                  style="cursor: pointer;"><i class="fa fa-times"
+                   aria-hidden="true"></i> Close</span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md">
+            <div class="card rounded-3">
+                <div class="card-header">ID </div>
+                <div class="card-body">Test ID: {{data._id}}<br>
+                    <div *ngIf="data && data.order && data.order.cart"> Order ID: {{data.order._id}} </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header"> Test Info </div>
+                <div class="card-body"> Kit Number: {{data.kitNumber}}<br> Date Collected: {{data.dateCollected}}<br>
+                    Time Collected: {{data.timeCollected}}<br>
+                    <div class="container-fluid">
+                        <div class="row mb-1">
+                            <div class="col">Status: {{data.status}} </div>
+                            <div class="col">
+                                <div class="progress">
+                                    <div class="progress-bar"
+                                         [ngClass]="{'bg-progress': (data.status != '999'), 'bg-success': (data.status == '999')}"
+                                         [ngStyle]="{'width': (data.status | labProgress)  + '%' }"
+                                         role="progressbar"
+                                         aria-valuenow="0"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> Date Created: {{data.createdAt | date}}<br> Last Updated: {{data.lastUpdated | date:'medium' }}<br>
+                    <div class="mt-2" *ngIf="data.order && data.order.cart && data.order.cart.lineItems">
+                        <h4>Order</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center"
+                                *ngFor="let item of data.order.cart.lineItems; let i = index"> <img *ngIf="item.product && item.product.files && item.product.files[0] && item.product.files[0].url" src="{{item?.product.files[0].url}}" alt="{{item?.product.title}}" class="img-thumbnail" style="max-height: 32px;"> {{item?.product.title}}
+                                <span class="badge bg-primary rounded-pill">{{item?.quantity}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div *ngIf="data.files && data.files.length"><strong>Results:</strong>  <span *ngFor="let e of data.files">
+                            <a target="_blank" href="{{e.url}}"
+                                  style="cursor: pointer;">{{e.name}} <i class="fa fa-download"
+                                   aria-hidden="true"></i></a><br>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header"> About You </div>
+                <div class="card-body">
+                    <p>Company: {{data.companyName}}</p> Name: {{data.firstName}} {{data.lastName}}<br>Date of Birth:
+                    {{data.dob}}<br>Gender at Birth: {{data.gender}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header"> Contact Info </div>
+                <div class="card-body">Email: {{data.email}} <span *ngIf="data.emailNotification"><i class="fa fa-bell"
+                           aria-hidden="true"></i></span> <span *ngIf="!data.emailNotification"><i class="fa fa-bell-o"
+                           aria-hidden="true"></i></span><br>Phone: {{data.phone}} <span
+                          *ngIf="data.textNotification"><i class="fa fa-bell"
+                           aria-hidden="true"></i></span> <span *ngIf="!data.textNotification"><i class="fa fa-bell-o"
+                           aria-hidden="true"></i></span><br>
+                    <br>
+                    <div> {{data.streetAddress1}} {{data.streetAddress2}}<br> {{data.city}} {{data.province}} {{data.zip}}<br>
+                        {{data.country}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

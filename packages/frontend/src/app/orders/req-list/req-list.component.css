@@ -1,0 +1,7 @@
+.active-list {
+    font-weight: bold;
+}
+
+hr.thick {
+    border-top: 10px solid blue;
+}

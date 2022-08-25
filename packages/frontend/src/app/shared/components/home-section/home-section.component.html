@@ -1,0 +1,17 @@
+<section class="section section--home mb-3" id="home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="home" [ngStyle]="{'background': 'url(' + data?.files[imageIndex]?.url + ') no-repeat center left/cover #fff'}">  
+                        <div class="row "> 
+                            <div class="home__content">
+                                <h3 [ngStyle]="{'color': colorService.darkBackground}" *ngIf="data" class="wow fadeIn">{{data?.title}}</h3>
+                                <div *ngIf="data" class="title-desc text-muted wow fadeIn col-md-5" innerHTML="{{data?.description}}"></div>
+                                <a *ngIf="data && data.orderButtonText" href="#catalog" class="home__btn wow wobble" [ngStyle]="{'background-color': data?.color}">{{data?.orderButtonText}}</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div *ngIf="data" class="form-group m-2">
+                    <input [(ngModel)]="data.companyName" id="companyName" name="companyName" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off"
+                        placeholder="Employer or Organization" class="form-control form-control-lg" type="text" minlength="2">
+                </div>
+                <div *ngIf="data" class="form-group m-2">
+                    <input [(ngModel)]="data.firstName" id="firstName" name="firstName" placeholder="First Name" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off"
+                        class="form-control form-control-lg" type="text" minlength="1" required>
+                </div>
+                <div *ngIf="data" class="form-group m-2">
+                    <input [(ngModel)]="data.lastName" id="lastName" name="lastName" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off" placeholder="Last Name"
+                        class="form-control form-control-lg" type="text" minlength="2" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group form-actions">
+                    <button type="button" class="btn btn-primary m-2" [ngStyle]="{'background-color': colorService.darkBackground, 'border-color': colorService.secondaryColor}"
+                        (click)="back()">Back</button>
+                    <button type="submit" class="btn btn-primary m-2" [ngStyle]="{'background-color': colorService.darkBackground, 'border-color': colorService.secondaryColor}"
+                        [disabled]="!dataForm.form.valid">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,8 @@
+{
+  "eslint.workingDirectories": [
+    "packages/frontend",
+    "packages/backend/functions"
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
+}

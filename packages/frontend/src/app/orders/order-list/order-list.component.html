@@ -1,0 +1,133 @@
+<div class="loader" *ngIf="!(orderService.items | async) else finished">
+    <div class="loader-inner">
+        <div class="spinner multicolor">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #finished>
+    <div class="container-fluid mt-3">
+        <div class="card" *ngIf="((orderService.items | async)?.length != 0) else nodata">
+            <div class="card-header no-print">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-filter"></i></span>
+                            <input [(ngModel)]="filteredData" type="text" class="form-control" placeholder="Type to Filter" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="me-2 btn" (click)="onAll()" [ngClass]="{'btn-primary': allActive, 'btn-secondary': !allActive}">All </button>
+                        <button type="button" class="me-2 btn" (click)="past30Days()" [ngClass]="{'btn-primary': past30Active, 'btn-secondary': !past30Active}">30 </button>
+                        <button type="button" class="me-2 btn" (click)="past60Days()" [ngClass]="{'btn-primary': past60Active, 'btn-secondary': !past60Active}">60 </button>
+                        <button type="button" class="btn" (click)="past90Days()" [ngClass]="{'btn-primary': past90Active, 'btn-secondary': !past90Active}">90 </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="wow fadeInUp">#</th>
+                                        <th class="wow fadeInUp">Name</th>
+                                        <th class="wow fadeInUp" *ngIf="!prodEnv">Practitioner</th>
+                                        <th class="wow fadeInUp">Email</th>
+                                        <th class="wow fadeInUp" *ngIf="prodEnv">Appointment</th>
+                                        <th class="wow fadeInUp" *ngIf="!prodEnv">Response</th>
+                                        <th class="wow fadeInUp" *ngIf="!prodEnv">Status</th>
+                                        <th class="wow fadeInUp" *ngIf="prodEnv">Test Type</th>
+                                        <th class="wow fadeInUp">Amount</th>
+                                        <th class="wow fadeInUp">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="prodEnv">
+                                    <tr *ngFor="let data of orderService.items | async | orderFilter:filteredData | appointmentTimeSort; let i = index" (click)="onView(data)" style="cursor: pointer;">
+                                        <td>{{data?._id}}</td>
+                                        <td>
+                                            <span *ngIf="data.cart && data.cart.firstName; else userName"> {{data?.cart?.firstName}} {{data?.cart?.lastName}} </span>
+                                            <ng-template #userName>
+                                                <span *ngIf="data.user; else appointmentName"> {{data?.user?.firstName}} {{data?.user?.lastName}} </span>
+                                                <ng-template #appointmentName> {{data?.appointment?.firstName}} {{data?.appointment?.lastName}} </ng-template>
+                                            </ng-template>
+                                        </td>
+                                        <td>{{data?.email}}</td>
+                                        <td>{{data?.appointment?.date }} {{data?.appointment?.time }}</td>
+                                        <td>
+                                            <span *ngIf="data.appointment && data.appointment.type; else noType"> {{data?.appointment?.type}} </span>
+                                            <ng-template #noType> N/A </ng-template>
+                                        </td>
+                                        <td>
+                                            <div *ngIf="(data.appointment && data.appointment.amountPaid); else checkCart"> {{data?.appointment?.amountPaid}} </div>
+                                            <ng-template #checkCart>
+                                                <span *ngIf="data.cart && data.cart.amount">{{data?.cart?.amount | currency}}</span>
+                                                <span *ngIf="!(data.cart && data.cart.amount)">N/A</span>
+                                            </ng-template>
+                                        </td>
+                                        <td class="text-capitalize">{{data?.lastUpdated | date}} </td>
+                                    </tr>
+                                </tbody>
+                                <tbody *ngIf="!prodEnv">
+                                    <tr *ngFor="let data of orderService.items | async | orderFilter:filteredData | orderSort; let i = index" (click)="onView(data)" style="cursor: pointer;">
+                                        <td>{{data?._id}}</td>
+                                        <td>
+                                            <span *ngIf="data.cart && data.cart.firstName; else userName"> {{data?.cart?.firstName}} {{data?.cart?.lastName}} </span>
+                                            <ng-template #userName>
+                                                <span *ngIf="data.user; else appointmentName"> {{data?.user?.firstName}} {{data?.user?.lastName}} </span>
+                                                <ng-template #appointmentName> {{data?.appointment?.firstName}} {{data?.appointment?.lastName}} </ng-template>
+                                            </ng-template>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="data.cart && data.cart.practitionerName; else noPrac"> {{data?.cart?.practitionerName}} </span>
+                                            <ng-template #noPrac>N/A</ng-template>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="data.email; else cartEmailAddress">{{data?.email}}</span>
+                                            <ng-template #cartEmailAddress>
+                                                <span *ngIf="data.cart && data.cart.email">{{data?.cart?.email}}</span>
+                                            </ng-template>
+                                        </td>
+                                        <td>
+                                            <span *ngIf="data.chargeResponse && data.chargeResponse.length">
+                                                <span *ngIf="(data.chargeResponse.outcome && data.chargeResponse.outcome.seller_message)">{{data.chargeResponse?.outcome?.seller_message}}</span>
+                                                <span *ngIf="!(data.chargeResponse.outcome && data.chargeResponse.outcome.seller_message)">{{data.chargeResponse | slice:0:30}}</span>
+                                            </span>
+                                        </td>
+                                        <td class="text-capitalize">{{data?.status | sentence}}</td>
+                                        <td>
+                                            <div *ngIf="(data.appointment && data.appointment.amountPaid); else checkCart"> {{data?.appointment?.amountPaid}} </div>
+                                            <ng-template #checkCart>
+                                                <span *ngIf="data.cart && data.cart.amount">{{data?.cart?.amount | currency}}</span>
+                                                <span *ngIf="!(data.cart && data.cart.amount)">N/A</span>
+                                            </ng-template>
+                                        </td>
+                                        <td class="text-capitalize">
+                                            <span *ngIf="data.lastUpdated; else cartUpdated"> {{data?.lastUpdated | date}} </span>
+                                            <ng-template #cartUpdated> {{data?.cart?.lastUpdated | date}} </ng-template>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #nodata>
+            <div class="alert alert-light text-center" role="alert"><br> No orders found. </div>
+        </ng-template>
+    </div>
+</ng-template>

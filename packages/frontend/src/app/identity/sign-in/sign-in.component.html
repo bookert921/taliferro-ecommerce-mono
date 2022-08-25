@@ -1,0 +1,48 @@
+<section class="container-pages ta-vertical-center">
+  <div class="brand-logo float-left"><a class="wow fadeIn" routerLink="{{homePageLink}}">{{logoName}}</a></div>
+  <div class="pages-tag-line text-white">
+    <div class="h4 wow fadeIn" style="color:white">{{headingText}}</div>
+    <small>{{subText}}</small>
+  </div>
+  <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
+    <div class="card-body">
+      <div class="h3 text-center text-theme wow fadeInUp">
+        <strong *ngIf="!isLoggedIn">{{titleText}}</strong>
+        <strong *ngIf="isLoggedIn">You are logged in</strong>
+      </div>
+      <form *ngIf="!isLoggedIn" #userForm="ngForm" (ngSubmit)="onSubmit();userForm.reset();" class="form-signin">
+        <div class="form-group">
+          <div class="input-group"> <span class="input-group-addon text-theme"><i class="fa fa-user"></i>
+            </span>
+
+            <input [(ngModel)]="emailAddress" tabindex="1" autofocus #email="ngModel" type="email" id="emailAddress"
+              name="email" autocomplete="off" class="form-control" placeholder="Email Address" required>
+          </div>
+          <div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Email Address is required </div>
+        </div>
+        <div class="form-group form-actions"> <button class="btn  btn-theme login-btn " type="submit" tabindex="2"
+            [disabled]="!userForm.form.valid">{{submitButtonText}}</button>
+        </div>
+      </form>
+      <!-- <hr>
+      <h6 class="text-center text-theme">{{socialMediaTitle}}</h6>
+      <div class="site-footer wow fadeInUp">
+        <div class="col-md-12 site-bottom-footer">
+          <div class="col-md-12 social-links">
+            <ul class="footer-social-icons">
+              <li *ngIf="isAppleLoginButtonEnabled"><a (click)="onPageEvent('apple')" title="Apple" style="cursor: pointer;"><i
+                    class="fa fa-fw fa-apple" aria-hidden="true"></i></a></li>
+              <li *ngIf="isGoogleLoginButtonEnabled"><a (click)="onPageEvent('google')" title="Google" style="cursor: pointer;"><i
+                    class="fa fa-fw fa-google" aria-hidden="true"></i></a></li>
+              <li *ngIf="isFacebookLoginButtonEnabled"><a (click)="onPageEvent('facebook')" title="Facebook" style="cursor: pointer;"><i
+                    class="fa fa-fw fa-facebook" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<div class="half-circle"></div>
+<div class="small-circle"></div>

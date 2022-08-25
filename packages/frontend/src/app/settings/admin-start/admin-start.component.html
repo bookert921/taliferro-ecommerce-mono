@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="mt-4">
+        <div class="row">
+            <div class="col">
+                <span routerLink="/shop/store/{{userService.user?.companyId}}" style="cursor: pointer;" *ngIf="userService.user && userService.user.companyId">
+                    <i class="fa fa-chevron-left  fa-2x text-muted"></i>
+                </span>
+            </div>
+            <div class="col-md text-center mb-3">
+                <h1 [ngStyle]="{'color': colorService.darkBackground}">Administration</h1>
+            </div>
+            <div class="col text-end">
+                <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <app-dashboard></app-dashboard>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md wow fadeInDown mb-2" *ngIf="authService.firebaseUser">
+                <div class="card">
+                    <div class="card-header" *ngIf="authService.firebaseUser.photoURL">
+                        <img src="{{authService.firebaseUser.photoURL}}" alt="" class="img-thumbnail" style="max-height: 64px;">
+                    </div>
+                    <div class="card-body">
+                        <div class="fw-bold" *ngIf="authService.firebaseUser?.displayName"> {{authService.firebaseUser.displayName}}</div>
+                        <div *ngIf="authService.firebaseUser?.email">{{authService.firebaseUser.email}}</div>
+                        <div *ngIf="authService.firebaseUser?.phoneNumber">{{authService.firebaseUser.phoneNumber}} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-info" role="alert" *ngIf="message">
+                    <h4 class="alert-heading">{{message}}</h4>
+                </div>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft" *ngIf="userService.user && userService.user.companyId">
+                        <span class="text-dark p-2"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Store URL</span>
+                        <span class="text-primary text-opacity-25"> <a href="{{environment.localURL}}/shop/store/{{userService.user?.companyId}}">
+                                {{environment.localURL}}/shop/store/{{userService.user?.companyId}}</a></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/admin/settings"> <i class="fa fa-hand-o-right" aria-hidden="true" title="Start here setting up your store"></i> Settings</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/admin/settings"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                </ul>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center  wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/products"><i class="fa fa-gift" aria-hidden="true" title="Make sure all your pictures have the same height and width"></i> Products</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/products"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center  wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/customers"><i class="fa fa-users" aria-hidden="true"></i> Customers</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/customers"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                </ul>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/orders"><i class="fa fa-money" aria-hidden="true"></i> Orders</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/orders"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/carts/pending"><i class="fa fa-money" aria-hidden="true"></i> Pending</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/carts/pending"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/orders/requisitions"><i class="fa fa-calendar" aria-hidden="true"></i> Requisitions</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/orders/requisitions"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                        <a class="text-dark p-2" routerLink="/carts"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Active Shopping Carts</a>
+                        <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/carts"><i class="fa fa-chevron-right fa-1x"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

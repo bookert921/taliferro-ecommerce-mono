@@ -1,0 +1,50 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="containter-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">Product Images</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
+                                    <p><i>Drag and Drop Files</i> </p>
+                                    <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="upload($event)" accept=".png,.jpg,.gif,.jpeg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div *ngFor="let f of dropFiles">
+                                    <app-image-upload-task [file]="f" [data]="data"></app-image-upload-task>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="progress" *ngIf="uploadProgress">
+                                    <div class="progress-bar bg-progress" role="progressbar" [ngStyle]="{'width': (uploadProgress | async) + '%'}" [attr.aria-valuenow]="(uploadProgress | async)"
+                                        [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="data.files && data.files.length">
+            <div class="col">
+                <div *ngFor="let e of data.files;let i = index">
+                    <i class="fa fa-times text-danger" aria-hidden="true" (click)="onDeleteFile(e, i)" style="cursor: pointer;"></i> &nbsp; <a href="{{e?.url}}" target="_blank" rel="noopener">
+                        {{e?.name}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col text-center">
+                <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                    [disabled]="!uploaded">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>

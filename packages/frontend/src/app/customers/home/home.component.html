@@ -1,0 +1,33 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md text-start">
+            <span *ngIf="!isEditMode" (click)="back()" style="cursor: pointer;"><i
+                    class="fa fa-chevron-left  fa-2x text-muted"></i></span>
+            <a *ngIf="isEditMode" (click)="list()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-1x"></i></a>
+        </div>
+        <div class="col-md text-center">
+            <h1 [ngStyle]="{'color': colorService.darkBackground}">Customers</h1>
+        </div>
+        <div class="col-md text-end"></div>
+    </div>
+    <div class="row" *ngIf="!isEditMode">
+        <div class="col-md-12 no-print">
+            <app-customer-list (id)="onView($event)"></app-customer-list>
+        </div>
+    </div>
+    <div class="row" *ngIf="isEditMode">
+        <div class="col-md-6">
+            <app-customer-view [data]="data" (editItem)="onEdit($event)"></app-customer-view>
+        </div>
+        <div class="col-md-6">
+            <app-customer-edit-name [data]="data" *ngIf="isCustomerName"></app-customer-edit-name>
+            <app-customer-edit-title [data]="data" *ngIf="isCustomerTitle"></app-customer-edit-title>
+            <app-customer-edit-credit [data]="data" *ngIf="isCustomerCredit"></app-customer-edit-credit>
+            <app-customer-edit-personal [data]="data" *ngIf="isCustomerPersonal"></app-customer-edit-personal>
+            <app-customer-edit-dob [data]="data" *ngIf="isCustomerDob"></app-customer-edit-dob>
+            <app-customer-edit-gender [data]="data" *ngIf="isCustomerGender"></app-customer-edit-gender>
+            <pre *ngIf="isDiagnostic">{{data | json}}</pre>
+
+        </div>
+    </div>
+</div>

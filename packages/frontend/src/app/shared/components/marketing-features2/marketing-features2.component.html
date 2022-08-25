@@ -1,0 +1,31 @@
+<section id="features---1" class="section features pb-5" [ngClass]="{'color-block': (settingService.settings && settingService.settings.colorBlock)}"  *ngIf="data && data.features2">
+    <div class="container">
+      <h2 class="section__title mb-2" [ngStyle]="{'color': colorService.secondaryColor}">{{data?.features2?.headerText}}</h2>
+      <div class="row wow fadeInUp" [ngClass]="{'home2': !(settingService.settings && settingService.settings.colorBlock)}">
+  
+        <div class="block-desc  text-muted text-center">
+          <p>{{data.features2.descriptionText}}</p>
+        </div>
+  
+        <div class="col-md-4 feature feature-primary-color">
+          <i [ngClass]="data.features2.featureIcon1" aria-hidden="true"></i>
+          <h3>{{data.features2.featureHeading1}}</h3>
+          <div innerHTML="{{data.features2.featureDescription1}}"></div>
+        </div>
+  
+        <div class="col-md-4 feature feature-primary-color">
+          <i [ngClass]="data.features2.featureIcon2" aria-hidden="true"></i>
+          <h3>{{data.features2.featureHeading2}}</h3>
+          <div innerHTML="{{data.features2.featureDescription2}}"></div>
+        </div>
+  
+        <div class="col-md-4 feature feature-primary-color">
+          <i [ngClass]="data.features2.featureIcon3" aria-hidden="true"></i>
+          <h3>{{data.features2.featureHeading3}}</h3>
+          <div innerHTML="{{data.features2.featureDescription3}}"></div>
+        </div>
+  
+      </div> 
+    </div> 
+  </section>
+  

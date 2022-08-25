@@ -1,0 +1,21 @@
+<footer class="footer no-print">
+    <div class="container wow fadeInUp">
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <div class="footer__content">
+                    <h6 class="footer__copyright">&copy; {{year}} {{data?.name}} </h6>
+
+                    <div class="footer__social">
+                        <a *ngIf="data && data.facebook" class="text-dark" href="{{data?.facebook}}"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                        <a *ngIf="data && data.instagram" class="text-dark" href="{{data?.instagram}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a *ngIf="data && data.twitter" class="text-dark" href="{{data?.twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a *ngIf="data && data.linkedin" class="text-dark" href="{{data?.linkedin}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a *ngIf="data && data.youtube" class="text-dark" href="{{data?.youtube}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                         <a routerLink="/admin" style="font-size: xx-small;">Administration</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

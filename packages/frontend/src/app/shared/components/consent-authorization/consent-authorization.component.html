@@ -1,0 +1,53 @@
+<div class="modal fade" id="consent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Consent Authorization</h5>
+                <button type="button" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p> I authorize {{companySettings?.name}} and the collection company to leave messages regarding your health/test results and billing issues on your voicemail. Authorize to Release
+                    Information: I hereby authorize the release of any medical records or other information necessary to process the claim by {{companySettings?.name}}. I authorize the
+                    payment of medical benefits to service providers. </p>
+                <p>
+                    <strong>INSURANCE AUTHORIZATION:</strong> I request that payment of authorized medical benefits is made on my behalf directly to the {{companySettings?.name}} provider of
+                    service(s) furnished to me. I authorize {{companySettings?.name}} to release any medical information to my health insurance carrier and/or its legitimate agents that is necessary
+                    to bill related health insurance claims and/or to verify plan benefits in accordance with HIPAA health information standards. I authorize payment of service(s), otherwise payable
+                    to me under the terms of my private, group employer’s or group health insurance plan, directly to {{companySettings?.name}}. I hereby authorize photocopies of this form to be
+                    valid as the original.
+                </p>
+                <p>
+                    <strong> ELECTRONIC HEALTH RECORD: </strong> Healthcare providers require access to patient medical information whenever or wherever a patient presents for care to assure safety,
+                    quality and to coordinate patient care across the provider network, avoiding duplication of services. {{companySettings?.name}} have a system-wide electronic medical record that
+                    is available to caregivers on a “need to know” basis, to share information about patient care provided in the hospital, outpatient or physician office settings.
+                </p>
+                <p> Confidentiality of records including those reflecting treatment for behavioral health issues, HIV/AIDS or drug or alcohol problems is maintained per relevant governmental and
+                    regulatory standards. Patient care summaries are automatically sent to designated{{companySettings?.name}} and other community primary care/family/referring physicians, as well
+                    as to physicians who are consulted by the attending physician for coordination of care. {{companySettings?.name}} and/or the attending physician can furnish and release to federal
+                    and state healthcare oversight agencies, or upon written request, to all insurance companies or their representatives any information with respect to treatment of the patient
+                    herein named including copies of the medical record I understand that my Employer, College and School will not be authorized to view ALL of my medical records or information stored
+                    within the Application and this authorization limits what information can be viewed by my Employer, College and School. I understand that my Authorization, or refusal to provide
+                    additional Authorization(s), does not affect my ability to obtain treatment from Health Care Providers I may revoke this Authorization in writing at any time by sending a letter to
+                    Health Care Providers or by completing the Health Care Provider’s Authorization Revocation Form, except to the extent that the Health Care Provider has taken action in reliance on
+                    this Authorization. I also understand that the information used or disclosed pursuant to this Authorization may be subject to re-disclosure by the recipient and no longer protected
+                    by the HIPAA privacy regulations. I agree that the Employer, College and School is the recipient of this information, and may use the information for the following purpose(s):
+                    Compliance with state and local legal requirements including the requirement to report positive test results to public health and workplace safety agencies; Responding to COVID-19
+                    infections including notifying individuals with whom I have had close contact if my test results are positive; In connection with health insurance billing and claims; In connection
+                    with requests for medical accommodations and administering employee benefits and workers' compensation benefits; and Communicating with my health care providers and legal I
+                    understand that by agreeing to this Authorization, I have the right to receive a copy of this authorization. Upon request, {{companySettings?.name}} will provide me with a copy of
+                    this authorization. This Authorization is no longer valid after December 31, 2023, in which a new authorization will be required. I hereby represent and certify by engaging with
+                    the toggle in the application, that my Name, Date of Birth, and any other identifying information I provide in this Application are true and that I give this Authorization of my
+                    own free will, am competent by law to give such Authorization, and will hold Health Care Providers,{{companySettings?.name}}, and its affiliates and subsidiaries harmless from
+                    liability for their compliance with the provisions of this Authorization. </p>
+                <p>For questions, contact us at:</p>
+                <blockquote> {{companySettings?.address}}<br> {{companySettings?.city}} {{companySettings?.province}} {{companySettings?.zip}}<br> {{companySettings?.phone}}<br>
+                    {{companySettings?.email}} </blockquote>
+            </div>
+            <div class="modal-footer">
+                <button type="button" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

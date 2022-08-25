@@ -1,0 +1,56 @@
+<div class="loader" *ngIf="!(productService.items | async) else finished" >
+    <div class="loader-inner">
+        <div class="spinner multicolor">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #finished>
+    <div class="card" *ngIf="((productService.items | async)?.length != 0) else nodata">
+        <div class="card-header no-print">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-filter"></i></span>
+                <input [(ngModel)]="filteredData" type="text" class="form-control" placeholder="Type to Filter" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="card-body">
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of productService.items | async | productFilter:filteredData | catalogDisplayOrderSort; let i = index" (click)="onView(data)" style="cursor: pointer;"
+                            class="wow fadeInUp" [ngClass]="{'text-muted' : !data.active}">
+                            <td>{{data?._id}}</td>
+                            <td class="text-capitalize">{{data?.title}}</td>
+                            <td class="text-capitalize">{{data?.productType}}</td>
+                            <td class="text-capitalize">{{data?.category}}</td>
+                            <td class="text-capitalize">{{data?.lastUpdated | date}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <ng-template #nodata>
+        <div class="alert alert-light text-center" role="alert"><br> No products found.<br>Click Create. </div>
+    </ng-template>
+</ng-template>

@@ -1,0 +1,31 @@
+<div class="no-print">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top app-header" *ngIf="data">
+        <div class="container-fluid">
+            <span [ngStyle]="{'color': color}">{{data?.name}}</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-3">
+                    <li class="nav-item" *ngIf="isCatalog">
+                        <a class="nav-link" style="color:#737373" (click)="jump('catalog')">{{data?.catalogLinkText}}</a>
+                    </li>
+                    <li class="nav-item"  *ngIf="isAbout">
+                        <a *ngIf="data?.aboutSection" class="nav-link" style="color:#737373" (click)="jump('about')">{{data?.aboutLinkText}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a *ngIf="authService.firebaseUser && (settingService.settings._id === userService.user?.companyId)" class="nav-link" style="color:#737373" (click)="admin()">Admin</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a *ngIf="!authService.firebaseUser" class="text-dark wow slideInRight" (click)="signIn()">Sign In</a>
+                    <a *ngIf="authService.firebaseUser" class="text-dark wow slideInRight" (click)="signOut()">Sign Out</a>
+                    <span *ngIf="data && data.phone">{{data.phone}}</span>&nbsp;&nbsp;&nbsp; <a  *ngIf="isCartIcon" (click)="jump('cart')" [ngStyle]="{'color': color}">
+                        <i class="fa fa-shopping-cart fa-2x  wow slideInRight" aria-hidden="true"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </nav>
+</div>

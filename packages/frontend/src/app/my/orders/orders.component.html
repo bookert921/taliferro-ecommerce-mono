@@ -1,0 +1,66 @@
+<app-inline-box-nav *ngIf="(settingService.settings && !settingService.settings.colorBlock)" [data]="settingService.settings" [isHome]="false"></app-inline-box-nav>
+<app-static-top-nav *ngIf="settingService.settings && settingService.settings.colorBlock" [data]="settingService.settings" [isHome]="false"></app-static-top-nav>
+<div class="loader" *ngIf="!(orderService.items | async) else finished">
+  <div class="loader-inner">
+    <div class="spinner multicolor">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #finished>
+  <div class="container-fluid mt-3">
+    <div class="row">
+      <div class="col"><span (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-2x text-muted"></i></span> </div>
+      <div class="col-md text-center">
+        <h1 [ngStyle]="{'color': colorService.darkBackground}">Orders</h1>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row" *ngIf="((orderService.items | async)?.length != 0) else nodata">
+      <div class="col">
+        <div class="card">
+          <div class="card-body" *ngIf="!data">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Response</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of orderService.items | async | dateSortDesc; let i = index" (click)="onView(item)" style="cursor: pointer;">
+                  <td>{{item?._id}}</td>
+                  <td>
+                    <span *ngIf="item.chargeResponse && item.chargeResponse.outcome && item.chargeResponse.outcome.seller_message">{{item?.chargeResponse?.outcome?.seller_message}}</span>
+                    <span *ngIf="!(item.chargeResponse && item.chargeResponse.outcome && item.chargeResponse.outcome.seller_message)">{{item?.chargeResponse | slice:0:30}}</span>
+                  </td>
+                  <td class="text-capitalize">{{item?.status | sentence}}</td>
+                  <td>{{item?.cart.lastUpdated | date:'medium'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="data" class="mt-2">
+          <app-my-order-view [data]="data" (close)="onClose($event)"></app-my-order-view>
+        </div>
+      </div>
+    </div>
+    <ng-template #nodata>
+      <div class="alert alert-light text-center" role="alert"><br> No orders found. </div>
+    </ng-template>
+  </div>
+</ng-template>

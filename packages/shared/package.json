@@ -1,0 +1,31 @@
+{
+  "name": "@taliferro_e-commerce/shared",
+  "version": "1.0.0",
+  "description": "Package for shared interfaces and functionality between frontend and backend",
+  "keywords": [
+    "share",
+    "typescript",
+    "interfaces",
+    "validation",
+    "business",
+    "logic"
+  ],
+  "author": "Booker T. Showers III <bookert921@gmail.com>",
+  "homepage": "http://taliferro.com",
+  "license": "ISC",
+  "main": "./",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bookert921/taliferro-ecommerce"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

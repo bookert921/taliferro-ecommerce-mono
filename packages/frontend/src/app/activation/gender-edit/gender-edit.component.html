@@ -1,0 +1,24 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div *ngIf="data" class="form-group m-2"> <label for="gender">Gender at birth</label>
+                    <select [(ngModel)]="data.gender" name="gender" id="gender" class="form-select form-select-lg" required>
+                        <option value="" selected disabled hidden>Choose Gender at Birth</option>
+                        <option *ngFor="let g of GENDERS" value="{{g.value}}">{{g.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="form-group form-actions">
+                    <button type="button" class="btn btn-primary  m-2" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                        (click)="back()">Back</button>
+                    <button type="submit" class="btn btn-primary  m-2" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                        [disabled]="!dataForm.form.valid">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

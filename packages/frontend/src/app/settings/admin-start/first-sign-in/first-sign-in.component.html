@@ -1,0 +1,24 @@
+<div>
+    <div class="ta-vertical-center">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <section class="container-server-errors">
+                        <div class="server-errors pages-card">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="h4 text-center text-theme" *ngIf="!authService.firebaseUser"><strong>First Sign In</strong><br>
+                                        <small>Click the Sign In button</small><br>
+                                        <a routerLink="/identity" class="btn btn-theme btn-round text-center">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end section container -->
+    <div class="half-circle"></div>
+    <div class="small-circle"></div>
+</div>

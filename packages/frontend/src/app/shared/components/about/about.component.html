@@ -1,0 +1,10 @@
+<section class="section pb-5" id="about">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-12">
+                <h2 [ngStyle]="{'color': colorService.secondaryColor}" class="section__title">About <strong><span [ngStyle]="{'color': data?.color}">{{data?.name}}</span></strong> </h2>
+                <p class="section__text">{{data?.about}}</p>
+            </div>
+        </div>
+    </div>
+</section>

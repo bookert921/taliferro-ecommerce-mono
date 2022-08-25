@@ -1,0 +1,49 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data">
+    <div class="containter-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Order Status</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select [(ngModel)]="data.status" name="status" id="status" class="form-select form-select-lg" autofocus>
+                                <option value="Pending">Pending</option>
+                                <option value="Entry Hold">Entry Hold</option>
+                                <option value="Fully Reject">Fully Reject</option>
+                                <option value="Cancel">Cancel</option>
+                                <option value="Lab Received">Lab Received</option>
+                                <option value="Verified">Verified</option>
+                                <option value="Submitted">Submitted to Ordrs</option>
+                                <option value="Approved by Ordrs">Approved by Ordrs</option>
+                                <option value="Testing in Progress">Testing in Progress</option>
+                                <option value="Waiting for Review">Waiting for Review</option>
+                                <option value="Approved">Approved</option>
+                                <option value="All Tests Uploaded">All Tests Uploaded</option>
+                                <option value="All Reports Sent">All Reports Sent</option>
+                                <option value="Hold Report">Hold Report</option>
+                                <option value="Unknown">Unknown</option>
+                                <option value="QNS">QNS</option>
+                                <option value="Partial Delivery">Partial Delivery</option>
+                                <option value="Activated">Activated</option>
+                                <option value="Results Delivered">Results Delivered</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit"
+                            [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                            class="btn btn-primary" [disabled]="!dataForm.form.valid">Submit</button> <button
+                            type="button" value="Cancel" class="btn btn-secondary ms-2"
+                            (click)="onCancel()">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

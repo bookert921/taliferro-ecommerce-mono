@@ -1,0 +1,9 @@
+/.DS_Store
+/.VSCodeCounter
+/.browserslistrc
+/.editorconfig
+/.firebase
+/.firebaserc
+/bitbucket-pipelines.yml
+/dist
+node_modules

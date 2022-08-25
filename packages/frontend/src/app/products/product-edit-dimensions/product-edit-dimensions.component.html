@@ -1,0 +1,49 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="containter-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Product Dimenstions</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="weight">Weight</label>
+                            <input [(ngModel)]="data.weight" type="text" name="weight" id="weight" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="height">Height</label>
+                            <input [(ngModel)]="data.height" type="text" name="height" id="height" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="width">Width</label>
+                            <input [(ngModel)]="data.width" type="text" name="width" id="width" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="length">Length</label>
+                            <input [(ngModel)]="data.length" type="text" name="length" id="length" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary" [disabled]="!dataForm.form.valid"
+                            [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

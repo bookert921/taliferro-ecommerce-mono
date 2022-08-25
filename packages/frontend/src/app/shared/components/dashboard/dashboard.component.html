@@ -1,0 +1,200 @@
+<div class="wow fadeIn">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ecom-widget-chart-full">
+                <div class="chart-full-header">
+                    <div class="header-text">
+                        <div class="heading wow fadeInDown">{{headingText}} </div>
+                    </div>
+
+                    <div class="text-center chart-full-toolbar">
+                        <button class="btn btn-sm" [ngClass]="{'btn-theme' : (option1Display === 'none'), 'btn-dark' : (option1Display === '')}" (click)="showFirst()">{{option1}}</button>
+                        <button class="btn btn-sm" [ngClass]="{'btn-theme' : (option2Display === 'none'), 'btn-dark' : (option2Display === '')}" (click)="showSecond()">{{option2}}</button>
+                        <button class="btn btn-sm" [ngClass]="{'btn-theme' : (option3Display === 'none'), 'btn-dark' : (option3Display === '')}" (click)="showThird()">{{option3}}</button>
+                        <button class="btn btn-sm" [ngClass]="{'btn-theme' : (option4Display === 'none'), 'btn-dark' : (option4Display === '')}" (click)="showFourth()">{{option4}}</button>
+                    </div>
+                    <div class="ecom-widget-chart-text text-center" [ngStyle]="{'display' : option1Display}">{{data.period1.total}}</div>
+                    <div class="chart-full-period text-center"  [ngStyle]="{'display' : option1Display}">{{data.period1.subHeading}}</div>
+
+                    <div class="ecom-widget-chart-text text-center" [ngStyle]="{'display' : option2Display}">{{data.period2.total}}</div>
+                    <div class="chart-full-period text-center"  [ngStyle]="{'display' : option2Display}">{{data.period2.subHeading}}</div>
+
+                    <div class="ecom-widget-chart-text text-center" [ngStyle]="{'display' : option3Display}">{{data.period3.total}}</div>
+                    <div class="chart-full-period text-center"  [ngStyle]="{'display' : option3Display}">{{data.period3.subHeading}}</div>
+
+                    <div class="ecom-widget-chart-text text-center" [ngStyle]="{'display' : option4Display}">{{data.period4.total}}</div>
+                    <div class="chart-full-period text-center"  [ngStyle]="{'display' : option4Display}">{{data.period4.subHeading}}</div>
+
+                    <canvas class="chart-full-canvas" id="chart-stat-widget14-1" [ngStyle]="{'display' : option1Display}"></canvas>
+                    <canvas class="chart-full-canvas" id="chart-stat-widget14-2" [ngStyle]="{'display' : option2Display}"></canvas>
+                    <canvas class="chart-full-canvas" id="chart-stat-widget14-3" [ngStyle]="{'display' : option3Display}"></canvas>
+                    <canvas class="chart-full-canvas" id="chart-stat-widget14-4" [ngStyle]="{'display' : option4Display}"></canvas>
+                </div>
+            </div>
+            <!-- end ecom-widget-chart-full -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+    <div class=" row row-margin-up" [ngStyle]="{'display' : option1Display}">
+        <div class="col-md-3" *ngFor="let item of data.period1.box">
+            <div class="card ecom-widget-sales">
+                <div class="card-body">
+
+                    <div class="ecom-sales-icon text-center">
+                        <i class="{{item?.boxIcon}}" aria-hidden="true"></i>
+                    </div>
+                    <!-- end ecom-sales-icon -->
+                    <h5 class="text-center">{{item?.boxHeading}}</h5>
+                    <ul>
+                        <li>{{item?.label1}}
+                            <span>{{item?.count1}}</span>
+                        </li>
+                        <li>{{item?.label2}}
+                            <span>{{item?.count2}}</span>
+                        </li>
+                        <li>{{item?.label3}}
+                            <span>{{item?.count3}}</span>
+                        </li>
+                        <li>{{item?.label4}}
+                            <span class="badge badge-theme">{{item?.count4}}</span>
+                        </li>
+                        <li>{{item?.label5}}
+                            <span>{{item?.count5 | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <div class="text-center btn-tool-bar" *ngIf="item && item.moreInfoLink">
+                        <button class="btn btn-theme " (click)="showMore(item.moreInfoLink)">More Details</button>
+                    </div>
+                    <!-- end btn-tool-bar -->
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end ecom-widget-sales -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+    <div class=" row row-margin-up" [ngStyle]="{'display' : option2Display}">
+        <div class="col-md-3" *ngFor="let item of data.period2.box">
+            <div class="card ecom-widget-sales">
+                <div class="card-body">
+
+                    <div class="ecom-sales-icon text-center">
+                        <i class="{{item?.boxIcon}}" aria-hidden="true"></i>
+                    </div>
+                    <!-- end ecom-sales-icon -->
+                    <h5 class="text-center">{{item?.boxHeading}}</h5>
+                    <ul>
+                        <li>{{item?.label1}}
+                            <span>{{item?.count1}}</span>
+                        </li>
+                        <li>{{item?.label2}}
+                            <span>{{item?.count2}}</span>
+                        </li>
+                        <li>{{item?.label3}}
+                            <span>{{item?.count3}}</span>
+                        </li>
+                        <li>{{item?.label4}}
+                            <span class="badge badge-theme">{{item?.count4}}</span>
+                        </li>
+                        <li>{{item?.label5}}
+                            <span>{{item?.count5 | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <div class="text-center btn-tool-bar" *ngIf="item && item.moreInfoLink">
+                        <button class="btn btn-theme " (click)="showMore(item.moreInfoLink)">More Details</button>
+                    </div>
+                    <!-- end btn-tool-bar -->
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end ecom-widget-sales -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+    <div class=" row row-margin-up" [ngStyle]="{'display' : option3Display}">
+        <div class="col-md-3" *ngFor="let item of data.period3.box">
+            <div class="card ecom-widget-sales">
+                <div class="card-body">
+
+                    <div class="ecom-sales-icon text-center">
+                        <i class="{{item?.boxIcon}}" aria-hidden="true"></i>
+                    </div>
+                    <!-- end ecom-sales-icon -->
+                    <h5 class="text-center">{{item?.boxHeading}}</h5>
+                    <ul>
+                        <li>{{item?.label1}}
+                            <span>{{item?.count1}}</span>
+                        </li>
+                        <li>{{item?.label2}}
+                            <span>{{item?.count2}}</span>
+                        </li>
+                        <li>{{item?.label3}}
+                            <span>{{item?.count3}}</span>
+                        </li>
+                        <li>{{item?.label4}}
+                            <span class="badge badge-theme">{{item?.count4}}</span>
+                        </li>
+                        <li>{{item?.label5}}
+                            <span>{{item?.count5 | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <div class="text-center btn-tool-bar" *ngIf="item && item.moreInfoLink">
+                        <button class="btn btn-theme " (click)="showMore(item.moreInfoLink)">More Details</button>
+                    </div>
+                    <!-- end btn-tool-bar -->
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end ecom-widget-sales -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+    <div class=" row row-margin-up" [ngStyle]="{'display' : option4Display}">
+        <div class="col-md-3" *ngFor="let item of data.period4.box">
+            <div class="card ecom-widget-sales">
+                <div class="card-body">
+
+                    <div class="ecom-sales-icon text-center">
+                        <i class="{{item?.boxIcon}}" aria-hidden="true"></i>
+                    </div>
+                    <!-- end ecom-sales-icon -->
+                    <h5 class="text-center">{{item?.boxHeading}}</h5>
+                    <ul>
+                        <li>{{item?.label1}}
+                            <span>{{item?.count1}}</span>
+                        </li>
+                        <li>{{item?.label2}}
+                            <span>{{item?.count2}}</span>
+                        </li>
+                        <li>{{item?.label3}}
+                            <span>{{item?.count3}}</span>
+                        </li>
+                        <li>{{item?.label4}}
+                            <span class="badge badge-theme">{{item?.count4}}</span>
+                        </li>
+                        <li>{{item?.label5}}
+                            <span>{{item?.count5 | currency}}</span>
+                        </li>
+                    </ul>
+
+                    <div class="text-center btn-tool-bar" *ngIf="item && item.moreInfoLink">
+                        <button class="btn btn-theme " (click)="showMore(item.moreInfoLink)">More Details</button>
+                    </div>
+                    <!-- end btn-tool-bar -->
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end ecom-widget-sales -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>

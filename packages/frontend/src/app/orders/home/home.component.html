@@ -1,0 +1,49 @@
+<div class="container-fluid mt-3">
+    <div class="row  no-print">
+        <div class="col-md text-start"><span *ngIf="!isEditMode" (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-1x"></i></span> <a *ngIf="isEditMode" (click)="list()"
+                style="cursor: pointer;"><i class="fa fa-chevron-left fa-1x"></i></a></div>
+        <div class="col-md text-center">
+            <strong>Web Orders</strong>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row" *ngIf="!isEditMode">
+        <div class="col">
+            <app-order-list (id)="onView($event)"></app-order-list>
+        </div>
+    </div>
+    <div class="row" *ngIf="isEditMode">
+        <div class="col-md">
+            <div class="row  no-print m-4" *ngIf="isAdmin">
+                <div class="col">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="viewToggle" [(ngModel)]="viewToggle">
+                        <label class="form-check-label" for="viewToggle">Toggle between Requisition View and Order View</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div [ngClass]="{'col-12': !isEditing, 'col-md-6': isEditing}">
+                    <app-order-view [data]="data" [isDiagnostic]="isDiagnostic" *ngIf="!viewToggle" (editItem)="onEdit($event)"></app-order-view>
+                    <app-appointment-print-list [data]="data" *ngIf="viewToggle"></app-appointment-print-list>
+                </div>
+                <div class="col-md-6 no-print" [ngStyle]="{'display': colStyle}"> 
+                    <pre *ngIf="isDiagnostic">{{data | json}}</pre>
+                    <app-order-edit-address [data]="data" *ngIf="isOrderAddress" (done)="editReset()"></app-order-edit-address>
+                    <app-order-edit-dob [data]="data" *ngIf="isOrderDob" (done)="editReset()"></app-order-edit-dob>
+                    <app-order-edit-email [data]="data" *ngIf="isOrderEmail" (done)="editReset()"></app-order-edit-email>
+                    <app-order-edit-gender [data]="data" *ngIf="isOrderGender" (done)="editReset()"></app-order-edit-gender>
+                    <app-order-edit-kit-number [data]="data" *ngIf="isOrderKitNumber" (done)="editReset()"></app-order-edit-kit-number>
+                    <app-order-edit-name [data]="data" *ngIf="isOrderName" (done)="editReset()"></app-order-edit-name>
+                    <app-order-edit-nationality [data]="data" *ngIf="isOrderNationality" (done)="editReset()"></app-order-edit-nationality>
+                    <app-order-edit-passport-number [data]="data" *ngIf="isOrderPassportNumber" (done)="editReset()"></app-order-edit-passport-number>
+                    <app-order-edit-insurance [data]="data" *ngIf="isOrderInsurance" (done)="editReset()"></app-order-edit-insurance>
+                    <app-order-edit-phone-number [data]="data" *ngIf="isOrderPhoneNumber" (done)="editReset()"></app-order-edit-phone-number>
+                    <app-order-edit-ssn [data]="data" *ngIf="isOrderSsn" (done)="editReset()"></app-order-edit-ssn>
+                    <app-order-edit-status [data]="data" *ngIf="isStatus" (done)="editReset()"></app-order-edit-status>
+                    <app-order-edit-lis-number [data]="data" *ngIf="isLIS"  (done)="editReset()"></app-order-edit-lis-number>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

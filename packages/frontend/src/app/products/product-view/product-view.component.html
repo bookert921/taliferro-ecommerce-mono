@@ -1,0 +1,284 @@
+<div class="container-fluid mt-3">
+      <div class="row">
+            <div class="col-md">
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.title"><strong>Name:</strong> {{data.title}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.title">No name</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onName()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <img class="p-2 img-fluid"
+                                   *ngIf="data && data.files && data.files[0]"
+                                   src="{{data.files[0].url}}"
+                                   alt="{{data.files[0].name}}"
+                                   style="max-height: 128px;">
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="!(data && data.files && data.files[0])">No images found</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onImage()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.productType"><strong>Type:</strong>
+                                    {{data.productType}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.productType">No product type</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onProductType()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"> Sub Types</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onProductSubType()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.category"><strong>Category:</strong> {{data.category}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.category">No category</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onCategory()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"> Sub Category</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onProductSubCategory()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.quantity"><strong>Quantity:</strong> {{data.quantity}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.quantity">No quantity</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onQuantity()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.description && data.description.short"><strong>Short
+                                          Description:</strong> {{data.description.short}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.description && !data.description.short">No short
+                                    description</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onDescription()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.description && data.description.long"><strong>Long
+                                          Description:</strong> {{data.description.long}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.description && !data.description.long">No long
+                                    description</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onDescription()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.manufacturer"><strong>Manufacturer:</strong>
+                                    {{data.manufacturer}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.manufacturer">No manufacturer</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onManufacturer()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.author"><strong>Author:</strong> {{data.author}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.author">No author</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onManufacturer()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.active"><strong>State:</strong> <span
+                                          *ngIf="data.active">Active</span><span
+                                          *ngIf="!data.active">In-Active</span></span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.active">In-Active</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onActive()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.price"><strong>Price:</strong> {{data.price | currency}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.price">No price</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onPrice()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.salePrice"><strong>Sale Price:</strong> {{data.salePrice |
+                                    currency}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.salePrice">No sale price</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onPrice()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.onSale"><strong>On Sale:</strong> {{data.onSale}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.onSale">No on sale information</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onPrice()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.dependency && data.dependency.priceDependent"><strong>Price Dependency:</strong> {{data?.dependency?.price  | currency}} {{data?.dependency?.dependencyCode}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="!(data && data.dependency && data.dependency.priceDependent)">No dependency</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onProductPriceDependency()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.display_order"><strong>Display Order:</strong> {{data.display_order}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.display_order">No display order</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onPrice()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.sku"><strong>SKU:</strong> {{data.sku}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.sku">No sku found</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onSku()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.weight"><strong>Weight:</strong>{{data.weight}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.weight">No weight</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onDimensions()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.height"><strong>Height:</strong> {{data.height}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.height">No height</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onDimensions()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.width"><strong>Width:</strong> {{data.width}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.width">No width</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onDimensions()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.length"><strong>Length:</strong> {{data.length}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.length">No length</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onDimensions()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.unitsOnOrder"><strong>On Order:</strong>
+                                    {{data.unitsOnOrder}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.unitsOnOrder">No units on order</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onStock()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.unitsInStock"><strong>In Stock:</strong>
+                                    {{data.unitsInStock}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.unitsInStock">No units on stock info</span>
+                              <a class="text-secondary text-opacity-25"
+                                 style="cursor: pointer;"
+                                 (click)="onStock()"><i class="fa fa-chevron-right fa-1x"></i></a>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.lastUpdated"><strong>Last Updated:</strong> {{data.lastUpdated |
+                                    date:'medium'}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.lastUpdated">No update date</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.updatedBy"><strong>Updated By:</strong>
+                                    {{data.updatedBy}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.updatedBy">No updated by</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.createdBy"><strong>Created By:</strong>
+                                    {{data.createdBy}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.createdBy">No created by</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                              <span class="p-2"
+                                    *ngIf="data && data.createdAt"><strong>Created:</strong> {{data.createdAt |
+                                    date:'medium'}}</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic"
+                                    *ngIf="data && !data.createdAt">No created at</span>
+                        </li>
+                  </ul>
+                  <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
+                              <span class="p-2">Diagnostic </span>
+                              <div class="form-check form-switch">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           id="flexSwitchCheckDefault"
+                                           [checked]="isDiagnostic"
+                                           (click)="setDiagnostic()">
+                              </div>
+                        </li>
+                  </ul>
+      </div>
+      </div>
+</div>

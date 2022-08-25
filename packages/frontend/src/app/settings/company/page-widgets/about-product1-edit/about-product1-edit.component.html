@@ -1,0 +1,254 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.aboutProduct1">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">About Product (1)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.aboutProduct1.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.aboutProduct1.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockText1">Feature Block 1 Text</label>
+                            <input [(ngModel)]="data.aboutProduct1.featureBlockText1" type="text" name="featureBlockText1" id="featureBlockText1" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockIcon1">Icon 1</label>
+                            <select name="featureBlockIcon1" id="featureBlockIcon1" [(ngModel)]="data.aboutProduct1.featureBlockIcon1" class="form-select form-select-lg mb-3">
+                                <option value="" selected>Choose Icon</option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockText2">Feature Block 2 Text</label>
+                            <input [(ngModel)]="data.aboutProduct1.featureBlockText2" type="text" name="featureBlockText2" id="featureBlockText2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockIcon2">Icon 2</label>
+                            <select name="featureBlockIcon2" id="featureBlockIcon2" [(ngModel)]="data.aboutProduct1.featureBlockIcon2" class="form-select form-select-lg mb-3">
+                                <option value=""></option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockText3">Feature Block 3 Text</label>
+                            <input [(ngModel)]="data.aboutProduct1.featureBlockText3" type="text" name="featureBlockText3" id="featureBlockText3" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockIcon3">Icon 3</label>
+                            <select name="featureBlockIcon3" id="featureBlockIcon3" [(ngModel)]="data.aboutProduct1.featureBlockIcon3" class="form-select form-select-lg mb-3">
+                                <option value=""></option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockText4">Feature Block 4 Text</label>
+                            <input [(ngModel)]="data.aboutProduct1.featureBlockText4" type="text" name="featureBlockText4" id="featureBlockText4" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureBlockIcon4">Icon 4</label>
+                            <select name="featureBlockIcon4" id="featureBlockIcon4" [(ngModel)]="data.aboutProduct1.featureBlockIcon4" class="form-select form-select-lg mb-3">
+                                <option value=""></option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

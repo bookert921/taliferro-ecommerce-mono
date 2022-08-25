@@ -1,0 +1,42 @@
+<div class="loader" *ngIf="storeId else finished">
+    <div class="loader-inner">
+        <div class="spinner multicolor">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #finished>
+    <div class="ta-vertical-center" *ngIf="">
+        <section class="container-server-errors">
+    
+        
+            <div class="server-errors pages-card">
+                <div class="status-text-1">No store found</div>
+                <div class="status-error text-theme hertbit">4 0 4</div>
+                <div class="text-center status-text-2 text-dark">Could not find provided store ... sorry!</div>
+                <div class="text-center">
+                    <a routerLink="/" class="btn  btn-theme login-btn text-white"> Return to Home Page </a>
+                </div>
+        
+            </div>
+            <!-- end server-error pages -->
+        </section>
+        <!-- end secton container -->
+        
+    </div>
+    
+    <div class="half-circle"></div>
+    <div class="small-circle"></div>
+    <div class="half-circle-bottom"></div>
+</ng-template>

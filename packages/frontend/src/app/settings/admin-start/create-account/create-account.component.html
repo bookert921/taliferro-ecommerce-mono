@@ -1,0 +1,54 @@
+    <div class="alert alert-warning container " role="alert">
+        <h4 class="alert-heading">No company has been setup!</h4>
+        <p>No problem, let's set it up now. Just fill out the form below and click submit.</p>
+    </div>
+    <div class="card pages-card col-lg-4 col-md-6 col-sm-6">
+        <div class="card-body ">
+            <div class="h4 text-center text-theme"><strong>Sign Up</strong></div>
+            <form #userForm="ngForm" (ngSubmit)="onSubmit();userForm.reset();">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon text-theme"><i class="fa fa-building-o" aria-hidden="true"></i>
+                        </span>
+                        <input [(ngModel)]="companyName" type="text" id="companyName" name="companyName" class="form-control" placeholder="Company Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon text-theme"><i class="fa fa-id-badge" aria-hidden="true"></i></span>
+                        <input [(ngModel)]="firstName" type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon text-theme"><i class="fa fa-id-badge" aria-hidden="true"></i></span>
+                        <input [(ngModel)]="lastName" type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon text-theme"><i class="fa fa-envelope"></i>
+                        </span>
+                        <input [(ngModel)]="email" type="email" id="email" name="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon text-theme"><i class="fa fa-asterisk"></i>
+                        </span>
+                        <input [(ngModel)]="companyId" type="password" id="companyId" name="companyId" class="form-control" placeholder="Company ID (leave blank if not known)">
+                    </div>
+                </div>
+                <div class="form-group form-actions">
+                    <button type="submit" class="btn  btn-theme login-btn " [disabled]="!userForm.form.valid"> Sign Up </button>
+                </div>
+            </form>
+            <!-- end form -->
+            <div class="text-center">
+                <small>Already have an account ? Please Sign Out and contact your adminstrator or Taliferro Group customer support.
+                </small>
+            </div>
+        </div>
+        <!-- end card-body -->
+    </div>
+

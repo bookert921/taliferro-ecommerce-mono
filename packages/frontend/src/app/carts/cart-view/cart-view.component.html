@@ -1,0 +1,82 @@
+<div class="container-fluid" *ngIf="data">
+    <div class="row mb-3 mt-5">
+        <div class="col-md text-center">
+            <button type="button" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-danger" (click)="onDelete()">Delete</button>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header"> Info </div>
+                <div class="card-body">
+                    <strong>ID:</strong> {{data._id}}<br>
+                    <strong>Amount:</strong> {{data?.amount | currency}}<br>
+                    <strong>IP:</strong> {{data?.browserIp}}<br>
+                    <strong>Created:</strong> {{data?.createdAt | date}}<br>
+                    <strong>Updated:</strong> {{data?.lastUpdated | date:'medium'}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header"> Customer Info </div>
+                <div class="card-body">
+                    <strong>Name:</strong> {{data?.firstName}} {{data?.lastName}}<br>
+                    <strong>Company or Organization:</strong> {{data?.companyName}}<br>
+                    <strong>Address:</strong> {{data?.streetAddress1}} {{data?.streetAddress2}} {{data?.city}} {{data?.province}} {{data?.zip}}<br>
+                    <strong>Phone:</strong> {{data?.phone}}<br>
+                    <strong>Email:</strong> {{data?.email}}<br>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-md" *ngIf="data && data.userType === 'practitioner'">
+            <div class="card">
+                <div class="card-header">Practitioner Info</div>
+                <div class="card-body">
+                    <strong>Practice Number:</strong> {{data?.customerId}}<br>
+                    <strong>Practice Name:</strong> {{data?.practitionerName}}<br>
+                    <strong>Practice First Name:</strong> {{data?.pracFirstName}}<br>
+                    <strong>Practice Last Name:</strong> {{data?.pracLastName}}<br>
+                    <strong>NPI:</strong> {{data?.npi}}<br>
+                    <strong>Orderer Name:</strong> {{data?.pracFirstName}} {{data?.pracLastName}}<br>
+                    <strong>Payer:</strong> {{data?.pracPay}}<br>
+                    <strong>Phone:</strong> {{data?.pracPhone}}<br>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-md" *ngIf="data && data.paymentDetails">
+            <div class="card">
+                <div class="card-header"> Credit Card Info </div>
+                <div class="card-body"> {{data?.paymentDetails?.ccNameOnCard}}<br> {{data?.paymentDetails?.ccNumber}}<br> {{data?.paymentDetails?.ccExpDate}} </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3" *ngIf="data && data.lineItems">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">Items in Cart</div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of data.lineItems; let i = index">
+                            <img *ngIf="item.product && item.product.files && item.product.files.length" class="img-fluid" style="max-height: 120px;" src="{{item?.product?.files[0]?.url}}" alt="{{item?.product?.title}}"> {{item?.product?.title}} <span
+                                class="badge bg-primary rounded-pill">{{item?.quantity}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3" *ngIf="data && data.shippingAddress">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-header">Shipping Information</div>
+                <div class="card-body">
+                    <strong>streetAddress1:</strong> {{data?.shippingAddress?.streetAddress1}} {{data?.shippingAddress?.streetAddress2}} <br><strong>City:</strong> {{data?.shippingAddress?.city}}<br>
+                    <strong>Province:</strong> {{data?.shippingAddress?.province}}<br>
+                    <strong>Zip:</strong> {{data?.shippingAddress?.zip}}<br>
+                    <strong>Country:</strong> {{data?.shippingAddress?.country}}<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

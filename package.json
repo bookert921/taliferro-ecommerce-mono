@@ -1,0 +1,33 @@
+{
+  "name": "taliferro_e-commerce",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [],
+  "scripts": {
+    "install": "run-p install:frontend install:backend:functions",
+    "install:frontend": "cd packages/frontend && npm i",
+    "install:backend:functions": "cd packages/backend/functions && npm i",
+    "start": "run-p start:frontend start:backend",
+    "start:frontend": "cd packages/frontend && npm start",
+    "start:backend:functions": "cd packages/backend/functions && npm run serve",
+    "build": "run-p build:frontend build:backend:functions",
+    "build:frontend": "cd packages/frontend && npm run build",
+    "build:backend:functions": "cd packages/backend/functions && npm run build",
+    "lint": "lerna run lint --parallel",
+    "test": "run-p test:frontend test:backend",
+    "test:frontend": "cd packages/frontend && npm run test",
+    "test:backend": "cd packages/backend/functions && npm run test",
+    "reinstall": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install",
+    "reinstall:frontend": "find ./frontend -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install",
+    "reinstall:backend": "find ./backend -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install"
+  },
+  "devDependencies": {
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lerna": "^5.4.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "prettier-config-standard": "^5.0.0"
+  }
+}

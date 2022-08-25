@@ -1,0 +1,40 @@
+<div class="card"
+     *ngIf="loading else spinner">
+    <div class="card-header">
+        <div class="input-group mb-3">
+            <span class="input-group-text"
+                  id="filteredData"><i class="fa fa-filter"></i></span>
+            <input [(ngModel)]="filteredData"
+                   type="text"
+                   class="form-control"
+                   placeholder="Type to Filter"
+                   aria-label="Filter"
+                   aria-describedby="filteredData">
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cartService.items | async | cartFilter:filteredData; let i = index"
+                    (click)="onView(item)"
+                    style="cursor: pointer;">
+                    <td>{{item?._id}}</td>
+                    <td>{{item?.firstName}} {{item?.lastName}}</td>
+                    <td>{{item?.amount | currency}}</td>
+                    <td>{{item?.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ng-template #spinner>
+    <div class="text-center">No data</div>
+</ng-template>

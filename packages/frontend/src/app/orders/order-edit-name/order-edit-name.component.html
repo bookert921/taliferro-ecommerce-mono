@@ -1,0 +1,50 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data">
+    <div class="containter-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Name</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input [(ngModel)]="data.cart.firstName" type="text" name="firstName" id="firstName" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="middle_name">Middle Name</label>
+                            <input [(ngModel)]="data.cart.middle_name" type="text" name="middle_name" id="middle_name" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input [(ngModel)]="data.cart.lastName" type="text" name="lastName" id="lastName" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="companyName">Company</label>
+                            <input [(ngModel)]="data.cart.companyName" type="text" name="companyName" id="companyName" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                            [disabled]="!dataForm.form.valid">Submit</button>                        <button type="button" value="Cancel" class="btn btn-secondary ms-2" (click)="onCancel()">Cancel</button>    
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

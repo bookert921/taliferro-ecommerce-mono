@@ -1,0 +1,29 @@
+<div class="card" *ngIf="(dataService.items) else nodata">
+    <div class="card-body">
+        <div class="card-header d-flex justify-content-between">
+            <span>Product Types</span>
+            <span style="cursor: pointer;" class="text-primary" (click)="onNew()">Create</span>
+        </div>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="wow fadeInUp">#</th>
+                        <th class="wow fadeInUp">Value</th>
+                        <th class="wow fadeInUp"><i class="fa fa-trash" aria-hidden="true"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of dataService.items | async | nameSort; let i = index" class="wow fadeInUp">
+                        <td (click)="onEdit(data)" style="cursor: pointer;">{{data?._id}}</td>
+                        <td (click)="onEdit(data)" style="cursor: pointer;" class="text-capitalize">{{data?.name}}</td>
+                        <td (click)="onDelete(data)" style="cursor: pointer;" class="text-danger"><i class="fa fa-trash" aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ng-template #nodata>
+    <div class="alert alert-light text-center" role="alert"> No data found. </div>
+</ng-template>

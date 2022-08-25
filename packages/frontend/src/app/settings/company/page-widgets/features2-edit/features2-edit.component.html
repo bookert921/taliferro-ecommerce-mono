@@ -1,0 +1,225 @@
+<form #dataForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="data && data.features2">
+    <div class="containter-fluid wow fadeInLeft">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-capitalize">Features (2)</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="headerText">Heading</label>
+                            <input [(ngModel)]="data.features2.headerText" type="text" name="headerText" id="headerText" class="form-control form-control-lg" required autofocus>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="descriptionText">Description</label>
+                            <textarea [(ngModel)]="data.features2.descriptionText" type="text" name="descriptionText" id="descriptionText" class="form-control form-control-lg" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureHeading1">Feature Heading 1 Text</label>
+                            <input [(ngModel)]="data.features2.featureHeading1" type="text" name="featureHeading1" id="featureHeading1" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureDescription1">Feature Block 1 Description</label>
+                            <textarea [(ngModel)]="data.features2.featureDescription1" type="text" name="featureDescription1" id="featureDescription1" class="form-control form-control-lg"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureIcon1">Icon 1</label>
+                            <select name="featureIcon1" id="featureIcon1" [(ngModel)]="data.features2.featureIcon1" class="form-select form-select-lg mb-3">
+                                <option value="" selected>Choose Icon</option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureHeading2">Feature Block 1 Text</label>
+                            <input [(ngModel)]="data.features2.featureHeading2" type="text" name="featureHeading2" id="featureHeading2" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureDescription2">Feature Block 1 Description</label>
+                            <textarea [(ngModel)]="data.features2.featureDescription2" type="text" name="featureDescription2" id="featureDescription2" class="form-control form-control-lg">
+
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureIcon2">Icon 2</label>
+                            <select name="featureIcon2" id="featureIcon2" [(ngModel)]="data.features2.featureIcon2" class="form-select form-select-lg mb-3">
+                                <option value="" selected>Choose Icon</option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureHeading3">Feature Block 3 Text</label>
+                            <input [(ngModel)]="data.features2.featureHeading3" type="text" name="featureHeading3" id="featureHeading3" class="form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureDescription3">Feature Block 1 Description</label>
+                            <textarea [(ngModel)]="data.features2.featureDescription3" type="text" name="featureDescription3" id="featureDescription3" class="form-control form-control-lg"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="featureIcon3">Icon 3</label>
+                            <select name="featureIcon3" id="featureIcon3" [(ngModel)]="data.features2.featureIcon3" class="form-select form-select-lg mb-3">
+                                <option value="" selected>Choose Icon</option>
+                                <option value="fa fa-ambulance">Ambulance</option>
+                                <option value="fa fa-archive">Box</option>
+                                <option value="fa fa-bar-chart">Bar Chart</option>
+                                <option value="fa fa-bell-o">Bell</option>
+                                <option value="fa fa-building-o">Building</option>
+                                <option value="fa fa-calendar-o">Calendar</option>
+                                <option value="fa fa-circle-thin">Circle</option>
+                                <option value="fa fa-cloud">Cloud</option>
+                                <option value="fa fa-coffee">Coffee</option>
+                                <option value="fa fa-desktop">Desktop</option>
+                                <option value="fa fa-user-md">Doctor</option>
+                                <option value="fa fa-exchange">Exchange</option>
+                                <option value="fa fa-file-text-o">File</option>
+                                <option value="fa fa-flask">Flask</option>
+                                <option value="fa fa-folder-o">Folder</option>
+                                <option value="fa fa-h-square">H Square</option>
+                                <option value="fa fa-heart">Heart</option>
+                                <option value="fa fa-heartbeat">Heartbeat</option>
+                                <option value="fa fa-hospital-o">Hospital</option>
+                                <option value="fa fa-id-card-o">ID Card</option>
+                                <option value="fa fa-info">Info</option>
+                                <option value="fa fa-laptop">Laptop</option>
+                                <option value="fa fa-leaf">Leaf</option>
+                                <option value="fa fa-line-chart">Line Chart</option>
+                                <option value="fa fa-map-o">Map</option>
+                                <option value="fa fa-medkit">Medical Kit</option>
+                                <option value="fa fa-sticky-note-o">Note</option>
+                                <option value="fa fa-phone-square">Phone</option>
+                                <option value="fa fa-puzzle-piece">Puzzle Piece</option>
+                                <option value="fa fa-question-circle-o">Question Mark</option>
+                                <option value="fa fa-shield">Shield</option>
+                                <option value="fa fa-square-o">Square</option>
+                                <option value="fa fa-star-o">Star</option>
+                                <option value="fa fa-stethoscope">Stethoscope</option>
+                                <option value="fa fa-user-circle">User</option>
+                                <option value="fa fa-users">Users</option>
+                                <option value="fa fa-wheelchair">Wheel Chair</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
+                            [disabled]="!dataForm.form.valid">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

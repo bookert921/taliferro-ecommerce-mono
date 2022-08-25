@@ -1,0 +1,19 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md text-start"><span *ngIf="!isEditMode" (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left  fa-2x text-muted"></i></span> <a  *ngIf="isEditMode" (click)="list()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-1x"></i></a></div>
+        <div class="col-md text-center">
+            <h1 [ngStyle]="{'color': colorService.darkBackground}">Active Shopping Carts</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row"  *ngIf="!isEditMode">
+        <div class="col">
+            <app-cart-list  (id)="onView($event)"></app-cart-list>
+        </div>
+    </div>
+    <div class="row" *ngIf="isEditMode">
+        <div class="col">
+            <app-cart-view [data]="data"></app-cart-view>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="loader" *ngIf="!errorMessage else finished">
+  <div class="loader-inner">
+    <div class="spinner multicolor">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #finished>
+  <div class="text-center">
+    <div id="page" class="site">
+      <!-- Start Header -->
+      <header id="masthead" class="site-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg" style="background-color: white;">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="https://www.taliferro.com">
+              <img src="https://www.taliferro.com/assets/images/taliferro-group-logo.png" alt="" width="48" height="48" class="d-inline-block align-text-top"> Taliferro Group </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.taliferro.com/#products">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.taliferro.com/#services">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.taliferro.com/#about">About</a>
+                </li>
+              </ul>
+              <span class="navbar-text"> 425.305.3748 </span>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navigation -->
+      </header>
+      <ng-template #finished>
+        <div class="ta-vertical-center">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <section class="container-server-errors">
+                  <div class="server-errors pages-card">
+                    <div class="row">
+                      <div class="col">
+                        <div>{{errorMessage}}</div>
+                        <div class="status-error text-theme hertbit"><i class="fa fa-exclamation" aria-hidden="true"></i></div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <div class="half-circle"></div>
+    <div class="small-circle"></div>
+    <div class="half-circle-bottom"></div>
+    <div class="small-circle-bottom"></div>
+  </div>
+</ng-template>

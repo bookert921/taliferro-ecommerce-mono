@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "taliferro-e-commerce",
+    "public": "dist/e-commerce-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

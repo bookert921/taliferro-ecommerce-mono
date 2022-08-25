@@ -1,0 +1,44 @@
+<div class="card"
+     *ngIf="(data && data.subType) else nodata">
+    <div class="card-body">
+        <div class="card-header d-flex justify-content-between">
+            <span>Sub Cateogry Pricing</span>
+            <span style="cursor: pointer;"
+                  class="text-primary"
+                  (click)="onNew()">Create</span>
+        </div>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="wow fadeInUp">Options</th>
+                        <th class="wow fadeInUp">Price</th>
+                        <th class="wow fadeInUp"><i class="fa fa-trash"
+                               aria-hidden="true"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data.subCategory; let i = index"
+                        class="wow fadeInUp">
+                        <td class="text-capitalize"
+                            (click)="onEdit(item)"
+                            style="cursor: pointer;">
+                            <div *ngFor="let a of item.values">
+                                {{a.name}} - {{a.checked}}
+                            </div>
+                        </td>
+                        <td class="text-capitalize">{{item?.price | currency}}</td>
+                        <td (click)="onDelete(i)"
+                            style="cursor: pointer;"
+                            class="text-danger"><i class="fa fa-trash"
+                               aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<ng-template #nodata>
+    <div class="alert alert-light text-center"
+         role="alert"> No data found. </div>
+</ng-template>

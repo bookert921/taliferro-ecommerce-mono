@@ -1,0 +1,16 @@
+<section id="video---1" class="section video" [ngClass]="{'color-block': (settingsService.settings && settingsService.settings.colorBlock)}" *ngIf="data && data.video2">
+  <div class="container wow fadeInUp">
+    <h2 class="section__title mb-2" [ngStyle]="{'color': colorService.secondaryColor}">{{data?.video2?.headerText}}</h2>
+    <div class="row" [ngClass]="{'home2': !(settingsService.settings && settingsService.settings.colorBlock)}">
+      <div class="block-des" *ngIf="data?.video2?.descriptionText" innerHTML="{{data?.video2?.descriptionText}}">
+      </div>
+      <div class="col-md-12 video-block" *ngIf="data.video2 && data.video2.videoURL">
+        <a class="popup-video" href="{{data?.video2?.videoURL}}" target="_blank">
+          <span class="overlay"></span>
+          <img class="preview" src="{{data?.video2?.imageURL[0]?.url}}" alt="video">
+          <i class="fa fa-play play-button" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
