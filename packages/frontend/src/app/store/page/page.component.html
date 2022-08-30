@@ -2,29 +2,30 @@
   <app-header [isHome]="true" [isSpecialHome]="false" [isSignIn]="false" [company]="data" [color]="color"></app-header>
   <app-marketing-carousel *ngIf="homeSection && colorBlock" [data]="data" [background]="background"></app-marketing-carousel>
   <app-home-section *ngIf="homeSection && !colorBlock" [data]="data" [imageIndex]="imageIndex" [background]="background"></app-home-section>
+  <app-marketing-video1 [data]="data" *ngIf="video1" [background]="color"></app-marketing-video1>
+  <app-marketing-video2 [data]="data" *ngIf="video2" [background]="color"></app-marketing-video2>
   <app-marketing-about-product1 *ngIf="aboutProduct1" [data]="data" [background]="color"></app-marketing-about-product1>
   <app-marketing-about-product2 *ngIf="aboutProduct2" [data]="data" [background]="color"></app-marketing-about-product2>
   <app-marketing-about-product3 *ngIf="aboutProduct3" [data]="data" [background]="color"></app-marketing-about-product3>
+  <app-how-to [data]="data" *ngIf="howTo" [background]="color"></app-how-to>
   <app-marketing-features1 *ngIf="features1" [data]="data" [background]="color"></app-marketing-features1>
   <app-marketing-features2 *ngIf="features2" [data]="data" [background]="color"></app-marketing-features2>
   <app-marketing-features3 *ngIf="features3" [data]="data" [background]="color"></app-marketing-features3>
-  <app-how-to [data]="data" *ngIf="howTo" [background]="color"></app-how-to>
-  <app-marketing-video1 [data]="data" *ngIf="video1" [background]="color"></app-marketing-video1>
+  <app-marketing-faq1 *ngIf="faq1" [data]="data" [background]="color"></app-marketing-faq1>
+  <app-marketing-faq2 *ngIf="faq2" [data]="data" [background]="color"></app-marketing-faq2>
+  <app-marketing-faq3 *ngIf="faq3" [data]="data" [background]="color"></app-marketing-faq3>
   <app-catalog *ngIf="catalogSection && !text_only_catalog" [data]="data" [background]="background" (itemAdded)="totalUp()"></app-catalog>
   <app-shopping-cart *ngIf="checkOutSection" [data]="data" [background]="background" [text_only_catalog]="text_only_catalog" (itemRemoved)="itemRemoved()"></app-shopping-cart>
   <app-check-out *ngIf="checkOutSection && (siteType === 'simple')" [companyData]="data"></app-check-out>
   <app-about *ngIf="aboutSection" [data]="data"></app-about>
-  <app-marketing-video2 [data]="data" *ngIf="video2" [background]="color"></app-marketing-video2>
-  <app-marketing-faq1 *ngIf="faq1" [data]="data" [background]="color"></app-marketing-faq1>
-  <app-marketing-faq2 *ngIf="faq2" [data]="data" [background]="color"></app-marketing-faq2>
-  <app-marketing-faq3 *ngIf="faq3" [data]="data" [background]="color"></app-marketing-faq3>
   <footer id="colophon" class="container-fluid site-footer mt-auto" style="background-color: black;">
     <div class="container footer-container site-top-footer">
       <div class="row">
         <div class="col-md-12 col-sm-12 bottom-footer">
           <div class="col-md-12 col-sm-12 copy-text">
             <p class="text-center">© Copyright Taliferro. Taliferro ® Is Registered In The U.S. Patent And Trademark Office. 425.305.3748. | <a href="http://www.taliferro.com/privacy-policy"
-                style="color:aliceblue">Privacy Policy</a> | <a href="http://www.taliferro.com/terms-of-service" style="color:aliceblue">Terms of Service</a> | <a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i></a></p>
+                style="color:aliceblue">Privacy Policy</a> | <a href="http://www.taliferro.com/terms-of-service" style="color:aliceblue">Terms of Service</a> | <a routerLink="/"><i
+                  class="fa fa-home fa-2x" aria-hidden="true"></i></a></p>
           </div>
         </div>
       </div>

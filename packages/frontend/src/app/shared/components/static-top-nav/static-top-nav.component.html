@@ -11,17 +11,19 @@
                     <li class="nav-item" *ngIf="isCatalog">
                         <a class="nav-link" style="color:#737373" (click)="jump('catalog')">{{data?.catalogLinkText}}</a>
                     </li>
-                    <li class="nav-item"  *ngIf="isAbout">
+                    <li class="nav-item" *ngIf="isAbout">
                         <a *ngIf="data?.aboutSection" class="nav-link" style="color:#737373" (click)="jump('about')">{{data?.aboutLinkText}}</a>
                     </li>
                     <li class="nav-item">
                         <a *ngIf="authService.firebaseUser && (settingService.settings._id === userService.user?.companyId)" class="nav-link" style="color:#737373" (click)="admin()">Admin</a>
                     </li>
+                    <li class="nav-item">
+                        <a style="color:#737373" *ngIf="!authService.firebaseUser" class="text-dark wow slideInRight" (click)="signIn()">Sign In</a>
+                        <a style="color:#737373" *ngIf="authService.firebaseUser" class="text-dark wow slideInRight" (click)="signOut()">Sign Out</a>
+                    </li>
                 </ul>
                 <span class="navbar-text">
-                    <a *ngIf="!authService.firebaseUser" class="text-dark wow slideInRight" (click)="signIn()">Sign In</a>
-                    <a *ngIf="authService.firebaseUser" class="text-dark wow slideInRight" (click)="signOut()">Sign Out</a>
-                    <span *ngIf="data && data.phone">{{data.phone}}</span>&nbsp;&nbsp;&nbsp; <a  *ngIf="isCartIcon" (click)="jump('cart')" [ngStyle]="{'color': color}">
+                    <span *ngIf="data && data.phone">{{data.phone}}</span>&nbsp;&nbsp;&nbsp; <a *ngIf="isCartIcon" (click)="jump('cart')" [ngStyle]="{'color': color}">
                         <i class="fa fa-shopping-cart fa-2x  wow slideInRight" aria-hidden="true"></i>
                     </a>
                 </span>

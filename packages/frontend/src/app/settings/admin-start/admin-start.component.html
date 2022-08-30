@@ -2,7 +2,7 @@
     <div class="mt-4">
         <div class="row">
             <div class="col">
-                <span routerLink="/shop/store/{{userService.user?.companyId}}" style="cursor: pointer;" *ngIf="userService.user && userService.user.companyId">
+                <span routerLink="/shop/{{userService.user?.companyId}}" style="cursor: pointer;" *ngIf="userService.user && userService.user.companyId">
                     <i class="fa fa-chevron-left  fa-2x text-muted"></i>
                 </span>
             </div>
@@ -15,7 +15,89 @@
         </div>
         <div class="row">
             <div class="col">
-                <app-dashboard></app-dashboard>
+                <div class="row mt-3 mb-3">
+                    <div class="col-md-12 mt-3 mb-3">
+                        <div class="card">
+                            <div class="products-widget">
+                                <div class="card-header pb-3">
+                                    <div class="heading">Recent Activity <div class="pull-right header-tool">
+                                            <a [ngClass]="{'active' : (currentDataDisplay === '')}" (click)="showCurrentData()" style="cursor: pointer;">Today</a> &nbsp; | &nbsp; <a
+                                                [ngClass]="{'active' : (pastDataDisplay === '')}" (click)="showPastData()" style="cursor: pointer;">Yesterday</a> &nbsp; | &nbsp; <input
+                                                [(ngModel)]="queryDate" name="queryDate" id="queryDate" type="date" class="form-control-sm" (change)="ordersByDate()">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive" [ngStyle]="{'display' : currentDataDisplay}">
+                                    <div class="text-center mt-2" *ngIf="!data1 || (data1 && data1.length &&  data1.length === 0)"> Nothing to report today. </div>
+                                    <table class="table table-hover" id="sixteenStatWidget12-1">
+                                        <tr *ngFor="let item of data1; let i = index">
+                                            <td> {{item._id}} </td>
+                                            <td class="text-capitalize"> {{item?.contact?.firstName | sentence}} {{item?.contact?.lastName | sentence}} </td>
+                                            <td> {{item?.contact?.email}} </td>
+                                            <td>{{item.lastUpdated | date : 'short'}}</td>
+                                            <td>
+                                                <span *ngIf="item.status" class="badge badge-boxed"
+                                                    [ngClass]="{'badge-dark' : (item.status == '10'), 'badge-primary' : (item.status == '2'), 'badge-light' : (item.status == '0'), 'badge-success' : ((item.status == '22') || (item.status == '999')), 'badge-warning' : ((item.status == '14') || (item.status == '1')), 'badge-info' : (item.status == '11'), 'badge-danger' : ((item.status == '9') || (item.status == '900'))}">{{item.status
+                                                    | status}}</span>
+                                            </td>
+                                            <td class="action">
+                                                <button class="btn btn-primary btn-sm" (click)="showMoreDetails(item)">
+                                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="table-responsive" [ngStyle]="{'display' : pastDataDisplay}">
+                                    <div class="text-center mt-2" *ngIf="(data2 && data2.length == 0)"> Nothing to report yesterday. </div>
+                                    <table class="table table-hover" id="sixteenStatWidget12-2">
+                                        <tr *ngFor="let item of data2; let x = index">
+                                            <td> {{item['kit_label']}} </td>
+                                            <td class="text-capitalize"> {{item['patient-fname'] | sentence}} {{item['patient-lname'] | sentence}} </td>
+                                            <td>
+                                                <div *ngIf="item.notch_name">{{item.notch_name}}</div>
+                                            </td>
+                                            <td>{{item['date-received'] | date : 'short'}}</td>
+                                            <td>
+                                                <span class="badge badge-boxed"
+                                                    [ngClass]="{'badge-dark' : (item['status'] == '10'), 'badge-primary' : (item['status'] == '2'), 'badge-light' : (item['status'] == '0'), 'badge-success' : ((item['status'] == '22') || (item['status'] == '999')), 'badge-warning' : ((item['status'] == '14') || (item['status'] == '1')), 'badge-info' : (item['status'] == '11'), 'badge-danger' : (item['status'] == '9')}">{{item.status
+                                                    | status}}</span>
+                                            </td>
+                                            <td class="action">
+                                                <button class="btn btn-primary btn-sm" (click)="showMoreDetails(item)">
+                                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="table-responsive" [ngStyle]="{'display' : queryDateDisplay}">
+                                    <div class="text-center mt-2" *ngIf="(data3 && data3.length == 0)"> Nothing to report on this date {{queryDate}}. </div>
+                                    <table class="table table-hover" id="sixteenStatWidget12-3">
+                                        <tr *ngFor="let item of data3; let x = index">
+                                            <td> {{item['kit_label']}} </td>
+                                            <td class="text-capitalize"> {{item['patient-fname'] | sentence}} {{item['patient-lname'] | sentence}} </td>
+                                            <td>
+                                                <div *ngIf="item.notch_name">{{item.notch_name}}</div>
+                                            </td>
+                                            <td>{{item['date-received'] | date : 'short'}}</td>
+                                            <td>
+                                                <span class="badge badge-boxed"
+                                                    [ngClass]="{'badge-dark' : (item['status'] == '10'), 'badge-primary' : (item['status'] == '2'), 'badge-light' : (item['status'] == '0'), 'badge-success' : ((item['status'] == '22') || (item['status'] == '999')), 'badge-warning' : ((item['status'] == '14') || (item['status'] == '1')), 'badge-info' : (item['status'] == '11'), 'badge-danger' : (item['status'] == '9')}">{{item.status
+                                                    | status}}</span>
+                                            </td>
+                                            <td class="action">
+                                                <button class="btn btn-primary btn-sm" (click)="showMoreDetails(item)">
+                                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row mb-3">
@@ -40,8 +122,8 @@
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft" *ngIf="userService.user && userService.user.companyId">
                         <span class="text-dark p-2"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Store URL</span>
-                        <span class="text-primary text-opacity-25"> <a href="{{environment.localURL}}/shop/store/{{userService.user?.companyId}}">
-                                {{environment.localURL}}/shop/store/{{userService.user?.companyId}}</a></span>
+                        <span class="text-primary text-opacity-25"> <a href="{{environment.localURL}}/shop/{{userService.user?.companyId}}">
+                                {{environment.localURL}}/shop/{{userService.user?.companyId}}</a></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
                         <a class="text-dark p-2" routerLink="/admin/settings"> <i class="fa fa-hand-o-right" aria-hidden="true" title="Start here setting up your store"></i> Settings</a>
@@ -63,14 +145,14 @@
                         <a class="text-dark p-2" routerLink="/orders"><i class="fa fa-money" aria-hidden="true"></i> Orders</a>
                         <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/orders"><i class="fa fa-chevron-right fa-1x"></i></a>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
                         <a class="text-dark p-2" routerLink="/carts/pending"><i class="fa fa-money" aria-hidden="true"></i> Pending</a>
                         <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/carts/pending"><i class="fa fa-chevron-right fa-1x"></i></a>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
+                    </li> -->
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
                         <a class="text-dark p-2" routerLink="/orders/requisitions"><i class="fa fa-calendar" aria-hidden="true"></i> Requisitions</a>
                         <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/orders/requisitions"><i class="fa fa-chevron-right fa-1x"></i></a>
-                    </li>
+                    </li> -->
                     <li class="list-group-item d-flex justify-content-between align-items-center wow slideInLeft">
                         <a class="text-dark p-2" routerLink="/carts"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Active Shopping Carts</a>
                         <a class="text-secondary text-opacity-25" style="cursor: pointer;" routerLink="/carts"><i class="fa fa-chevron-right fa-1x"></i></a>

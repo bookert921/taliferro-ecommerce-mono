@@ -45,8 +45,9 @@
 								</ul>
 								<ng-template #userAndSignedIn>
 									<ul class="header-nav-buttons" *ngIf="settingService.settings else noSettings">
-										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/shop/store"
-											class="button button-white" title="Slore">Your Store</a></li>
+										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/shop/{{settingService.settings._id}}" class="button button-white"
+												title="Slore">Your Store</a>
+										</li>
 										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/admin" class="button button-white-border"
 												title="Slore">Administration</a></li>
 									</ul>
@@ -54,7 +55,6 @@
 										<ul class="header-nav-buttons">
 											<li><a routerLink="/identity/bye" class="button button-white" title="Sign In">Sign Out</a></li>
 										</ul>
-	
 									</ng-template>
 								</ng-template>
 							</ng-template>
@@ -118,6 +118,58 @@
 				</section>
 				<!-- End Features 5 -->
 				<!-- Start About Block 2 -->
+				<section id="about---5" class="container-fluid section-block about-5 color-block">
+					<div class="container">
+						<div class="row">
+							<!-- Text block -->
+							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
+								<h2 class="wow lightSpeedInLeft">MULTIPLE INDUSTRY SUPPORT </h2>
+								<p class="wow lightSpeedInRight">From a simple startup to a complex enterprise operation. You can determine the amount of complexity or simplicity you want. Choose
+									either simple selling or price dependent selling. Set the look and feel specific to your business. Find information fast. Our search is robust and quick. Never say
+									again you can't find a piece of information.</p>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col text-center">
+											<a routerLink="/shop/31e2rvCZiYgxf7lEXxX0" class="wow fadeInUp" title="Food and Beverage e-Commerce"><img class="img-thumbnail img-fluid"
+													src="assets/images/store1.png" alt="Food and Beverage e-Commerce"><br>Food</a>
+										</div>
+										<div class="col text-center">
+											<a routerLink="/shop/0TZu74MdTKAjiCJnAzXo" class="wow fadeInUp" title="Clothing Website"><img class="img-thumbnail img-fluid" src="assets/images/store2.png"
+													alt="Clothing Website"><br>Clothing</a>
+										</div>
+										<div class="col text-center">
+											<a routerLink="/shop/q3oLK77KwdQdLk7wpbVn" class="wow fadeInUp" title="Dental Website"><img class="img-thumbnail img-fluid"
+													src="assets/images/dental-website.png" alt="Dental Website"><br>Dental</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Image block -->
+							<div class="col-md-6 col-sm-7 col-xs-12">
+								<div class="about-image-block">
+									<div class="about-image wow fadeInUp">
+										<img src="/assets/images/overview1.png" alt="e-commerce platform for small business">
+										<div class="ui">
+											<img src="/assets/images/overview2.png" data-aos="fade-up" alt="e-commerce platform for enterprises">
+										</div>
+									</div> <!-- .about-image -->
+								</div> <!-- .about-features -->
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<section id="download---2" class="container-fluid section-block download-2 download-parallax">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 download-center-text">
+								<h2 class="wow fadeIn">TRY IT OUT</h2>
+								<p class="wow fadeInUp">Contact us to arrange a product demonstration. The best move you'll ever make.</p>
+								<a href="tel:425.305.3748" class="button button-full wow fadeIn">Request a Demo</a>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
 				<section id="about---2" class="container-fluid section-block about-2">
 					<div class="container">
 						<div class="row">
@@ -147,9 +199,8 @@
 							</div>
 							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
 								<h2 class="wow fadeInUp">SOMETIME SIMPLICITY IS A GOOD THING</h2>
-								<p class="wow fadeInUp">You won't find a simpler e-commerce platform. We have used and developed many e-commerce platforms, but there was always lingering in the back of our minds, is there
-									an easier way. Well, hear is our attempt at balance and features.</p>
-								<a routerLink="/shop/store/31e2rvCZiYgxf7lEXxX0" class="button button-full wow fadeInUp" title="button">Preview</a>
+								<p class="wow fadeInUp">You won't find a simpler e-commerce platform. We have used and developed many e-commerce platforms, but there was always lingering in the back
+									of our minds, is there an easier way. Well, hear is our attempt at balance and features.</p>
 							</div>
 						</div> <!-- .row -->
 					</div> <!-- .container -->
@@ -181,46 +232,6 @@
 					</div>
 				</section>
 				<!-- Start Download 2 -->
-				<section id="download---2" class="container-fluid section-block download-2 download-parallax">
-					<div class="overlay"></div>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-8 download-center-text">
-								<h2 class="wow fadeIn">TRY IT OUT</h2>
-								<p class="wow fadeInUp">Contact us to arrange a product demonstration. The best move you'll ever make.</p>
-								<a href="tel:425.305.3748" class="button button-full wow fadeIn">Request a Demo</a>
-							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
-				</section>
-				<!-- End Download 2 -->
-				<!-- Start About Block 5 -->
-				<section id="about---5" class="container-fluid section-block about-5 color-block">
-					<div class="container">
-						<div class="row">
-							<!-- Text block -->
-							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
-								<h2 class="wow lightSpeedInLeft">MULTIPLE INDUSTRY SUPPORT <span class="badge badge-primary">Beta</span></h2>
-								<p class="wow lightSpeedInRight">From a simple startup to a complex enterprise operation. You can determine the amount of complexity or simplicity you want. Choose either simple selling or price
-									dependent selling. Set the look and feel specific to your business. Find information fast. Our search is robust and quick. Never say again you can't find a piece of
-									information.</p>
-							</div>
-							<!-- Image block -->
-							<div class="col-md-6 col-sm-7 col-xs-12">
-								<div class="about-image-block">
-									<div class="about-image wow fadeInUp">
-										<img src="/assets/images/overview1.png" alt="e-commerce platform for small business">
-										<div class="ui">
-											<img src="/assets/images/overview2.png" data-aos="fade-up" alt="e-commerce platform for enterprises">
-										</div>
-									</div> <!-- .about-image -->
-								</div> <!-- .about-features -->
-							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
-				</section>
-				<!-- End About Block 5 -->
-				<!-- Start Integration -->
 				<section id="integration---1" class="container-fluid section-block integration">
 					<div class="container">
 						<div class="row">
@@ -230,7 +241,7 @@
 									dissolve barriers to communication, reveal opportunities for revenue growth, and help remove expenses.</p>
 							</div>
 							<!-- Block 1 -->
-							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+							<div class="col-lg-6 col-md-6 col-sm-6 integration-block">
 								<div class="border-box wow fadeInUp">
 									<div class="integration-img">
 										<i class="fa fa-apple" aria-hidden="true"></i>
@@ -242,7 +253,7 @@
 								</div>
 							</div> <!-- .integration-block -->
 							<!-- Block 2 -->
-							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+							<div class="col-lg-6 col-md-6 col-sm-6 integration-block">
 								<div class="border-box wow fadeInUp">
 									<div class="integration-img">
 										<i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -254,7 +265,7 @@
 								</div>
 							</div> <!-- .integration-block -->
 							<!-- Block 3 -->
-							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+							<div class="col-lg-6 col-md-6 col-sm-6 integration-block">
 								<div class="border-box wow fadeInUp">
 									<div class="integration-img">
 										<i class="fa fa-cc-stripe" aria-hidden="true"></i>
@@ -266,7 +277,7 @@
 								</div>
 							</div> <!-- .integration-block -->
 							<!-- Block 4 -->
-							<div class="col-lg-3 col-md-6 col-sm-6 integration-block">
+							<div class="col-lg-6 col-md-6 col-sm-6 integration-block">
 								<div class="border-box wow fadeInUp">
 									<div class="integration-img">
 										<i class="fa fa-facebook-official" aria-hidden="true"></i>

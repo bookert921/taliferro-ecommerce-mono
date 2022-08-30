@@ -28,7 +28,6 @@
   <div class="card pages-card col-lg-6 col-md-6 col-sm-6">
     <div class="card-body ">
       <div class="text-center"><a routerLink="/" title="Return Home"> <img src="/assets/images/taliferro-group-logo-small.png" alt="Taliferro Group"> </a>
-        
       </div>
       <div class="h4 text-center text-theme wow fadeIn" *ngIf="isUserSite"><strong>{{settingService?.settings?.name}}</strong></div>
       <div class="h4 text-center text-theme wow fadeIn" *ngIf="!isUserSite"><strong>Hi!</strong></div>
@@ -44,7 +43,7 @@
         <small>
           <a *ngIf="!authService.firebaseUser" href="https://passwordless.taliferro.com/sign-up" class="btn  btn-theme text-white text-center">Sign Up</a>
           <a *ngIf="!authService.firebaseUser && !settingService.settings" routerLink="/identity" class="btn  btn-theme text-white text-center">Sign In</a>
-          <a *ngIf="authService.firebaseUser && settingService.settings" routerLink="/shop/store/{{settingService.settings._id}}" class="btn  btn-theme text-white text-center">Sign In</a>
+          <a *ngIf="authService.firebaseUser && settingService.settings" routerLink="/shop/{{settingService.settings._id}}" class="btn  btn-theme text-white text-center">Sign In</a>
           <a *ngIf="authService.firebaseUser && !settingService.settings" routerLink="/my" class="btn  btn-theme text-white text-center">Dashboard</a>
         </small>
       </div>

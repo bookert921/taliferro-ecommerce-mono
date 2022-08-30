@@ -5,7 +5,6 @@ import { NotFoundComponent } from './home/not-found/not-found.component';
 import { ThankYouComponent } from './home/thank-you/thank-you.component';
 import { OverviewComponent } from './about/overview/overview.component';
 import { AuthGuard } from './shared/services/auth.guard';
-import { StoreViewResolverService } from './shared/services/store-view-resolver.service';
 
 const routes: Routes = [
   { path: '', component: OverviewComponent, data: { title: 'Overview' } },
@@ -26,6 +25,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [StoreViewResolverService]
+  providers: []
 })
 export class AppRoutingModule { }

@@ -15,7 +15,7 @@ export class LoggedInComponent implements OnInit {
 
   public environment = environment;
 
-  constructor(private _router: Router, public authService:AuthService, public settingService: SettingService, public userService: UserService) { 
+  constructor(private _router: Router, public authService: AuthService, public settingService: SettingService, public userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class LoggedInComponent implements OnInit {
   }
 
   onStoreEvent(store: any): void {
-    this._router.navigate(['shop', 'store', store._id ])
+    this._router.navigate(['shop', store._id])
   }
 
 }

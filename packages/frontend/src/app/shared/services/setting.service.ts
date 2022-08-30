@@ -36,13 +36,13 @@ export class SettingService implements OnDestroy {
 
   getAll() {
     try {
-      if (!environment.production) 
+      if (!environment.production)
         console.log("Getting all ", this._collectionName);
-        
+
       this._itemDocs = this._firestore.collection(this._collectionName);
       this.items = this._itemDocs.valueChanges({ idField: '_id' });
-      } catch (error) {
-        console.error("Error On", this._collectionName);
+    } catch (error) {
+      console.error("Error On", this._collectionName);
     }
 
   }
@@ -55,8 +55,11 @@ export class SettingService implements OnDestroy {
       this.setSettings(this._userService.user.companyId);
   }
 
-  retrieveSettings(id: string): void {
-    this.setSettings(id);
+  retrieveSettings(id: any): void {
+    if (id)
+      this.setSettings(id);
+    else
+      console.error("INVALID STORE PASSED");
   }
 
   private setSettings(id: string): void {
@@ -65,7 +68,7 @@ export class SettingService implements OnDestroy {
   }
 
   private findDefault() {
-    if(!environment.production)
+    if (!environment.production)
       console.info("getAll", this._collectionName);
 
     this._itemDocs = this._firestore.collection(this._collectionName);
@@ -85,8 +88,8 @@ export class SettingService implements OnDestroy {
       data.uid = this._authService.firebaseUser.uid;
       data.updatedBy = (this._authService.firebaseUser.email) ? this._authService.firebaseUser.email : '';
     }
-    
-    const id = this._firestore.createId();    
+
+    const id = this._firestore.createId();
     this._firestore.collection(this._collectionName).doc(id).set(data);
     return id;
   }

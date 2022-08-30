@@ -14,7 +14,7 @@ import { SubCategoryService } from 'src/app/shared/services/sub-category.service
 import { ProductService } from 'src/app/shared/services/product.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SettingService } from 'src/app/shared/services/setting.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page',
@@ -84,17 +84,22 @@ export class PageComponent implements OnInit, OnDestroy {
     protected _productTypeService: ProductTypeService,
     protected _settingService: SettingService,
     private _router: Router,
+    private _activatedRoute: ActivatedRoute,
     public authService: AuthService) {
-      if (!environment.production)
+    if (!environment.production)
       console.log("PageComponent");
   }
 
   ngOnInit(): void {
-    // this.listenForUser();
-    this.checkSettings();
-
-    if (!environment.production)
-      console.log("PageComponent - Settings", this._settingService.settings);
+    this._activatedRoute.data.subscribe((response: any) => {
+      response.setting.subscribe((data: any) => {
+        console.log("RESPONSE2", data);
+        this._settingService.settings = data;
+        this.data = data;
+        this.populate();
+        this.checkIfUserSite();
+      })
+    })
   }
 
   ngOnDestroy(): void {
@@ -108,59 +113,6 @@ export class PageComponent implements OnInit, OnDestroy {
       this._productSubscription.unsubscribe();
     if (this._userSubscription)
       this._userSubscription.unsubscribe();
-  }
-
-  private listenForUser(): void {
-    this._userSubscription = this.userService.userSubject.subscribe((user) => {
-      if (!environment.production)
-        console.log("PageComponent - We have user from firebase", user);
-
-      if (!this._settingService.settings && user.companyId)  {
-        this._settingService.retrieveSettings(user.companyId);  
-        this._settingService.item?.subscribe((setting) => {
-          if (setting.hasOwnProperty('companyName')) {
-            this._settingService.settings = setting;
-            this.data = setting;
-            this.checkSettings();
-          }
-
-        })
-      } 
-
-    });
-  }
-
-  private checkSettings(): void {
-    if (this._settingService.settings && this._settingService.settings.hasOwnProperty('companyName')) {
-      if (!environment.production)
-        console.log("PageComponent- checkSettings: Settings are Valid", this._settingService.settings);
-
-      this.data = this._settingService.settings;
-      this.populate();
-      this.checkIfUserSite();
-    } else {
-      if (!environment.production)
-        console.log("PageComponent - checkSettings: Settings are INVALID");
-
-
-      this.checkPageTypeForValidSetting();
-    }
-  }
-
-  private checkPageTypeForValidSetting(): void {
-    if (this.authService.firebaseUser) {
-      // Page display is for administrator
-      if (!environment.production)
-        console.log("Firebase User", this.authService.firebaseUser);
-      this._router.navigate(['setup-required'])
-
-    } else {
-      // Page is for user
-      if (!environment.production)
-        console.log("Regular User");
-
-      this._router.navigate(['shop', 'store-under-construction']);  
-    }
   }
 
   private populate(): void {

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,7 @@ import { Chart } from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
 
-  @Input() headingText = "Customize Me - Contact Support";
+  @Input() headingText = "Sales";
   @Input() option1 = "1 Month";
   @Input() option2 = "3 Month";
   @Input() option3 = "6 Month";
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit {
   @Input() data: StatsPeriodData = {
     "period1": {
       "total": Math.floor(Math.random() * 1000),
-      "subHeading": "Sales",
+      "subHeading": "1 month total",
       "chartData": [
         Math.floor(Math.random() * 1000),
         Math.floor(Math.random() * 1000),
@@ -102,7 +103,7 @@ export class DashboardComponent implements OnInit {
     },
     "period2": {
       "total": Math.floor(Math.random() * 1000),
-      "subHeading": "Sales",
+      "subHeading": "3 month total",
       "chartData": [
         Math.floor(Math.random() * 1000),
         Math.floor(Math.random() * 1000),
@@ -182,7 +183,7 @@ export class DashboardComponent implements OnInit {
     },
     "period3": {
       "total": Math.floor(Math.random() * 1000),
-      "subHeading": "Sales",
+      "subHeading": "6 month total",
       "chartData": [
         Math.floor(Math.random() * 1000),
         Math.floor(Math.random() * 1000),
@@ -262,7 +263,7 @@ export class DashboardComponent implements OnInit {
     },
     "period4": {
       "total": Math.floor(Math.random() * 1000),
-      "subHeading": "Sales",
+      "subHeading": "1 year total",
       "chartData": [
         Math.floor(Math.random() * 1000),
         Math.floor(Math.random() * 1000),
@@ -352,7 +353,7 @@ export class DashboardComponent implements OnInit {
   private ctx3: any;
   private ctx4: any;
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _categoryService: CategoryService) { }
 
   ngOnInit() {
     this.initChart1();
@@ -420,7 +421,7 @@ export class DashboardComponent implements OnInit {
       }
     }
     catch (err) {
-      console.error(null,err)
+      console.error(null, err)
     }
 
   }

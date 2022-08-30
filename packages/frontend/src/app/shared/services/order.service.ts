@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService extends GeneralDataService  {
+export class OrderService extends GeneralDataService {
 
   private _collectionName = environment.ORDERS;
 
@@ -21,7 +21,7 @@ export class OrderService extends GeneralDataService  {
     super.create(data, this._collectionName);
   }
 
-  delete(id:string) {
+  delete(id: string) {
     super.delete(id, this._collectionName);
   }
 
@@ -65,6 +65,11 @@ export class OrderService extends GeneralDataService  {
     if (!environment.production)
       console.log("Getting Orders for ", queryDate)
     this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.where('lastUpdated', '>=', queryDate).where("companyId", "==", this._settingService.settings._id));
+    this.items = this._itemDocs.valueChanges({ idField: '_id' });
+  }
+
+  orderByTimeStamp(): void {
+    this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.orderBy('lastUpdated', "desc").limit(50));
     this.items = this._itemDocs.valueChanges({ idField: '_id' });
   }
 
