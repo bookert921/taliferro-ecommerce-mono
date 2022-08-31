@@ -9,12 +9,6 @@
     "target": "es2017",
     "baseUrl": ".",
     "resolveJsonModule": true,
-    "paths": {
-      "@utils": ["src/utils"],
-      "@shared/*": ["./../../shared/*"],
-      "@services": ["src/services"],
-      "@repository": ["src/repository"]
-    }
   },
   "compileOnSave": true,
   "include": ["src", "__TESTS__/**/*"],

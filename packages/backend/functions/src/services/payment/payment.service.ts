@@ -1,6 +1,6 @@
-import { store } from "@repository";
-import { PaymentDetails } from "@shared/models";
-import { formatExpiration } from "@utils";
+import { store } from "../../repository";
+import { PaymentDetails } from "../../../../../shared/models";
+import { formatExpiration } from "../../utils";
 import { config, logger } from "firebase-functions/v1";
 import * as stripe from "stripe";
 
@@ -88,6 +88,7 @@ export async function addChargeToAccount({
     const charge = await stripeInstance.charges.create({
       amount: amount,
       source: cardToken.id,
+      currency: "usd",
     });
     logger.info(`Charge completed with status: ${charge.status}`);
     return { receipt: charge, status: charge.status };
