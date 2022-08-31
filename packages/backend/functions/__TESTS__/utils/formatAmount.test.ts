@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { formatAmount } from "@utils";
+import { formatAmount } from "../../src/utils";
 
 describe("Make sure Stripe receives a proper amount", () => {
   it("formats the amount for purchase for stripe correctly", () => {

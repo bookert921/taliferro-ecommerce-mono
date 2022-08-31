@@ -1,11 +1,15 @@
-export const formatCardNumber = (cc_number: string) => {
-  if (cc_number.length <= 0) return cc_number;
-  if (cc_number.includes("-")) cc_number.split("-").join("");
-  if (cc_number.includes(" ")) cc_number.split(" ").join("");
-  return cc_number;
+export const formatCardNumber = (ccNumber: string) => {
+  if (ccNumber.length <= 0) return ccNumber;
+  if (ccNumber.includes("-")) ccNumber.split("-").join("");
+  if (ccNumber.includes(" ")) ccNumber.split(" ").join("");
+  return ccNumber;
 };
 
 export const formatExpiration = (expiration: string) => {
-  if (expiration.length <= 0 || !expiration.includes("-")) return expiration;
-  return expiration.split("-");
+  const expMonth = expiration.split("-")[1];
+  const expYear = expiration.split("-")[0];
+  return {
+    expMonth,
+    expYear,
+  };
 };

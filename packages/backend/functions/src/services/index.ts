@@ -1,5 +1,11 @@
+// export {
+//   connectStripeThroughFirestore,
+//   formatPaymentDetailsForStripe,
+//   processPaymentWithStripe,
+// } from "./payment/payment.old.service";
+
 export {
-  connectStripeThroughFirestore,
-  formatPaymentDetailsForStripe,
-  processPaymentWithStripe,
+  addChargeToAccount,
+  getStripeAccount,
+  stripeConnector,
 } from "./payment/payment.service";

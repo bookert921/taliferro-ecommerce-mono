@@ -1,6 +1,6 @@
 /**
  * @param {string | number} purchaseAmount Total amount of purchase.
- * @returns {number} Returns amount formatted for Stripe charge.
+ * @return {number} Returns amount formatted for Stripe charge.
  * @description Stripe takes a charge.amount value of type number, using the smallest currency unit.
  * @example 100 cents  $1
  */
