@@ -8,7 +8,8 @@
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "test": "mocha -r ts-node/register -R spec \"./tests/**/*.test.ts\"",
+    "test": "mocha -r tsconfig-paths/register -r ts-node/register -R spec \"./__TESTS__/**/*.test.ts\"",
+    "test:local": "eval \"$(../../../scripts/non-google_env.sh)\" && npm run test",
     "logs": "firebase functions:log"
   },
   "engines": {
@@ -23,18 +24,21 @@
   },
   "devDependencies": {
     "@types/chai": "^4.3.3",
+    "@types/dotenv": "^8.2.0",
     "@types/mocha": "^9.1.1",
     "@types/sinon": "^10.0.13",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
     "chai": "^4.3.6",
+    "dotenv": "^16.0.2",
     "eslint": "^8.9.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-import": "^2.25.4",
-    "firebase-functions-test": "^0.2.0",
+    "firebase-functions-test": "^0.2.3",
     "mocha": "^10.0.0",
     "sinon": "^14.0.0",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.5.4"
   },
   "private": true

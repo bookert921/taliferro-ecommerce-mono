@@ -1,33 +1,24 @@
 import { firestore, logger } from "firebase-functions";
 import { store } from "../../repository";
 import { ShoppingCart } from "@shared/models";
-import {
-  connectStripeThroughFirestore,
-  processPaymentWithStripe,
-} from "@services";
-
-/**
- * 1. Grab Stripe account key (storage location currently firestore)
- * 2. If stripe account available and a cart has been submitted successfully,
- * charge items to card given.
- * 3. Once payment has been received, build order and remove cart.
- */
+import { addChargeToAccount } from "@services";
+import { formatAmount } from "@utils";
+// import { PaymentService } from "@services";
 
 export const onCartCreate = firestore
   .document("/carts/{id}")
   .onCreate(async (snapshot, context) => {
-    const cart: ShoppingCart = snapshot.data();
     const cartID: string = context.params.id;
+    const cart: ShoppingCart = snapshot.data();
 
     if (cart.status === "Submitted") {
       try {
         /* Make Payment With Stripe */
-        const { charge, status } = await store
-          .collection("settings")
-          .get()
-          .then(connectStripeThroughFirestore)
-          .then((stripe) => processPaymentWithStripe(stripe, cart, cartID));
-
+        const charge = await addChargeToAccount({
+          companyId: cart?.companyId || "",
+          amount: formatAmount(cart?.amount),
+          ccDetails: cart.contact?.paymentDetails?.[0] || {},
+        });
         /* Update Cart Details */
         logger.info(`Now updating cart: ${cartID}.`);
         await snapshot.ref
@@ -48,7 +39,7 @@ export const onCartCreate = firestore
           const data = {
             charge_response: charge,
             cart: updatedCart,
-            status: status,
+            status: charge.status,
             created_at: doc.updateTime?.nanoseconds,
           };
 

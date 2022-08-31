@@ -12,7 +12,8 @@
     "paths": {
       "@utils": ["src/utils"],
       "@shared/*": ["./../../shared/*"],
-      "@services": ["src/services"]
+      "@services": ["src/services"],
+      "@repository": ["src/repository"]
     }
   },
   "compileOnSave": true,

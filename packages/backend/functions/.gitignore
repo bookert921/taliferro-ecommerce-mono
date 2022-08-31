@@ -1,3 +1,4 @@
+
 # Compiled JavaScript files
 lib/**/*.js
 lib/**/*.js.map
@@ -7,3 +8,9 @@ typings/
 
 # Node.js dependency directory
 node_modules/
+
+# Configs
+.runtimeconfig.json
+taliferro-de66f-firebase-adminsdk-iyiad-3d590ea642.json
+
+__TESTS__
