@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { OrderService } from 'src/app/shared/services/order.service';
 import { DataService } from 'src/app/shared/services/data.service';
 
+// Remove this comments
+
 @Component({
   selector: 'app-admin-start',
   templateUrl: './admin-start.component.html',
