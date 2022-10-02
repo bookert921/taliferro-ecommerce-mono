@@ -2,27 +2,26 @@
 	<!-- Start Header -->
 	<header id="masthead" class="site-header">
 		<!-- Start Navigation -->
-		<nav id="site-navigation" class="navbar main-navigation nav-dark navbar-top">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="https://www.taliferro.com"> Taliferro Group </a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#products">Products</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#services">Services</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" style="color:#737373" href="https://www.taliferro.com/#about">About</a>
-						</li>
-					</ul>
-					<span class="navbar-text" style="color: #191919;"> 425.305.3748 </span>
-				</div>
-			</div>
+		<nav id="site-navigation" class="navbar main-navigation nav-light navbar-top menu-chill">
+			<div class="container-fluid container-nav nav-no-shadow">
+				<div class="container">
+					<!-- Top menu buttons -->
+					<div class="menu-buttons">
+						<ul>
+							<li><a href="https://taliferro.com/#op-service" class="button button-simple" title="link">Services</a></li>
+							<li><a href="https://taliferro.com/#op-portfolio" class="button button-simple" title="link">Products</a></li>
+							<li><a href="https://taliferro.com/#op-testimonial" class="button button-simple" title="link">Testimonials</a></li>
+							<li><a href="https://taliferro.com/#op-experience" class="button button-simple" title="link">Expertise</a></li>
+							<li><a href="https://taliferro.com/blog" class="button button-simple" title="link">Blog</a></li>
+							<li><a href="https://taliferro.com/#op-contact" class="button button-simple" title="link">Contact</a></li>
+						</ul>
+					</div>
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<a class="navbar-brand" routerLink="/">Taliferro Group </a>
+					</div>
+				</div> <!-- .container -->
+			</div> <!-- .container-fluid -->
 		</nav>
 		<!-- End Navigation -->
 		<div class="container-fluid header-content-3 header-content-color">
@@ -32,8 +31,8 @@
 						<div class="col-md-6 header-text">
 							<h1>e-Commerce</h1>
 							<div class="title-desc">
-								<p>In just a few minutes, you can start accepting sales and managing your business more efficiently today, with an online tool that manages the entire sales process.
-								</p>
+								<p><strong> In just a few minutes, you can start accepting sales</strong> and managing your business more efficiently today, with an online tool that manages the entire
+									sales process. </p>
 							</div>
 							<ul class="header-nav-buttons" *ngIf="!authService.firebaseUser else signedIn">
 								<li><a routerLink="/identity" class="button button-white" title="Sign In">Sign In</a></li>
@@ -91,7 +90,7 @@
 				<section id="features---5" class="container-fluid section-block features bg-primary-color">
 					<div class="container">
 						<div class="row">
-							<h2 class="wow fadeInUp">Features</h2>
+							<h2 class="wow fadeInUp">e-Commerce Features</h2>
 							<div class="block-desc wow fadeInUp">
 								<p>The one thing that this e-commerce application that others don't is the ability to let you know when a customer should be solicited to purchase another order.</p>
 							</div>
@@ -123,7 +122,7 @@
 						<div class="row">
 							<!-- Text block -->
 							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
-								<h2 class="wow lightSpeedInLeft">MULTIPLE INDUSTRY SUPPORT </h2>
+								<h2 class="wow lightSpeedInLeft">Multiple Industry Support </h2>
 								<p class="wow lightSpeedInRight">From a simple startup to a complex enterprise operation. You can determine the amount of complexity or simplicity you want. Choose
 									either simple selling or price dependent selling. Set the look and feel specific to your business. Find information fast. Our search is robust and quick. Never say
 									again you can't find a piece of information.</p>
@@ -163,7 +162,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-8 download-center-text">
-								<h2 class="wow fadeIn">TRY IT OUT</h2>
+								<h2 class="wow fadeIn">Test Drive Our e-Commerce Platform</h2>
 								<p class="wow fadeInUp">Contact us to arrange a product demonstration. The best move you'll ever make.</p>
 								<a href="tel:425.305.3748" class="button button-full wow fadeIn">Request a Demo</a>
 							</div>
@@ -178,29 +177,29 @@
 									<!-- Feature block 1 -->
 									<div class="feature-box feature-box-primary">
 										<i class="icon-layers"></i> <!-- icon -->
-										<p>User-friendly Interface</p>
+										<strong>Friendly Interface</strong>
 									</div>
 									<!-- Feature block 2 -->
 									<div class="feature-box feature-box-primary">
 										<i class="icon-clock"></i> <!-- icon -->
-										<p>Easy Setup Process</p>
+										<strong>Easy Setup Process</strong>
 									</div>
 									<!-- Feature block 3 -->
 									<div class="feature-box feature-box-primary">
 										<i class="icon-equalizer"></i> <!-- icon -->
-										<p>Full UI Customization</p>
+										<strong>Full UI Customization</strong>
 									</div>
 									<!-- Feature block 4 -->
 									<div class="feature-box feature-box-primary">
 										<i class="icon-credit-card"></i> <!-- icon -->
-										<p>Stripe Integration</p>
+										<strong>Stripe Integration</strong>
 									</div>
 								</div> <!-- .about-features -->
 							</div>
 							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
 								<h2 class="wow fadeInUp">SOMETIME SIMPLICITY IS A GOOD THING</h2>
-								<p class="wow fadeInUp">You won't find a simpler e-commerce platform. We have used and developed many e-commerce platforms, but there was always lingering in the back
-									of our minds, is there an easier way. Well, hear is our attempt at balance and features.</p>
+								<p class="wow fadeInUp"><i>You won't find a simpler e-commerce platform</i>. We have used and developed many e-commerce platforms, but there was always lingering in the
+									back of our minds, is there an easier way. Well, hear is our attempt at balance and features.</p>
 							</div>
 						</div> <!-- .row -->
 					</div> <!-- .container -->
@@ -215,8 +214,8 @@
 							</div>
 							<div class="col-md-4 how-to-block-2 wow fadeInUp">
 								<span class="number">1</span>
-								<h3>Stripe</h3>
-								<p>Open a Stripe account if you don't already have one to accept payments. </p>
+								<h3><a href="https://www.stripe.com">Stripe</a></h3>
+								<p>Open a <a href="https://www.stripe.com">Stripe</a> account if you don't already have one to accept payments. </p>
 							</div>
 							<div class="col-md-4 how-to-block-2 wow fadeInUp">
 								<span class="number">2</span>

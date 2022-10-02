@@ -7,7 +7,7 @@ import { OverviewComponent } from './about/overview/overview.component';
 import { AuthGuard } from './shared/services/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: OverviewComponent, data: { title: 'Overview' } },
+  { path: '', component: OverviewComponent, data: { title: 'e-Commerce' } },
   { path: 'thank-you', component: ThankYouComponent, data: { title: 'Thank You' } },
   { path: 'error', component: NotFoundComponent, data: { title: 'Error Found' } },
   { path: 'shop', loadChildren: () => import('./store/store.module').then(m => m.StoreModule) },

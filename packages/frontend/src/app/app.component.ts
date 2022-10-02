@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((event) => {
         this._wowService.init();
 
-        this._pageTitle = event['title'];
+        this._pageTitle = event['title'] + ' - ' + environment.COMPANY_NAME;;
         this.isHome = (event['title'] == 'Home');
         this.isSignIn = (event['title'] == 'Sign In');
         setTimeout(() => { this.setPageTitle() }, 1000);
