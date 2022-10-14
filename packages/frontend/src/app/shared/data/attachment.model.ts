@@ -1,4 +1,4 @@
-export interface Attachment {
+export interface IAttachment {
     fileLocation: string;
     name: string;
     createdAt?: Date;

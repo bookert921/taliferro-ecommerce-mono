@@ -7,7 +7,7 @@ import { ShoppingCartComponent } from 'src/app/shared/components/shopping-cart/s
 import { environment } from 'src/environments/environment';
 import { Subscription } from 'rxjs';
 import { TestKitOrder } from 'src/app/shared/data/test-kit.model';
-import { ShoppingCart } from 'src/app/shared/data/shopping-cart.model';
+import { IShoppingCart } from 'src/app/shared/data/shopping-cart.model';
 import { ColorsService } from 'src/app/shared/services/colors.service';
 @Component({
   selector: 'app-activated-kit-lab-order-pairing',
@@ -21,7 +21,7 @@ export class ActivatedKitLabOrderPairingComponent implements OnInit, OnDestroy {
   checkOutSection: boolean = true;
   public color = "#000000";
   public background = "#ffffff";
-  
+
   siteType: string = 'micro';
 
 
@@ -30,7 +30,7 @@ export class ActivatedKitLabOrderPairingComponent implements OnInit, OnDestroy {
 
 
   constructor(private _dataService: DataService, public cartService: CartService, public userService: UserService, private _location: Location, public colorService: ColorsService) {
-    
+
     this._dataService.getAll(environment.SETTINGS);
   }
 
@@ -76,7 +76,7 @@ export class ActivatedKitLabOrderPairingComponent implements OnInit, OnDestroy {
     // this._microCheckOutComponent.refresh();
   }
 
-  private moveOverCreditCardInfo(item: TestKitOrder, cart: ShoppingCart): void {
+  private moveOverCreditCardInfo(item: TestKitOrder, cart: IShoppingCart): void {
     // if (item && item.order && item.order.cart && item.order.cart.paymentDetails) {
     //   if (cart.paymentDetails) {
     //     cart.paymentDetails.ccBin = '';
@@ -93,7 +93,7 @@ export class ActivatedKitLabOrderPairingComponent implements OnInit, OnDestroy {
     // }
   }
 
-  private moveOverDetails(item: TestKitOrder, cart: ShoppingCart): void {
+  private moveOverDetails(item: TestKitOrder, cart: IShoppingCart): void {
     if (item && item.order && item.order.cart) {
       // cart.companyName = (item.order.cart.companyName) ? item.order.cart.companyName : '';
       // cart.practitionerName = (item.order.cart.practitionerName) ? item.order.cart.practitionerName : '';

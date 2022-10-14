@@ -1,7 +1,7 @@
 import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { User } from 'src/app/shared/data/user.model';
-import { ShoppingCart } from 'src/app/shared/data/shopping-cart.model';
+import { IUser } from 'src/app/shared/data/user.model';
+import { IShoppingCart } from 'src/app/shared/data/shopping-cart.model';
 import { OrderService } from 'src/app/shared/services/order.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class OrderViewComponent implements OnInit {
   @Output() editItem = new EventEmitter();
   public isAdmin: boolean = false;
 
-  constructor(private _orderService: OrderService, public userService: UserService, private _router:Router) { }
+  constructor(private _orderService: OrderService, public userService: UserService, private _router: Router) { }
 
   ngOnInit(): void {
     this.userService.admin$.subscribe((result) => {
@@ -28,10 +28,10 @@ export class OrderViewComponent implements OnInit {
 
   private setDataUp(): void {
     if (!this.data.user)
-      this.data.user = <User>{};
+      this.data.user = <IUser>{};
 
     if (!this.data.cart)
-      this.data.cart = <ShoppingCart>{};
+      this.data.cart = <IShoppingCart>{};
 
   }
 

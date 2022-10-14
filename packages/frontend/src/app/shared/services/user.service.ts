@@ -6,7 +6,7 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { environment } from "../../../environments/environment";
 import { IpService } from './ip.service';
 import { Subscription } from 'rxjs';
-import { User } from '../data/user.model';
+import { IUser } from '../data/user.model';
 import { AuthService } from './auth.service';
 import { SettingService } from './setting.service';
 
@@ -25,8 +25,8 @@ export class UserService implements OnDestroy {
   private _collectionName: string = environment.USERS;
   private _ipSubscription?: Subscription;
 
-  public userSubject = new Subject<User>();
-  public user?: User;
+  public userSubject = new Subject<IUser>();
+  public user?: IUser;
   public ipAddress = '';
   public lastOrderID: any;
   public file?: string;
@@ -69,7 +69,7 @@ export class UserService implements OnDestroy {
   }
 
 
-  checkUserReturned(user: any, firebaseUser: firebase.User) : User {
+  checkUserReturned(user: any, firebaseUser: firebase.User): IUser {
     if (user && (!user.email)) {
       if (!environment.production)
         console.log("INVALID FOUND USER - CREATE NEW USER");
@@ -81,7 +81,7 @@ export class UserService implements OnDestroy {
 
 
 
-  setLoggedInUser(user: User): void {
+  setLoggedInUser(user: IUser): void {
     if (!environment.production)
       console.log('setLoggedInUser', user);
 
@@ -89,14 +89,14 @@ export class UserService implements OnDestroy {
     this.notifyListners(user);
   }
 
-  notifyListners(user: User) : void {
+  notifyListners(user: IUser): void {
     this.user = user;
     this.userSubject.next(user);
   }
 
 
-  getNewUser(uid: any, emailAdderess: string): User {
-    return this.user = <User>{
+  getNewUser(uid: any, emailAdderess: string): IUser {
+    return this.user = <IUser>{
       roles: ['reader'],
       email: emailAdderess,
     }
@@ -153,8 +153,8 @@ export class UserService implements OnDestroy {
   }
 
 
-  getNewUserRecordUsingFirebase(firebaseUser: firebase.User): User {
-    return <User>{
+  getNewUserRecordUsingFirebase(firebaseUser: firebase.User): IUser {
+    return <IUser>{
       email: firebaseUser.email,
       _id: firebaseUser.uid,
       displayName: firebaseUser.displayName,

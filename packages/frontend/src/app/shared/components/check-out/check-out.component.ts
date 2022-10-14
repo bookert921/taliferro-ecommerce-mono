@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
 import { CheckoutService } from '../../services/checkout.service';
 import { UserService } from '../../services/user.service';
 import { ProductService } from '../../services/product.service';
-import { Contact } from '../../data/contact.model';
-import { Address } from '../../data/address.model';
-import { ShoppingCart } from '../../data/shopping-cart.model';
+import { IContact } from '../../data/contact.model';
+import { IAddress } from '../../data/address.model';
+import { IShoppingCart } from '../../data/shopping-cart.model';
 import { Phone } from '../../data/phone.model';
 import { EmailAddress } from '../../data/email-address.model';
 import { PaymentDetails } from '../../data/payment-details.model';
@@ -29,14 +29,14 @@ export class CheckOutComponent extends DataHandlerComponent implements OnInit, O
   data: any;
   @Input() companyData: any;
   public diagnostic: boolean = false;
-  public contact: Contact = {
+  public contact: IContact = {
     userType: 'customer',
     addresses: [],
     phones: [],
     emails: [],
     paymentDetails: [],
   };
-  public address: Address = {
+  public address: IAddress = {
     streetAddress1: '',
     city: '',
     province: '',
@@ -44,7 +44,7 @@ export class CheckOutComponent extends DataHandlerComponent implements OnInit, O
     addressType: 'Home'
   }
 
-  public shippingAddress: Address = {
+  public shippingAddress: IAddress = {
     firstName: '',
     lastName: '',
     streetAddress1: '',
@@ -136,7 +136,7 @@ export class CheckOutComponent extends DataHandlerComponent implements OnInit, O
             this.paymentDetails = this.contact.paymentDetails[0];
             this.paymentDetails.ccSecurityCode = '';
           }
-            
+
         }
       })
     }

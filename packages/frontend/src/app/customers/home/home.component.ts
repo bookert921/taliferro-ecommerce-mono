@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { User } from '../../shared/data/user.model';
+import { IUser } from '../../shared/data/user.model';
 import { ColorsService } from 'src/app/shared/services/colors.service';
 
 @Component({
@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
   public isDiagnostic: boolean = false;
 
 
-  public newUser: User = {
-    
+  public newUser: IUser = {
+
   }
 
   constructor(private _location: Location, public colorService: ColorsService) { }

@@ -1,30 +1,35 @@
 <div class="no-print">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top app-header" *ngIf="data">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 255, 255, 0.95);" *ngIf="data">
         <div class="container-fluid">
-            <span [ngStyle]="{'color': color}">{{data?.name}}</span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="/">Taliferro Group</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-3">
-                    <li class="nav-item" *ngIf="isCatalog">
-                        <a class="nav-link" style="color:#737373" (click)="jump('catalog')">{{data?.catalogLinkText}}</a>
-                    </li>
-                    <li class="nav-item" *ngIf="isAbout">
-                        <a *ngIf="data?.aboutSection" class="nav-link" style="color:#737373" (click)="jump('about')">{{data?.aboutLinkText}}</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="https://taliferro.com/#op-service" class="button button-simple" title="Services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a *ngIf="authService.firebaseUser && (settingService.settings._id === userService.user?.companyId)" class="nav-link" style="color:#737373" (click)="admin()">Admin</a>
+                        <a href="https://taliferro.com/#op-portfolio" class="button button-simple" title="Products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color:#737373" *ngIf="!authService.firebaseUser" class="text-dark wow slideInRight" (click)="signIn()">Sign In</a>
-                        <a style="color:#737373" *ngIf="authService.firebaseUser" class="text-dark wow slideInRight" (click)="signOut()">Sign Out</a>
+                        <a href="https://taliferro.com/#op-testimonial" class="button button-simple" title="Testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://taliferro.com/#op-experience" class="button button-simple" title="Expertise">Expertise</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://taliferro.com/blog" class="button button-simple" title="Blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://taliferro.com/#op-contact" class="button button-simple" title="Contact Us">Contact</a>
                     </li>
                 </ul>
-                <span class="navbar-text">
-                    <span *ngIf="data && data.phone">{{data.phone}}</span>&nbsp;&nbsp;&nbsp; <a *ngIf="isCartIcon" (click)="jump('cart')" [ngStyle]="{'color': color}">
-                        <i class="fa fa-shopping-cart fa-2x  wow slideInRight" aria-hidden="true"></i>
+                <span class="navbar-text float-end ">
+                    <a *ngIf="authService.firebaseUser" (click)="signOut()">Sign Out</a>
+                    <a *ngIf="!authService.firebaseUser" (click)="signIn()">Sign In</a> | &nbsp; <a (click)="jump('cart')" [ngStyle]="{'color': color}">
+                        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
                     </a>
                 </span>
             </div>

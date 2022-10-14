@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IpService } from './ip.service';
 import { Subscription } from 'rxjs';
-import { ShoppingCart } from '../data/shopping-cart.model';
+import { IShoppingCart } from '../data/shopping-cart.model';
 import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { Contact } from '../data/contact.model';
@@ -22,7 +22,7 @@ export class CartService implements OnDestroy {
   private _ipSubscription?: Subscription;
   public savedCartID: any;
 
-  public cart: ShoppingCart = <ShoppingCart>{
+  public cart: IShoppingCart = <IShoppingCart>{
     lineItems: [],
     contact: undefined,
     amount: 0,
@@ -32,7 +32,7 @@ export class CartService implements OnDestroy {
   public ipAddress = '';
 
   constructor(private _firestore: AngularFirestore, private _ipService: IpService, public userService: UserService) {
-    
+
     this.getIP();
 
   }
@@ -44,7 +44,7 @@ export class CartService implements OnDestroy {
   }
 
   public reset(): void {
-    this.cart = <ShoppingCart>{
+    this.cart = <IShoppingCart>{
       lineItems: [],
       shippingRequired: true,
       tax: 0,

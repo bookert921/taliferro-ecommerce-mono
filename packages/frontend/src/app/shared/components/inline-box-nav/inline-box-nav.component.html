@@ -4,21 +4,6 @@
             <div class="col-12">
                 <div class="header__content wow fadeInDown">
                     <span [ngStyle]="{'color': color}">{{data?.name}}</span>
-                    <nav class="header__nav wow fadeInDown">
-                        <a (click)="jump('catalog')">{{data?.catalogLinkText}}</a>
-                        <a *ngIf="data?.aboutSection" (click)="jump('about')">{{data?.aboutLinkText}}</a>
-                        <a *ngIf="authService.firebaseUser && (settingService.settings._id === userService.user?.companyId)" (click)="admin()">Admin</a>
-                        <a *ngIf="authService.firebaseUser" (click)="signOut()">Sign Out</a>
-                        <a *ngIf="!authService.firebaseUser" (click)="signIn()">Sign In</a>
-                    </nav>
-                    <div class="header__wrap">
-                        <div class="header__phone" *ngIf="isHome && data && data.phone">
-                            <a href="tel: {{data.phone}}"> {{data.phone}}</a>
-                        </div>
-                        <a (click)="jump('cart')" [ngStyle]="{'color': color}">
-                            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
