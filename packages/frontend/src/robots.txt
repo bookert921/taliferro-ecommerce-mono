@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taliferro.com/assets/files/sitemap.xml

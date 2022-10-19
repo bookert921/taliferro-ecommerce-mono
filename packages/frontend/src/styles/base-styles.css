@@ -89,7 +89,7 @@ a, button {
 }
 
 p {
-  color: #909aaf;
+  color: #000000;
 }
 
 i {
@@ -126,7 +126,7 @@ input[type="text"]:focus {
 }
 
 .form-send-white {
-  color: #909aaf;
+  color: #000000;
 }
 
 .contact-send {
@@ -181,7 +181,7 @@ input[type="text"]:focus {
 .section-block .block-desc p {
   width: 70%;
   margin: 0 auto;
-  color: #909aaf;
+  color: #000000;
 }
 
 .bg-primary-color, .bg-second-color {
@@ -1948,7 +1948,7 @@ a {
 }
 
 .about-1, .about-2, .about-3, .about-4, .about-5, .about-6 {
-  color: #909aaf;
+  color: #000000;
 }
 
 .about-1 ul li, .about-2 ul li, .about-3 ul li, .about-4 ul li, .about-5 ul li, .about-6 ul li {
@@ -2211,7 +2211,7 @@ a {
 .reviews-1 .avatar p {
   padding-left: 3.75rem;
   margin-bottom: 0;
-  color: #909aaf;
+  color: #000000;
 }
 
 .reviews-1 .avatar .stars {
@@ -2226,7 +2226,7 @@ a {
 }
 
 .reviews-1 .avatar .stars i.no {
-  color: #909aaf;
+  color: #000000;
 }
 
 .reviews-1 .review-text p {
@@ -2264,7 +2264,7 @@ a {
 
 .reviews-2 .avatar p {
   margin-bottom: 0;
-  color: #909aaf;
+  color: #000000;
 }
 
 .reviews-2 .review-text p {
@@ -2277,7 +2277,7 @@ a {
 }
 
 .reviews-2 .review-text .stars i.no {
-  color: #909aaf;
+  color: #000000;
 }
 
 .reviews-3 {
@@ -2296,7 +2296,7 @@ a {
 }
 
 .reviews-3 .review p {
-  color: #909aaf;
+  color: #000000;
   margin: 0;
 }
 
@@ -2321,7 +2321,7 @@ a {
 }
 
 .reviews-3 .stars i.no {
-  color: #909aaf;
+  color: #000000;
 }
 
 .reviews-3 .review-text p {
@@ -2647,7 +2647,7 @@ a {
 
 .team-1 .member-block span {
   margin: 0;
-  color: #909aaf;
+  color: #000000;
 }
 
 .team-1 .member-block .member-photo {
@@ -2710,7 +2710,7 @@ a {
 
 .team-2 .member-content span {
   margin: 0;
-  color: #909aaf;
+  color: #000000;
 }
 
 .team-2 .member-social-icon {
@@ -2842,7 +2842,7 @@ a {
   top: 1.5rem;
   font-size: 5.96rem;
   font-weight: 900;
-  color: #909aaf;
+  color: #000000;
   opacity: 0.15;
 }
 
@@ -2918,7 +2918,7 @@ a {
 
 .contact-form-section .center-form .contact-form .form-text p {
   margin: 0;
-  color: #909aaf;
+  color: #000000;
 }
 
 /*
@@ -3066,12 +3066,12 @@ a {
 .index-post-block .post-preview-content .post-meta {
   font-size: 0.8rem;
   line-height: 1.5rem;
-  color: #909aaf;
+  color: #000000;
   font-weight: 700;
 }
 
 .index-post-block .post-preview-content .post-meta .post-date a, .index-post-block .post-preview-content .post-meta .post-date a:hover, .index-post-block .post-preview-content .post-meta .post-date a:focus, .index-post-block .post-preview-content .post-meta .post-date a:active {
-  color: #909aaf;
+  color: #000000;
 }
 
 .index-post-block .post-preview-content h3 {

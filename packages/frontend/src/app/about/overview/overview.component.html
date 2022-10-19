@@ -4,8 +4,8 @@
 		<!-- Start Navigation -->
 		<nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 255, 255, 0.95);">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/"><img src="https://taliferro.com/assets/icons/favicon-32x32.png" alt="Taliferro Group Logo" width="24" height="24"
-						class="d-inline-block align-text-top"> Taliferro Group</a>
+				<a class="navbar-brand" href="/"><img src="https://taliferro.com/assets/icons/favicon-32x32.webp" alt="Taliferro Group Logo" class="img-fluid" class="d-inline-block align-text-top">
+					Taliferro Group</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
 				</button>
@@ -34,64 +34,52 @@
 				</div>
 			</div>
 		</nav>
-		<!-- <nav id="site-navigation" class="navbar main-navigation nav-light navbar-top menu-chill">
-			<div class="container-fluid container-nav nav-no-shadow">
-				<div class="container">
-					<div class="menu-buttons">
-						<ul>
-							<li><a href="https://taliferro.com/#op-service" class="button button-simple" title="link">Services</a></li>
-							<li><a href="https://taliferro.com/#op-portfolio" class="button button-simple" title="link">Products</a></li>
-							<li><a href="https://taliferro.com/#op-testimonial" class="button button-simple" title="link">Testimonials</a></li>
-							<li><a href="https://taliferro.com/#op-experience" class="button button-simple" title="link">Expertise</a></li>
-							<li><a href="https://taliferro.com/blog" class="button button-simple" title="link">Blog</a></li>
-							<li><a href="https://taliferro.com/#op-contact" class="button button-simple" title="link">Contact</a></li>
-						</ul>
-					</div>
-					<div class="navbar-header">
-						<a class="navbar-brand" routerLink="/">Taliferro Group </a>
-					</div>
-				</div> 
-			</div> 
-		</nav> -->
-		<!-- End Navigation -->
 		<div class="container-fluid header-content-3 header-content-color">
 			<div class="container header-container header-3">
 				<div class="row">
 					<div class="title-centered-content">
-						<div class="col-md-6 header-text">
+						<div class="col-md-12 header-text">
 							<h1>e-Commerce</h1>
-							<div class="title-desc">
-								<p><strong> In just a few minutes, you can start accepting sales</strong> and managing your business more efficiently today, with an online tool that manages the entire
-									sales process. </p>
-							</div>
-							<ul class="header-nav-buttons" *ngIf="!authService.firebaseUser else signedIn">
-								<li><a routerLink="/identity" class="button button-white" title="Sign In">Sign In</a></li>
-								<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
-							</ul>
-							<ng-template #signedIn>
-								<ul class="header-nav-buttons" *ngIf="!userService.user  else userAndSignedIn">
-									<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
-								</ul>
-								<ng-template #userAndSignedIn>
-									<ul class="header-nav-buttons" *ngIf="settingService.settings else noSettings">
-										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/shop/{{settingService.settings._id}}" class="button button-white"
-												title="Slore">Your Store</a>
-										</li>
-										<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/admin" class="button button-white-border"
-												title="Slore">Administration</a></li>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="title-desc">
+										<p>We believe that you should be able to get the best possible user experience for your customers. Our e-commerce platform is designed to help you do that—and
+											the best part is it's customizable. Our platform allows you to add a variety of page components to augment your catalog, ensuring that your page is as
+											engaging as possible. </p>
+									</div>
+									<ul class="header-nav-buttons" *ngIf="!authService.firebaseUser else signedIn">
+										<li><a routerLink="/identity" class="button button-white" title="Sign In">Sign In</a></li>
+										<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
 									</ul>
-									<ng-template #noSettings>
-										<ul class="header-nav-buttons">
-											<li><a routerLink="/identity/bye" class="button button-white" title="Sign In">Sign Out</a></li>
+									<ng-template #signedIn>
+										<ul class="header-nav-buttons" *ngIf="!userService.user  else userAndSignedIn">
+											<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
 										</ul>
+										<ng-template #userAndSignedIn>
+											<ul class="header-nav-buttons" *ngIf="settingService.settings else noSettings">
+												<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/shop/{{settingService.settings._id}}"
+														class="button button-white" title="Slore">Your Store</a>
+												</li>
+												<li><a *ngIf="(settingService.settings._id === userService.user?.companyId)" routerLink="/admin" class="button button-white-border"
+														title="Slore">Administration</a></li>
+											</ul>
+											<ng-template #noSettings>
+												<ul class="header-nav-buttons">
+													<li><a routerLink="/identity/bye" class="button button-white" title="Sign In">Sign Out</a></li>
+												</ul>
+											</ng-template>
+										</ng-template>
 									</ng-template>
-								</ng-template>
-							</ng-template>
-						</div> <!-- .header-text -->
-					</div> <!-- .title-centered-content -->
-				</div> <!-- .row -->
-			</div> <!-- .container -->
-		</div> <!-- .container-fluid -->
+								</div>
+								<div class="col-md-6 header-image">
+									<img class="img-fluid rounded" src="assets/images/e-commerce.svg" alt="e-Commerce Introduction">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="header-round"></div>
 	</header>
 	<!-- End Header -->
@@ -99,107 +87,46 @@
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main">
 				<a name="more"></a>
-				<section id="video---1" class="container-fluid section-block video">
+				<section id="about---5" class="container-fluid section-block about-5">
 					<div class="container">
 						<div class="row">
-							<h2 class="wow fadeInUp">Why Taliferro Group e-Commerce</h2>
-							<div class="block-desc wow fadeInUp">
-								<p>Taliferro Group's co-founder explains what's different about our e-commerce platform.</p>
-							</div>
-							<div class="col-md-12 video-block">
-								<div class="embed-responsive embed-responsive-16by9">
-									<iframe is="x-frame-bypass" class="embed-responsive-item" src="https://www.youtube.com/embed/fYppXcqWt88" frameborder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-								</div>
-							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
-				</section>
-				<!-- End Video 1 -->
-				<!-- Start Features 5 -->
-				<section id="features---5" class="container-fluid section-block features bg-primary-color">
-					<div class="container">
-						<div class="row">
-							<h2 class="wow fadeInUp">e-Commerce Features</h2>
-							<div class="block-desc wow fadeInUp">
-								<p>The one thing that this e-commerce application that others don't is the ability to let you know when a customer should be solicited to purchase another order.</p>
-							</div>
-							<!-- Feature 1 -->
-							<div class="col-md-4 feature feature-bg wow fadeInUp">
-								<i class="icon-rocket"></i>
-								<h3>Single Page Catalog</h3>
-								<p>In addition to your product catalog, you can choose from a variety of page components to augment your catalog.</p>
-							</div>
-							<!-- Feature 2 -->
-							<div class="col-md-4 feature feature-bg wow fadeInUp">
-								<i class="icon-diamond"></i>
-								<h3>Cloud</h3>
-								<p>No hardware or software to maintain. All updates are automatic, your data is in good hands and backed by the Google Cloud Platform.</p>
-							</div>
-							<!-- Feature 3 -->
-							<div class="col-md-4 feature feature-bg wow fadeInUp">
-								<i class="icon-refresh"></i>
-								<h3>Purchase Authentication</h3>
-								<p>Use your Apple ID to sign in. If mobile and iOS, use your face or fingerprint. Facebook and Google authentication also available.</p>
-							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
-				</section>
-				<!-- End Features 5 -->
-				<!-- Start About Block 2 -->
-				<section id="about---5" class="container-fluid section-block about-5 color-block">
-					<div class="container">
-						<div class="row">
-							<!-- Text block -->
 							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
 								<h2 class="wow lightSpeedInLeft">Multiple Industry Support </h2>
 								<p class="wow lightSpeedInRight">From a simple startup to a complex enterprise operation. You can determine the amount of complexity or simplicity you want. Choose
 									either simple selling or price dependent selling. Set the look and feel specific to your business. Find information fast. Our search is robust and quick. Never say
 									again you can't find a piece of information.</p>
 								<div class="container-fluid">
+									<h2 style="font-weight: 300;">Sample Sites</h2>
 									<div class="row">
 										<div class="col text-center">
 											<a routerLink="/shop/31e2rvCZiYgxf7lEXxX0" class="wow fadeInUp" title="Food and Beverage e-Commerce Example"><img class="img-thumbnail img-fluid"
-													src="assets/images/store1.png" alt="Food and Beverage e-Commerce"><br>Food</a>
+													src="assets/images/store1.webp" alt="Food and Beverage e-Commerce"><br>Food</a>
 										</div>
 										<div class="col text-center">
 											<a routerLink="/shop/0TZu74MdTKAjiCJnAzXo" class="wow fadeInUp" title="Clothing Website Example"><img class="img-thumbnail img-fluid"
-													src="assets/images/store2.png" alt="Clothing Website"><br>Clothing</a>
+													src="assets/images/store2.webp" alt="Clothing Website"><br>Clothing</a>
 										</div>
 										<div class="col text-center">
 											<a routerLink="/shop/q3oLK77KwdQdLk7wpbVn" class="wow fadeInUp" title="Dental Website Example"><img class="img-thumbnail img-fluid"
-													src="assets/images/dental-website.png" alt="Dental Website"><br>Dental</a>
+													src="assets/images/dental-website.webp" alt="Dental Website"><br>Dental</a>
 										</div>
 									</div>
 								</div>
 							</div>
-							<!-- Image block -->
 							<div class="col-md-6 col-sm-7 col-xs-12">
 								<div class="about-image-block">
 									<div class="about-image wow fadeInUp">
-										<img src="/assets/images/overview1.png" alt="e-commerce platform for small business">
+										<img src="/assets/images/overview1.webp" alt="e-commerce platform for small business">
 										<div class="ui">
-											<img src="/assets/images/overview2.png" data-aos="fade-up" alt="e-commerce platform for enterprises">
+											<img src="/assets/images/overview2.webp" data-aos="fade-up" alt="e-commerce platform for enterprises">
 										</div>
-									</div> <!-- .about-image -->
-								</div> <!-- .about-features -->
+									</div>
+								</div>
 							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
+						</div>
+					</div>
 				</section>
-				<section id="download---2" class="container-fluid section-block download-2 download-parallax">
-					<div class="overlay"></div>
-					<div class="container">
-						<div class="row">
-							<div class="col-md-8 download-center-text">
-								<h2 class="wow fadeIn">Test Drive Our e-Commerce Platform</h2>
-								<p class="wow fadeInUp">Contact us to arrange a product demonstration. The best move you'll ever make.</p>
-								<a href="tel:425.305.3748" class="button button-full wow fadeIn">Request a Demo</a>
-							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
-				</section>
-				<section id="about---2" class="container-fluid section-block about-2">
+				<section id="about---2" class="container-fluid color-block about-2">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-6 col-sm-7 col-xs-12">
@@ -227,15 +154,68 @@
 								</div> <!-- .about-features -->
 							</div>
 							<div class="col-md-6 col-sm-5 col-xs-12 about-text">
-								<h2 class="wow fadeInUp">SOMETIME SIMPLICITY IS A GOOD THING</h2>
-								<p class="wow fadeInUp"><i>You won't find a simpler e-commerce platform</i>. We have used and developed many e-commerce platforms, but there was always lingering in the
-									back of our minds, is there an easier way. Well, hear is our attempt at balance and features.</p>
+								<h2 class="wow fadeInUp">Why you should use our e-commerce platform?</h2>
+								<p class="wow fadeInUp">There are many benefits to using our e-commerce platform. Our team of experts has carefully considered every detail, including your customers'
+									experience, security and privacy, and the search engine optimization of your website.</p>
 							</div>
 						</div> <!-- .row -->
 					</div> <!-- .container -->
 				</section>
+				<section id="download---2" class="container-fluid section-block download-2 download-parallax">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 download-center-text">
+								<h2 class="wow fadeIn">Benefits</h2>
+								<p class="wow fadeInUp mb-2">When you use our e-commerce platform, you get a lot of benefits that are hard to find elsewhere. Here are just some of the main ones: </p>
+								<ul>
+									<li class="mb-2"> It's free! We don't charge monthly or setup fees so you can start immediately (limitations apply). </li>
+									<li class="mb-2"> The user experience is better than ever. You get passwordless sign-in, more secure transactions, HIPAA compliance, and fast page load times—all
+										things that make it easier for your customers to buy from you. </li>
+									<li> Plus, we optimize our e-commerce platform for search engines so that it gets found when people are looking for what you're selling online. </li>
+								</ul>
+								<a href="tel:425.305.3748" class="button button-full wow fadeIn">Request a Demo</a>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- Start Features 5 -->
+				<section id="features---5" class="container-fluid section-block features bg-primary-color">
+					<div class="container">
+						<div class="row">
+							<h2 class="wow fadeInUp">e-Commerce Features</h2>
+							<div class="block-desc wow fadeInUp">
+								<p>Because we know how important it is to have a great user experience, we've made sure that our platform is easy to manage and can be customized to fit your brand's
+									unique needs. In addition to your product catalog, you can choose from various page components to augment your roster in a way that makes sense for your business
+									model and industry.</p>
+							</div>
+							<!-- Feature 1 -->
+							<div class="col-md-4 feature feature-bg wow fadeInUp">
+								<i class="icon-rocket"></i>
+								<h3>Design</h3>
+								<p>The design of our e-commerce platform helps you create an online storefront that's as easy and intuitive for your customers to use as it is for you.</p>
+							</div>
+							<!-- Feature 2 -->
+							<div class="col-md-4 feature feature-bg wow fadeInUp">
+								<i class="icon-diamond"></i>
+								<h3>Engagement</h3>
+								<p>Our platform offers category filtering without leaving the main page. This option allows customers to choose various products to augment their shopping experience.
+								</p>
+							</div>
+							<!-- Feature 3 -->
+							<div class="col-md-4 feature feature-bg wow fadeInUp">
+								<i class="icon-refresh"></i>
+								<h3>Variety</h3>
+								<p>Our e-commerce platform is the perfect solution for your business. We offer a variety of features that will provide a better user experience and improved customer
+									engagement for your customers.</p>
+							</div>
+						</div> <!-- .row -->
+					</div> <!-- .container -->
+				</section>
+				<!-- End Features 5 -->
+				<!-- Start About Block 2 -->
 				<!-- End About Block 2 -->
-				<section id="how-to-use---2" class="container-fluid section-block how-to-use-2 color-block">
+				<section id="how-to-use---2" class="container-fluid section-block how-to-use-2">
 					<div class="container">
 						<div class="row">
 							<h2 class="wow fadeInUp">How to get started</h2>
@@ -259,6 +239,68 @@
 							</div>
 						</div>
 					</div>
+				</section>
+				<section id="prices---2" class="container-fluid section-block prices price-2 color-block">
+					<div class="container">
+						<div class="row">
+							<h2>Pricing</h2>
+							<div class="block-desc">
+								<p>Solo user or small business owner. Customizations avaialbe. </p>
+							</div>
+							<!-- Price box 1 -->
+							<div class="col-lg-4 col-sm-6 col-xs-12 price">
+								<div class="border-box">
+									<h3>Single User</h3>
+									<h4>FREE</h4>
+									<ul>
+										<li>Self Serve</li>
+										<li>We will help with initial setup</li>
+										<li>Passwordless Sign In</li>
+										<li>Customization's extra</li>
+										<li>Free Updates</li>
+									</ul>
+								</div>
+								<div class="price-button">
+									<a href="https://taliferro.com/#op-contact" class="button button-full">Get Started</a>
+								</div>
+							</div> <!-- .price -->
+							<!-- Price box 2 -->
+							<div class="col-lg-4 col-sm-6 col-xs-12 price">
+								<div class="border-box">
+									<h3>Custom</h3>
+									<h4>$99 <span>/ per month</span></h4>
+									<ul>
+										<li><span>5</span> Users</li>
+										<li>Limited customization</li>
+										<li>Passwordless Sign In</li>
+										<li>Maximum Protection</li>
+										<li>Free Updates</li>
+									</ul>
+								</div>
+								<div class="price-button">
+									<a href="https://taliferro.com/#op-contact" class="button button-full">Get Started</a>
+								</div>
+							</div> <!-- .price -->
+							<!-- Price box 3 -->
+							<div class="col-lg-4 col-sm-6 col-xs-12 price">
+								<div class="border-box">
+									<h3>Corporate</h3>
+									<h4>$699 <span>/ per month</span></h4>
+									<ul>
+										<li><span>Unlimited</span> Users</li>
+										<li>We will customize to fit your needs</li>
+										<li>Passwordless Sign In</li>
+										<li>CRM Included</li>
+										<li>1 year contract required</li>
+									</ul>
+								</div>
+								<div class="price-button">
+									<a href="https://taliferro.com/#op-contact" class="button button-full">Fill Out to Started</a>
+								</div>
+							</div> <!-- .price -->
+							<!-- Price box 4 -->
+						</div> <!-- .row -->
+					</div> <!-- .container -->
 				</section>
 				<!-- Start Download 2 -->
 				<section id="integration---1" class="container-fluid section-block integration">
