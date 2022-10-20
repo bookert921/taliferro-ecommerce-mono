@@ -1,14 +1,17 @@
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-md text-start">
-            <span *ngIf="!isEditMode" (click)="back()" style="cursor: pointer;"><i
-                    class="fa fa-chevron-left  fa-2x text-muted"></i></span>
+            <span *ngIf="!isEditMode" (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left  fa-2x text-muted"></i></span>
             <a *ngIf="isEditMode" (click)="list()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-1x"></i></a>
         </div>
         <div class="col-md text-center">
             <h1 [ngStyle]="{'color': colorService.darkBackground}">Customers</h1>
         </div>
-        <div class="col-md text-end"></div>
+        <div class="col-md text-end">
+            <button type="button" class="btn btn-success" (click)="onDashboard()">Administration</button>
+            <button type="button" class="btn btn-primary" (click)="onNew()">Create</button>
+            <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+        </div>
     </div>
     <div class="row" *ngIf="!isEditMode">
         <div class="col-md-12 no-print">
@@ -27,7 +30,6 @@
             <app-customer-edit-dob [data]="data" *ngIf="isCustomerDob"></app-customer-edit-dob>
             <app-customer-edit-gender [data]="data" *ngIf="isCustomerGender"></app-customer-edit-gender>
             <pre *ngIf="isDiagnostic">{{data | json}}</pre>
-
         </div>
     </div>
 </div>

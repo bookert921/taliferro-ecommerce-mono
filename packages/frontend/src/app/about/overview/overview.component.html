@@ -29,6 +29,9 @@
 						<li class="nav-item">
 							<a href="https://taliferro.com/#op-contact" class="button button-simple" title="Contact Us">Contact</a>
 						</li>
+						<!-- <li class="nav-item">
+							<a routerLink="/identity" class="button button-simple" title="Contact Us">Sign In</a>
+						</li> -->
 					</ul>
 					<span class="navbar-text float-end ">425.305.3748</span>
 				</div>
@@ -47,13 +50,19 @@
 											the best part is it's customizable. Our platform allows you to add a variety of page components to augment your catalog, ensuring that your page is as
 											engaging as possible. </p>
 									</div>
-									<ul class="header-nav-buttons" *ngIf="!authService.firebaseUser else signedIn">
+									<ul class="header-nav-buttons" *ngIf="!(userService.authService.firebaseUser && userService.user)">
 										<li><a routerLink="/identity" class="button button-white" title="Sign In">Sign In</a></li>
-										<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
+										<li><a href="/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
 									</ul>
-									<ng-template #signedIn>
+									<ul class="header-nav-buttons" *ngIf="(userService.authService.firebaseUser && userService.user) && userService.user.companyId">
+										<li><a routerLink="/admin" class="button button-white" title="Sign In">Dashboard</a></li>
+									</ul>
+									<ul class="header-nav-buttons" *ngIf="(userService.authService.firebaseUser && userService.user) && !userService.user.companyId">
+										<li><a routerLink="/my" class="button button-white" title="Sign In">My Account</a></li>
+									</ul>
+									<!-- <ng-template #signedIn>
 										<ul class="header-nav-buttons" *ngIf="!userService.user  else userAndSignedIn">
-											<li><a href="https://passwordless.taliferro.com/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
+											<li><a routerLink="/sign-up" class="button button-white-border" title="Sign Up">Sign Up</a></li>
 										</ul>
 										<ng-template #userAndSignedIn>
 											<ul class="header-nav-buttons" *ngIf="settingService.settings else noSettings">
@@ -69,7 +78,7 @@
 												</ul>
 											</ng-template>
 										</ng-template>
-									</ng-template>
+									</ng-template> -->
 								</div>
 								<div class="col-md-6 header-image">
 									<img class="img-fluid rounded" src="assets/images/e-commerce.svg" alt="e-Commerce Introduction">

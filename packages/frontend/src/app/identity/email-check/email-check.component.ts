@@ -7,7 +7,7 @@ import { Subscription, Subject } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { SettingService } from 'src/app/shared/services/setting.service';
-import { User } from 'src/app/shared/data/user.model';
+import { IUser } from 'src/app/shared/data/user.model';
 import { DataService } from 'src/app/shared/services/data.service';
 import { take } from 'rxjs/operators';
 import firebase from 'firebase/app';
@@ -65,30 +65,51 @@ export class EmailCheckComponent implements OnInit {
     const isLoginOK: boolean = (loginOK == 'true');
 
     if (isLoginOK) {
-      this.associateUser();
+      // if (!environment.production)
+      console.log("LOG IN OK", email);
+      this.associateUser(email);
     } else {
+      // if (!environment.production)
+      console.log("LOG NOT OK", email);
       this.isRelogin = true;
       this.errorMessage = "Something went wrong. Either your email address is wrong, or you are using a different browser other than the browser you used to identify yourself, or the link in your email is expired. Make sure you use the same browser for both signing in and verifying. If you are unsure copy the link in the email that was sent to you and paste it in the address bar of the same browser you that says 'Check Your Email'.";
       setTimeout(() => {
-        this.errorMessage.next('');
+        this.errorMessage = ('');
       }, 6000);
 
     }
     this.idMismatch = false;
   }
 
-  private async associateUser() {
+  private async associateUser(email: any) {
     if (this._authService.firebaseUser) {
       let user = await this.getUser(this._authService.firebaseUser);
+      // let u = this.userService.getNewUserRecordUsingFirebase(this._authService.firebaseUser);
 
-      if (!environment.production)
-        console.log("EmailCheck - associateUser - user returned", user);
-
-      this.associateSettings();
+      this.checkUserRecord(user);
 
     } else {
       this._router.navigate(['my', 'error']);
     }
+  }
+
+  private checkUserRecord(user: any): void {
+    if (user) {
+      let newUserCheck = this.isNewUserSignUpCheck(user);
+
+      if (!environment.production)
+        console.log("EmailCheck - associateUser - user returned", user);
+
+      this.userService.user = user;
+
+      if (newUserCheck)
+        this.newSettings(user);
+
+      this.associateSettings();
+    } else {
+      this._router.navigate(['my', 'error']);
+    }
+
   }
 
   private async associateSettings() {
@@ -97,29 +118,25 @@ export class EmailCheckComponent implements OnInit {
       if (!environment.production)
         console.log("EmailCheck - settings returned", settings);
 
-      this.checkSettings();
-    } else {
-      this.checkSettings();
-    }
-  }
-
-
-  private checkSettings(): void {
-    if (!environment.production)
-      console.log("EmailCheck - checkSettings", this._settingService.settings, this.userService.user);
-
-    if (this._settingService.settings) {
       this.proceedAccordingToUser();
     } else {
-      this._router.navigate(['identity', 'logged-in']);
+      this.proceedAccordingToUser();
     }
   }
+
+
+  // private checkSettings(): void {
+  //   if (!environment.production)
+  //     console.log("EmailCheck - checkSettings", this._settingService.settings, this.userService.user);
+
+  //   this.proceedAccordingToUser();
+  // }
 
   private proceedAccordingToUser(): void {
     if (!environment.production)
       console.log("COMPARE proceedAccordingToUser", this._settingService.settings, this.userService.user?.companyId);
 
-    if (this._settingService.settings._id && (this._settingService.settings._id === this.userService.user?.companyId)) {
+    if ((this._settingService.settings && this.userService.user) && this._settingService.settings._id && (this._settingService.settings._id === this.userService.user?.companyId)) {
       this._router.navigate(['admin']);
     } else {
       this._router.navigate(['my']);
@@ -163,5 +180,49 @@ export class EmailCheckComponent implements OnInit {
         }
       })
     })
+  }
+
+  private isNewUserSignUpCheck(user: IUser): boolean {
+    const firstName = window.localStorage.getItem('firstName');
+    const lastName = window.localStorage.getItem('lastName');
+    const companyName = window.localStorage.getItem('companyName');
+    const companyId = window.localStorage.getItem('companyId');
+
+    this.removeNewSignUpInfo();
+
+    if (firstName && lastName) {
+      // if (!environment.production)
+      console.log("Must be new registration", companyName, companyId, firstName, lastName);
+
+      user.companyName = (companyName) ? companyName : '';
+      user.firstName = firstName;
+      user.lastName = lastName;
+      user.companyId = (companyId) ? companyId : user._id;
+      return true;
+    };
+    return false;
+  }
+
+  private removeNewSignUpInfo(): void {
+    window.localStorage.removeItem('diaplayName');
+    window.localStorage.removeItem('firstName');
+    window.localStorage.removeItem('lastName');
+    window.localStorage.removeItem('companyName');
+    window.localStorage.removeItem('companyId');
+  }
+
+  private newSettings(user: IUser): void {
+    let data = {
+      companyName: user.companyName,
+      uid: user._id,
+    }
+
+    let storeID = this._settingService.newStoreSetting(data);
+
+    user.companyId = storeID;
+
+    this.userService.user = user;
+    this.userService.update();
+
   }
 }

@@ -50,8 +50,10 @@ export class UserService implements OnDestroy {
   private setUser(): void {
     this.authService.loggedInUser.subscribe((firebaseUser) => {
 
-      if (firebaseUser) {
+      if (firebaseUser && firebaseUser.email) {
         this.getUser()?.valueChanges({ idField: '_id' }).subscribe((u) => {
+          if (!environment.production)
+            console.log("UserService - User returned from subscribe", u);
 
           this.user = this.checkUserReturned(u, firebaseUser);
           this.userSubject.next(u);
@@ -104,6 +106,7 @@ export class UserService implements OnDestroy {
 
   update(): void {
     if (this.user) {
+      console.log("Updating User", this.user);
       this.user.lastUpdated = new Date().getTime();
       this.user.browserIp = this.ipAddress;
       this._firestore.collection(this._collectionName).doc(this.user._id).set(this.user, { merge: true });

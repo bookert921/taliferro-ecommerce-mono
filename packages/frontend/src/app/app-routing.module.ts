@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '', component: OverviewComponent, data: { title: 'e-Commerce' } },
   { path: 'thank-you', component: ThankYouComponent, data: { title: 'Thank You' } },
   { path: 'error', component: NotFoundComponent, data: { title: 'Error Found' } },
+  { path: 'sign-up', loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpModule) },
   { path: 'shop', loadChildren: () => import('./store/store.module').then(m => m.StoreModule) },
   { path: 'identity', loadChildren: () => import('./identity/identity.module').then(m => m.IdentityModule) },
   { path: 'activate', loadChildren: () => import('./activation/activation.module').then(m => m.ActivationModule), canLoad: [AuthGuard] },

@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   public isProductPriceDepency: boolean = false;
   public isProductSubCategory: boolean = false;
 
-  constructor(private _location: Location, public colorService: ColorsService, private _router:Router) { }
+  constructor(private _location: Location, public colorService: ColorsService, private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -40,9 +40,6 @@ export class HomeComponent implements OnInit {
     this._location.back();
   }
 
-  onDashboard() : void {
-    this._router.navigate(['admin']);
-  }
 
   list(): void {
     this.isEditMode = false;
@@ -55,7 +52,11 @@ export class HomeComponent implements OnInit {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  onSignOut() : void {
+  onDashboard(): void {
+    this._router.navigate(['admin']);
+  }
+
+  onSignOut(): void {
     this._router.navigate(['identity', 'bye']);
   }
 

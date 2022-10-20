@@ -10,7 +10,6 @@ import { LoggedInComponent } from './logged-in/logged-in.component';
 const routes: Routes = [
     { path: '', component: SignInComponent, data: { title: 'Passwordless Sign In' } },
     { path: 'check-inbox', component: CheckInboxComponent, data: { title: 'Check Your Email' } },
-    { path: 'logged-in', component: LoggedInComponent, data: { title: 'Your are Logged In' } },
     { path: 'email-check', component: EmailCheckComponent, data: { title: 'Checking Your Identity' } },
     { path: 'bye', component: SignOutComponent, data: { title: 'GoodBye' } },
     { path: 'error', component: ErrorComponent, data: { title: 'Processing Error' } },
@@ -22,6 +21,5 @@ const routes: Routes = [
     exports: [RouterModule],
     providers: [
     ]
-  })
-  export class IdentityRoutingModule { }
-  
+})
+export class IdentityRoutingModule { }

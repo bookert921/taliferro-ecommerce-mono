@@ -192,11 +192,16 @@ export class AuthService {
   }
 
   public signOut() {
-    firebase.auth().signOut().then(() => {
-      this.firebaseUser = undefined;
-    }).catch((error) => {
+    try {
+      firebase.auth().signOut().then(() => {
+        this.firebaseUser = undefined;
+      }).catch((error) => {
+        console.error(error);
+      })
+    } catch (error) {
       console.error(error);
-    })
+      this.firebaseUser = undefined;
+    }
   }
 
   private checkFirebase() {
@@ -207,6 +212,7 @@ export class AuthService {
 
         if (!environment.production)
           console.log("Auth State Change", firebaseUser);
+
 
       });
 

@@ -7,6 +7,8 @@ import { Subject, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DataService } from 'src/app/shared/services/data.service';
 import { take } from 'rxjs/operators';
+import { SettingService } from 'src/app/shared/services/setting.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -44,7 +46,7 @@ export class SignInComponent implements OnInit {
   public errorMessage = new Subject<string>();
 
 
-  constructor(private _router: Router, private _location: Location, private _authService: AuthService, private _dataService: DataService) { }
+  constructor(private _router: Router, private _location: Location, private _authService: AuthService, private _dataService: DataService, private _settingService: SettingService, public userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -118,12 +120,21 @@ export class SignInComponent implements OnInit {
       if (!environment.production)
         console.log("Firebase User", this._authService.firebaseUser);
 
-
-      this._router.navigate(['identity', 'logged-in']);
-    } else {
-      this._router.navigate(['identity', 'error']);
+      this.proceedAccordingToUser();
     }
   }
+
+  private proceedAccordingToUser(): void {
+    if (!environment.production)
+      console.log("COMPARE proceedAccordingToUser", this._settingService.settings, this.userService.user?.companyId);
+
+    if (this._settingService.settings._id && (this._settingService.settings._id === this.userService.user?.companyId)) {
+      this._router.navigate(['admin']);
+    } else {
+      this._router.navigate(['my']);
+    }
+  }
+
 
 
 

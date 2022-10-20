@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { IUser } from '../../shared/data/user.model';
 import { ColorsService } from 'src/app/shared/services/colors.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  constructor(private _location: Location, public colorService: ColorsService) { }
+  constructor(private _location: Location, public colorService: ColorsService, private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -72,6 +73,14 @@ export class HomeComponent implements OnInit {
   onNew(): void {
     this.isEditMode = true;
     this.data = this.newUser;
+  }
+
+  onDashboard(): void {
+    this._router.navigate(['admin']);
+  }
+
+  onSignOut(): void {
+    this._router.navigate(['identity', 'bye']);
   }
 
   onEdit(event: any): void {
