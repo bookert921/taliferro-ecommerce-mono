@@ -9,7 +9,6 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "test": "mocha -r tsconfig-paths/register -r ts-node/register -R spec \"./__TESTS__/**/*.test.ts\"",
-    "test:local": "eval \"$(../../../scripts/non-google_env.sh)\" && npm run test",
     "logs": "firebase functions:log"
   },
   "engines": {
