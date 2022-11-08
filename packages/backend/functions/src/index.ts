@@ -1,3 +1,3 @@
-import { onCartCreate } from "./api/carts/on-create";
+import { onCartCreate } from "./payment";
 
 export const makePayment = onCartCreate;
