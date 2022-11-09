@@ -1,31 +1,30 @@
 export class User implements IUser {
-  _id: string = '';
-  email: string = '';
-  photoURL: string = '';
-  displayName: string = '';
+  _id: string = "";
+  email: string = "";
+  photoURL: string = "";
+  displayName: string = "";
   emailVerified: boolean = false;
-  phoneNumber: string = '';
-  firstName: string = '';
-  lastName: string = '';
-  companyName: string = '';
-  companyId: string = '';
-  roles: any = '';
+  phoneNumber: string = "";
+  firstName: string = "";
+  lastName: string = "";
+  companyName: string = "";
+  companyId: string = "";
+  roles: any = "";
   lastUpdated: number = new Date().getTime();
-  browserIp: string = '';
-  temp: any = '';
+  browserIp: string = "";
+  temp: any = "";
 }
 
-
 export interface IUser {
-  _id?: string,
-  email?: string,
-  photoURL?: string,
-  displayName?: string,
-  emailVerified?: boolean,
-  phoneNumber?: string,
-  firstName?: string,
-  lastName?: string,
-  companyName?: string,
+  _id?: string;
+  email?: string;
+  photoURL?: string;
+  displayName?: string;
+  emailVerified?: boolean;
+  phoneNumber?: string;
+  firstName?: string;
+  lastName?: string;
+  companyName?: string;
   companyId?: string;
   roles?: any;
   lastUpdated?: any;
@@ -46,29 +45,27 @@ export interface IRoles {
 }
 
 export class Company implements ICompany {
-  companyName: string = '';
-  streetAddress1: string = '';
-  streetAddress2: string = '';
-  city: string = '';
-  province: string = '';
-  provinceCode: string = '';
-  zip: string = '';
-  country: string = '';
+  companyName: string = "";
+  streetAddress1: string = "";
+  streetAddress2: string = "";
+  city: string = "";
+  province: string = "";
+  provinceCode: string = "";
+  zip: string = "";
+  country: string = "";
 
-  ccCompany: string = '';
-  ccNameOnCard: string = '';
-  ccNumber: string = '';
-  ccExpDate: string = '';
-
+  ccCompany: string = "";
+  ccNameOnCard: string = "";
+  ccNumber: string = "";
+  ccExpDate: string = "";
 
   lastUpdated: number = new Date().getTime();
-  updatedBy: string = '';
-  createdBy: string = '';
+  updatedBy: string = "";
+  createdBy: string = "";
   createdAt: number = 0;
-  browserIp: string = '';
-  uid: any = '';
-  _id: any = '';
-
+  browserIp: string = "";
+  uid: any = "";
+  _id: any = "";
 }
 
 export interface ICompany {
@@ -86,7 +83,6 @@ export interface ICompany {
   ccNumber?: string;
   ccExpDate?: string;
 
-
   lastUpdated?: number;
   updatedBy?: string;
   createdBy?: string;
@@ -95,5 +91,3 @@ export interface ICompany {
   uid?: any;
   _id?: any;
 }
-
-
