@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - run: pwd
+      - run: whoami
       - uses: actions/checkout@v2
       - name: Install Firebase Emulator Suite
         run: npm i -g firebase-tools
@@ -24,6 +26,6 @@ jobs:
       - name: deploy to production
         uses: w9jds/firebase-action@master
         with:
-          args: deploy -P production --only functions
+          args: cd packages/backend/functions && npm run deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
