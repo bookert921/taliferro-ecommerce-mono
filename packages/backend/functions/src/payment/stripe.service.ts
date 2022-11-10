@@ -171,7 +171,7 @@ export class StripeService {
    * @param {IShoppingCart} cart
    * @return {string}
    */
-  async createPayment(cart: IShoppingCart): Promise<any> {
+  async createPayment(cart: IShoppingCart): Promise<string | undefined> {
     try {
       const companyId = cart?.companyId ? cart.companyId : "";
       logger.info("Received companyId: " + companyId);
@@ -228,6 +228,7 @@ export class StripeService {
       if (error instanceof Error) {
         throw new Error(error.message);
       }
+      return;
     }
   }
 }
