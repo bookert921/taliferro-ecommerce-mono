@@ -1,8 +1,7 @@
 import { firestore, EventContext, logger } from "firebase-functions";
 import { QueryDocumentSnapshot } from "firebase-functions/v1/firestore";
-import { getCompanyStripeKey } from "./payment.service";
 import { IShoppingCart } from "../../../../shared/models/shopping-cart.model";
-// import { Stripe } from "stripe";
+import { StripeService } from "./stripe.service";
 
 /**
  * Responds to the event a shopping cart is created and the submit button has been pressed. If
@@ -17,21 +16,15 @@ async function handleShoppingCartSubmitted(
   context: EventContext,
 ) {
   if (snap.get("status") === "Submitted") {
-    const shoppingCart = snap.data() as IShoppingCart;
-    const cartId = context.params.cartId;
-    logger.log("New cart submitted: " + cartId);
-    // Get company stripe key
-    let stripeKey = "";
-    if (shoppingCart.companyId) {
-      stripeKey = await getCompanyStripeKey(shoppingCart.companyId);
+    try {
+      const shoppingCart = snap.data() as IShoppingCart;
+      const cartId = context.params.cartId;
+      logger.log("New cart submitted: " + cartId);
+      // Get company stripe key
+      await new StripeService().createPayment(shoppingCart);
+    } catch (error) {
+      logger.error("Error occurred: ", error);
     }
-    logger.log("stripeKey: " + stripeKey);
-
-    // const stripe = new Stripe(stripeKey, { apiVersion: "2022-08-01" });
-    // Prepare payment details for Stripe
-    // Create stripe customer and payment details
-    // Submit payment details to stripe with payment intent and auto confirm (for now)
-    // Create order receipt
   }
 }
 
