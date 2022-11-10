@@ -16,15 +16,13 @@ jobs:
         run: npm i -g firebase-tools
       - name: Install
         run: |
-          cd ./packages/backend/functions
           pwd
           npm install
-          cd ..
-#       - name: Mocha testing (including firestore rules)
-#         run: |
-#           pwd
-#           npm run test
-#         working-directory: ./packages/backend/functions
+      #       - name: Mocha testing (including firestore rules)
+      #         run: |
+      #           pwd
+      #           npm run test
+      #         working-directory: ./packages/backend/functions
       - name: deploy to production
         uses: w9jds/firebase-action@master
         with:
