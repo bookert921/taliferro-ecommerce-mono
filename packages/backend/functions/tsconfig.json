@@ -9,8 +9,13 @@
     "target": "es2017",
     "baseUrl": ".",
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@shared/*": ["../../shared/*"]
+    }
   },
   "compileOnSave": true,
   "include": ["src", "__TESTS__/**/*"],
+  "exclude": ["src/api", "src/services", "src/utils", "node_modules", "lib"],
   "forceConsistentCasingInFileNames": true
 }

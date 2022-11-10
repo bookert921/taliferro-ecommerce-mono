@@ -31,3 +31,5 @@ coverage
 typings/
 
 scripts
+
+*notes.md

@@ -1,19 +1,19 @@
-import { Contact } from "./contact.model";
-
-export interface ShoppingCart {
+export interface IShoppingCart {
   userType?: string;
-  contact?: Contact;
+  contactId?: string;
+  contact?: any;
   billingShipping?: boolean;
   termsOfService?: boolean;
   apple_auth?: any;
   companyId?: string;
 
   shippingRequired?: boolean;
-
+  emailAddress?: string;
   amount?: any;
   tax?: number;
   currency?: string;
   status?: string;
+  paymentId?: string;
 
   lineItems?: Array<LineItem>;
   gateway?: string;

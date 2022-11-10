@@ -1,27 +1,31 @@
-export interface User {
-  _id?: string,
+/**
+ * User of Taliferro products
+ */
+export interface IUser {
+  _id?: string;
+  stripeKey?: string;
   email?: string;
   photoURL?: string;
   displayName?: string;
   emailVerified?: boolean;
   phoneNumber?: string;
-  firstName?: string,
-  lastName?: string,
-  companyName?: string,
-  companyId?: string;
+  firstName?: string;
+  lastName?: string;
+  companyName?: string;
+  companyId: string;
   roles?: any;
   lastUpdated?: any;
   browserIp?: any;
   temp?: any;
 }
 
-export interface Roles {
+export interface IRoles {
   reader: boolean;
   author?: boolean;
   admin?: boolean;
 }
 
-export interface Company {
+export interface ICompany {
   companyName?: string;
   streetAddress1?: string;
   streetAddress2?: string;
@@ -36,6 +40,7 @@ export interface Company {
   ccNumber?: string;
   ccExpDate?: string;
 
+  epirtsID?: string;
 
   lastUpdated?: number;
   updatedBy?: string;
@@ -45,5 +50,3 @@ export interface Company {
   uid?: any;
   _id?: any;
 }
-
-
