@@ -15,7 +15,7 @@
     }
   },
   "compileOnSave": true,
-  "include": ["src", "__TESTS__/**/*"],
-  "exclude": ["src/api", "src/services", "src/utils", "node_modules", "lib"],
+  "include": ["src", "__TESTS__/**/*", ".eslintrc.js"],
+  "exclude": ["node_modules", "lib"],
   "forceConsistentCasingInFileNames": true
 }
