@@ -27,6 +27,6 @@ jobs:
       - name: deploy to production
         uses: w9jds/firebase-action@master
         with:
-          args: npm run deploy
+          args: deploy --only functions
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
