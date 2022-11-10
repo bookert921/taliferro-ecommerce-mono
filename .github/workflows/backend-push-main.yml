@@ -19,12 +19,12 @@ jobs:
           cd ./packages/backend/functions
           pwd
           npm install
-#       # - name: Mocha testing (including firestore rules)
-#       # run: npm run test
-#       # working-directory: functions
-#       - name: deploy to production
-#         uses: w9jds/firebase-action@master
-#         with:
-#           args: npm run deploy
-#         env:
-#           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Mocha testing (including firestore rules)
+        run: npm run test
+        working-directory: functions
+      - name: deploy to production
+        uses: w9jds/firebase-action@master
+        with:
+          args: npm run deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
