@@ -29,8 +29,13 @@ describe("payment module tests", () => {
     await store
       .collection("settings")
       .doc(fakeCompany1._id)
-      .create(fakeCompany1);
-    await store.collection("contacts").doc(paul._id).create(paul);
+      .create(fakeCompany1)
+      .catch(() => fakeCompany1);
+    await store
+      .collection("contacts")
+      .doc(paul._id)
+      .create(paul)
+      .catch(() => paul);
   });
 
   it("it logs that a cart has been submitted", async () => {

@@ -1,5 +1,6 @@
 import { firestore, EventContext, logger } from "firebase-functions";
 import { QueryDocumentSnapshot } from "firebase-functions/v1/firestore";
+import { store } from "../repository";
 import { IShoppingCart } from "../../../../shared/models/shopping-cart.model";
 import { StripeService } from "./stripe.service";
 
@@ -20,8 +21,21 @@ async function handleShoppingCartSubmitted(
       const shoppingCart = snap.data() as IShoppingCart;
       const cartId = context.params.cartId;
       logger.log("New cart submitted: " + cartId);
-      // Get company stripe key
-      await new StripeService().createPayment(shoppingCart);
+      const result = await new StripeService().createPayment(shoppingCart);
+      await snap.ref.set(
+        {
+          ...shoppingCart,
+          status: result?.status || "failed",
+        },
+        { merge: true },
+      );
+      const ordersRef = store.collection("orders");
+      await ordersRef.doc(cartId).create({
+        cart: (await snap.ref.get()).data(),
+        charge_response: result,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
     } catch (error) {
       logger.error("Error occurred: ", error);
     }

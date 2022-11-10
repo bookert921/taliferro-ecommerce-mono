@@ -171,7 +171,9 @@ export class StripeService {
    * @param {IShoppingCart} cart
    * @return {string}
    */
-  async createPayment(cart: IShoppingCart): Promise<string | undefined> {
+  async createPayment(
+    cart: IShoppingCart,
+  ): Promise<Stripe.PaymentIntent | undefined> {
     try {
       const companyId = cart?.companyId ? cart.companyId : "";
       logger.info("Received companyId: " + companyId);
@@ -198,6 +200,7 @@ export class StripeService {
         await this.addStripeCustomer(contact);
       }
       let payment;
+      logger.info("Processing...");
       if (this.customer.stripeCId && this.customer.stripePId) {
         payment = await this.stripe?.paymentIntents.create(
           {
@@ -221,8 +224,8 @@ export class StripeService {
           { idempotencyKey: cart._id },
         );
       }
-
-      return payment?.status;
+      logger.info("Payment finished with response: ", payment?.status);
+      return payment;
     } catch (error) {
       logger.error(error);
       if (error instanceof Error) {

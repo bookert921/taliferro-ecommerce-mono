@@ -1,7 +1,7 @@
 import { generate as shortUuid } from "short-uuid";
 
 const fakeCompany1 = {
-  _id: shortUuid(),
+  _id: "2pXDjnefwBTBx95mCdN1jU",
   companyName: "Fake Company 1. Inc",
   stripeKey: "sk_test_",
 };
