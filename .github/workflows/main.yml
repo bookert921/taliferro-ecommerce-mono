@@ -14,7 +14,7 @@ jobs:
       - name: Show current directory
         run: pwd
       - name: Change directories to functions
-        run: cd packages/backend/functions
+        run: pwd && ls -ltar && cd ./packages/backend/functions
       - uses: actions/checkout@v2
       - name: Install Firebase Emulator Suite
         run: npm i -g firebase-tools
