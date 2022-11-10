@@ -8,24 +8,25 @@ on:
     branches: [main]
 
 jobs:
-  deploy_to_production:
+  deploy_backend:
     runs-on: ubuntu-latest
-    environment: production
     steps:
-      - run: pwd
-      - run: whoami
+      - name: Show current
+        run: pwd
+          whoami
       - uses: actions/checkout@v2
       - name: Install Firebase Emulator Suite
         run: npm i -g firebase-tools
       - name: install dependencies
         run: npm install
-        working-directory: functions
+        working-directory: packages/backend/functions
       # - name: Mocha testing (including firestore rules)
       # run: npm run test
       # working-directory: functions
       - name: deploy to production
         uses: w9jds/firebase-action@master
+        working-directory: packages/backend/functions
         with:
-          args: cd packages/backend/functions && npm run deploy
+          args: npm run deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
