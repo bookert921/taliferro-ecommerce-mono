@@ -12,13 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: pwd
-      - run: cd packages/backend/functions
+      - run: ls -ltar
       - uses: actions/checkout@v2
       - name: Install Firebase Emulator Suite
         run: npm i -g firebase-tools
       - name: install dependencies
         run: npm install
-        working-directory: packages/backend/functions
       # - name: Mocha testing (including firestore rules)
       # run: npm run test
       # working-directory: functions
