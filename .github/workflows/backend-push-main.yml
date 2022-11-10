@@ -20,8 +20,10 @@ jobs:
           pwd
           npm install
       - name: Mocha testing (including firestore rules)
-        run: npm run test
-        working-directory: functions
+        run: |
+          pwd
+          npm run test
+        working-directory: ./packages/backend/functions
       - name: deploy to production
         uses: w9jds/firebase-action@master
         with:
