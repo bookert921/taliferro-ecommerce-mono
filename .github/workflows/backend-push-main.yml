@@ -19,6 +19,7 @@ jobs:
           cd ./packages/backend/functions
           pwd
           npm install
+          cd ..
 #       - name: Mocha testing (including firestore rules)
 #         run: |
 #           pwd
