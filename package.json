@@ -19,7 +19,10 @@
     "test:backend": "cd packages/backend/functions && npm run test",
     "reinstall": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install",
     "reinstall:frontend": "find ./frontend -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install",
-    "reinstall:backend": "find ./backend -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install"
+    "reinstall:backend": "find ./backend -name 'node_modules' -type d -prune -exec rm -rf '{}' + && npm run install",
+    "deploy": "run-p deploy:frontend deploy:backend:functions",
+    "deploy:backend:functions": "cd packages/backend/functions && npm run deploy",
+    "deploy:frontend": "cd packages/frontend && npm run deploy"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^5.35.1",
