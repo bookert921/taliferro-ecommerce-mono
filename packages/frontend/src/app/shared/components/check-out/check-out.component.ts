@@ -27,6 +27,8 @@ import { PaymentDetails } from '../../data/payment-details.model';
 export class CheckOutComponent extends DataHandlerComponent implements OnInit, OnDestroy {
 
   data: any;
+  stripeStatus: string;
+  
   @Input() companyData: any;
   public diagnostic: boolean = false;
   public contact: IContact = {

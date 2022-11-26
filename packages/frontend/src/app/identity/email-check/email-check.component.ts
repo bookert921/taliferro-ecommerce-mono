@@ -56,7 +56,7 @@ export class EmailCheckComponent implements OnInit {
       this.beginLoginWithEmail(email, this.url);
     else {
       this.isRelogin = true;
-      this.errorMessage = "Something went wrong. Either your email address is wrong, or you are using a different browser other than the browser you used to identify yourself, or the link in your email is expired. Make sure you use the same browser for both signing in and verifying. If you are unsure copy the link in the email that was sent to you and paste it in the address bar of the same browser you that says 'Check Your Email'.";
+      this.errorMessage = "Something went wrong. Either your email address is wrong, or you are using a different browser other than the browser you used to identify yourself, or the link in your email is expired. Make sure you use the same browser for both signing in and verifying. If you are unsure copy the link in the email that was sent to you and paste it in the address bar of the same browser you used that says 'Check Your Email'.";
     }
   }
 
