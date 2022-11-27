@@ -33,10 +33,10 @@ export async function createPayment({
   shoppingCart: IShoppingCart;
 }): Promise<Stripe.Response<Stripe.PaymentIntent> | undefined> {
   const stripe = new Stripe(stripeKey, { apiVersion: "2022-08-01" });
-  if (shoppingCart.amount && shoppingCart.uid) {
+  if (shoppingCart?.amount && shoppingCart?.contact?._id) {
     const contactRef = await store
       .collection("contacts")
-      .doc(shoppingCart.uid)
+      .doc(shoppingCart.contact._id)
       .get();
     const currency = shoppingCart.currency ? shoppingCart.currency : "USD";
     const contact = contactRef.data() as IContact;
