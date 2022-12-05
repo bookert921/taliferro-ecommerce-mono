@@ -1,10 +1,9 @@
 import { Stripe } from "stripe";
 import { store } from "../repository";
-import { config, logger } from "firebase-functions/v1";
+import { logger } from "firebase-functions/v1";
 import { IContact } from "@shared/models/contact.model";
 import { IShoppingCart } from "@shared/models/shopping-cart.model";
 import { formatAmountForStripe } from "./utils/format.utils";
-import { fakeCompany1 } from "../../__TESTS__/tests_data/testCompany.data";
 import { firestore } from "firebase-admin";
 
 /**
@@ -13,6 +12,7 @@ import { firestore } from "firebase-admin";
 export class StripeService {
   private stripe: Stripe | undefined;
   private companyStripeKey: string | undefined;
+
   private company = {
     companyId: "",
   };
@@ -61,10 +61,7 @@ export class StripeService {
       const companyRef = store
         .collection("settings")
         .doc(companyId ? companyId : this.company.companyId);
-      let stripeKey = (await companyRef.get()).get("stripeKey") as string;
-      if (stripeKey.startsWith(fakeCompany1.stripeKey)) {
-        stripeKey = config().stripe.test_key;
-      }
+      const stripeKey = (await companyRef.get()).get("epirtsKey") as string;
       this.companyStripeKey = stripeKey;
       logger.info("Stripe key found!");
     } catch (error) {
@@ -175,7 +172,8 @@ export class StripeService {
     try {
       const companyId = cart?.companyId ? cart.companyId : "";
       logger.info("Received companyId: " + companyId);
-      const contactId = cart?.uid ? cart.uid : "";
+      const contact = cart?.contact ? cart.contact : {};
+      const contactId = contact?._id ? contact?._id : "";
       logger.info("Received contactId: " + contactId);
       const currency = cart?.currency ? cart.currency : "USD";
       const amount = cart?.amount
@@ -183,8 +181,8 @@ export class StripeService {
         : 0;
       logger.info("amount being considered: " + amount);
 
-      const contactRef = store.collection("contacts").doc(contactId);
-      const contact = (await contactRef.get()).data() as IContact;
+      // const contactRef = store.collection("contacts").doc(contactId);
+      // const contact = (await contactRef.get()).data() as IContact;
 
       if (this.stripe === undefined) {
         logger.info("Connecting to stripe with credentials: " + companyId);
@@ -192,9 +190,11 @@ export class StripeService {
         this.createInstance();
       }
       if (!this.customer.stripePId) {
+        logger.info("Checking stripe payment details");
         await this.addStripePaymentMethod(contact);
       }
       if (!this.customer.stripeCId) {
+        logger.info("Checking stripe customer details");
         await this.addStripeCustomer(contact);
       }
       let payment;
