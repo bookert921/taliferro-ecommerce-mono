@@ -53,7 +53,8 @@ export class CheckoutService implements OnDestroy {
     if (this.cartService.cart)
       this.cartService.cart.completeOrderUrl = environment.localURL + '/pending?id=';
 
-    let email = (this._authService.firebaseUser) ? (this._authService.firebaseUser.email) : this.cartService.cart.contact.emails[0].emailAddress;
+    // let email = (this._authService.firebaseUser) ? (this._authService.firebaseUser.email) : this.cartService.cart.contact.emails[0].emailAddress;
+    let email = this.cartService.cart.contact.emails[0].emailAddress;
     await this.saveContact(email);
 
     if (!environment.production)
@@ -106,9 +107,10 @@ export class CheckoutService implements OnDestroy {
 
 
     this.cartService.cart.environment = environment.firebaseConfig.projectId;
-    this.cartService.cart.emailAddress = emailAddress;
+    this.cartService.cart.emailAddress = this.cartService.cart.contact.emails[0].emailAddress;
     this.cartService.cart.contact.companyId = this._settinsService.settings._id;
     this.cartService.cart.contact.email = emailAddress;
+
 
     if (contactFromDatabaseID != null) {
       this.updateContact(contactFromDatabaseID);
@@ -122,6 +124,7 @@ export class CheckoutService implements OnDestroy {
     if (!environment.production)
       console.log("UPDATING", JSON.stringify(this.cartService.cart.contact, null, 2));
 
+    this.cartService.cart.contact._id = contactFromDatabaseID;
     this._dataService.update(environment.CONTACTS, contactFromDatabaseID, this.cartService.cart.contact)
   }
 
@@ -154,7 +157,7 @@ export class CheckoutService implements OnDestroy {
   }
 
   private normalOrder(email: any): void {
-    this.cartService.saveTempCart();
+    this.cartService.saveTempCart(this._settinsService.settings._id);
     this._authService.signInWithEmailAndCart(email);
     this._router.navigate(['thank-you']);
   }
@@ -189,8 +192,8 @@ export class CheckoutService implements OnDestroy {
 
   private processAuthenticatedOrder(): void {
     if (!environment.production)
-      console.log("Processing Authenticated Cart", environment.CARTS, this.cartService.cart);
-
+      console.log("FIREBASE USER", this._authService.firebaseUser?.uid, "Processing Authenticated Cart", environment.CARTS, this.cartService.cart);
+    this.cartService.cart.uid = this._authService.firebaseUser?.uid;
     this._userService.lastOrderID = this._dataService.addRecordReturnKey(environment.CARTS, this.cartService.cart);
 
     if (!environment.production)

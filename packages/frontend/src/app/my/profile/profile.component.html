@@ -1,46 +1,14 @@
-<app-inline-box-nav *ngIf="(settingService.settings && !settingService.settings.colorBlock)" [data]="settingService.settings" [isHome]="false"></app-inline-box-nav>
-<app-static-top-nav *ngIf="settingService.settings && settingService.settings.colorBlock" [data]="settingService.settings" [isHome]="false"></app-static-top-nav>
-<div *ngIf="!settingService.settings">
-      <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 255, 255, 0.95);">
-            <div class="container-fluid">
-                  <a class="navbar-brand" href="/"><img src="https://taliferro.com/assets/icons/favicon-32x32.webp" alt="Taliferro Group Logo" class="img-fluid" class="d-inline-block align-text-top">
-                        Taliferro Group</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                              <li class="nav-item">
-                                    <a href="https://taliferro.com/#op-service" class="button button-simple" title="Services">Services</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a href="https://taliferro.com/#op-portfolio" class="button button-simple" title="Products">Products</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a href="https://taliferro.com/#op-testimonial" class="button button-simple" title="Testimonials">Testimonials</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a href="https://taliferro.com/#op-experience" class="button button-simple" title="Expertise">Expertise</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a href="https://taliferro.com/blog" class="button button-simple" title="Blog">Blog</a>
-                              </li>
-                              <li class="nav-item">
-                                    <a href="https://taliferro.com/#op-contact" class="button button-simple" title="Contact Us">Contact</a>
-                              </li>
-                        </ul>
-                        <span class="navbar-text float-end ">425.305.3748</span>
-                  </div>
-            </div>
-      </nav>
-</div>
+<!-- <app-inline-box-nav *ngIf="(settingService.settings && !settingService.settings.colorBlock)" [data]="settingService.settings" [isHome]="false"></app-inline-box-nav>
+<app-static-top-nav *ngIf="settingService.settings && settingService.settings.colorBlock" [data]="settingService.settings" [isHome]="false"></app-static-top-nav> -->
 <div class="container mt-2">
       <div class="row">
             <div class="col"><span (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-2x text-muted"></i></span> </div>
             <div class="col-md text-center mb-3  wow fadeInUp">
                   <h1 [ngStyle]="{'color': colorService.darkBackground}">Profile</h1>
             </div>
-            <div class="col"></div>
+            <div class="col text-end">
+                  <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+            </div>
       </div>
       <div class="row" *ngIf="!user">
             <div class="col">
@@ -51,12 +19,12 @@
             <div class="col order-sm-first order-last">
                   <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onName()" *ngIf="(user && !user.firstName)">No First Name</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onName()" *ngIf="(!user.firstName)">No First Name</span>
                               <span class="p-2" style="cursor: pointer;" (click)="onName()" *ngIf="user && user.firstName"><strong>First Name:</strong> {{user.firstName}}</span>
                               <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onName()"><i class="fa fa-chevron-right fa-1x"></i></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onName()" *ngIf="user && !user.lastName">No First Name</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onName()" *ngIf="!user.lastName">No First Name</span>
                               <span class="p-2" style="cursor: pointer;" (click)="onName()" *ngIf="user && user.lastName"><strong>Last Name:</strong> {{user.lastName}}</span>
                               <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onName()"><i class="fa fa-chevron-right fa-1x"></i></a>
                         </li>
@@ -64,92 +32,11 @@
                   <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
                               <span class="p-2" style="cursor: pointer;" (click)="onEmail()" *ngIf="user && user.email"><strong>Email:</strong> {{user.email}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onEmail()" *ngIf="user && !user.email"> No email found</span>
+                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onEmail()" *ngIf="!user.email"> No email found</span>
                               <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onEmail()"><i class="fa fa-chevron-right fa-1x"></i></a>
                         </li>
                   </ul>
                   <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onPhone()" *ngIf="user && user.phoneNumber"><strong>Phone:</strong> {{user.phoneNumber}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onPhone()" *ngIf="user && !user.phoneNumber"> No phone number found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onPhone()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                  </ul>
-                  <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && user.temp.streetAddress1"><strong>Address 1:</strong>
-                                    {{user.temp.streetAddress1}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && !user.temp.streetAddress1">No
-                                    address 1 found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onAddress()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" *ngIf="user && user.temp && user.temp.streetAddress2"><strong>Address 2:</strong> {{user.temp.streetAddress2}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" *ngIf="user && user.temp && !user.temp.streetAddress2">No address 2 found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onAddress()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && user.temp.city"><strong>City:</strong> {{user.temp.city}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && !user.temp.city">No city
-                                    found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onAddress()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && user.temp.province"><strong>Province:</strong> {{user.temp.province}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && !user.temp.province">No province
-                                    found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onAddress()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" *ngIf="user && user.temp && user.temp.zip" style="cursor: pointer;" (click)="onAddress()"><strong>Zip Code:</strong> {{user.temp.zip}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && !user.temp.zip">No zip code
-                                    found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onAddress()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && user.temp.country"><strong>Country:</strong> {{user.temp.country}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onAddress()" *ngIf="user && user.temp && !user.temp.country">No country
-                                    found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onAddress()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                  </ul>
-                  <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onDob()" *ngIf="user && user.temp && user.temp.dob"><strong>Date of Birth:</strong> {{user.temp.dob}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onDob()" *ngIf="user && user.temp && !user.temp.dob">No date of birth
-                                    found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onDob()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onGender()" *ngIf="user && user.temp && user.temp.gender"><strong>Gender at Birth:</strong>
-                                    {{user.temp.gender}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onGender()" *ngIf="user && user.temp && !user.temp.gender">No gender
-                                    found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onGender()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                  </ul>
-                  <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onPaymentInfo()" *ngIf="user && user.temp && user.temp.ccNameOnCard"><strong>Name on Card:</strong>
-                                    {{user.temp.ccNameOnCard}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onPaymentInfo()" *ngIf="user && user.temp && !user.temp.ccNameOnCard">No
-                                    name on card found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onPaymentInfo()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onPaymentInfo()" *ngIf="user && user.temp && user.temp.ccNumber"><strong>CC Number:</strong>
-                                    ************{{user.temp.ccNumber | slice:-4}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onPaymentInfo()" *ngIf="user && user.temp && !user.temp.ccNumber">No credit
-                                    card number found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onPaymentInfo()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
-                              <span class="p-2" style="cursor: pointer;" (click)="onPaymentInfo()" *ngIf="user && user.temp && user.temp.ccExpDate"><strong>CC Expiration:</strong>
-                                    {{user.temp.ccExpDate}}</span>
-                              <span class="p-2 text-secondary text-opacity-25 fst-italic" style="cursor: pointer;" (click)="onPaymentInfo()" *ngIf="user && user.temp && !user.temp.ccExpDate">No
-                                    expiration found</span>
-                              <a class="text-secondary text-opacity-25" style="cursor: pointer;" (click)="onPaymentInfo()"><i class="fa fa-chevron-right fa-1x"></i></a>
-                        </li>
                         <li *ngIf="!production" class="list-group-item d-flex justify-content-between align-items-center wow fadeIn">
                               <span class="p-2">Diagnostic </span>
                               <div class="form-check form-switch">

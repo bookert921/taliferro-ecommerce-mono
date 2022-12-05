@@ -28,7 +28,7 @@ export class DataService implements OnDestroy {
   public ipAddress = '';
 
 
-  constructor( private _firestore: AngularFirestore, private _ipService: IpService, private _authService: AuthService, private _settingService: SettingService, private _userService: UserService) {
+  constructor(private _firestore: AngularFirestore, private _ipService: IpService, private _authService: AuthService, private _settingService: SettingService, private _userService: UserService) {
     this.getIP();
   }
 
@@ -46,7 +46,8 @@ export class DataService implements OnDestroy {
       this._itemDocs = this._firestore.collection(collectionName, ref => ref.where("companyId", "==", this._settingService.settings._id));
       this.items = this._itemDocs.valueChanges({ idField: '_id' });
     } catch (error) {
-      console.error("Error On", collectionName, "Settings", this._settingService.settings);
+      if (!environment.production)
+        console.error("Error On", collectionName, "Settings", this._settingService.settings);
     }
   }
 
@@ -96,7 +97,13 @@ export class DataService implements OnDestroy {
   addRecordReturnKey(collectionName: string, data: any) {
     data.lastUpdated = new Date().getTime();
     data.createdAt = new Date().getTime();
-    data.companyId = this._settingService.settings._id;
+
+    if (!environment.production)
+      console.log("addRecordReturnKey/settings", this._settingService.settings)
+
+    if (this._settingService && this._settingService.settings && this._settingService.settings._id)
+      data.companyId = this._settingService.settings._id;
+
     if (this._authService.firebaseUser)
       data.updatedBy = this._authService.firebaseUser.email;
     data.browserIp = this.ipAddress;
@@ -114,7 +121,7 @@ export class DataService implements OnDestroy {
     this.item = this._itemDoc.valueChanges({ idField: '_id' });
   }
 
-  getRecord(collectionName: string, id: string) : Observable<any> {
+  getRecord(collectionName: string, id: string): Observable<any> {
     return this._firestore.doc<any>(collectionName + '/' + id).valueChanges({ idField: '_id' });
   }
 

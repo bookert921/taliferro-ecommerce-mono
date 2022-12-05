@@ -42,7 +42,8 @@ export class SettingService implements OnDestroy {
       this._itemDocs = this._firestore.collection(this._collectionName);
       this.items = this._itemDocs.valueChanges({ idField: '_id' });
     } catch (error) {
-      console.error("Error On", this._collectionName);
+      if (!environment.production)
+        console.error("Error On", this._collectionName);
     }
 
   }
@@ -58,8 +59,10 @@ export class SettingService implements OnDestroy {
   retrieveSettings(id: any): void {
     if (id)
       this.setSettings(id);
-    else
-      console.error("INVALID STORE PASSED");
+    else {
+      if (!environment.production)
+        console.error("INVALID STORE PASSED");
+    }
   }
 
   private setSettings(id: string): void {

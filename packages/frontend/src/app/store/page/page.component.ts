@@ -91,9 +91,13 @@ export class PageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
     this._activatedRoute.data.subscribe((response: any) => {
       response.setting.subscribe((data: any) => {
-        console.log("RESPONSE2", data);
+        if (!environment.production)
+          console.log("RESPONSE2", data);
         this._settingService.settings = data;
         this.data = data;
         this.populate();
@@ -159,7 +163,8 @@ export class PageComponent implements OnInit, OnDestroy {
         console.log("Comparing", this._settingService.settings._id, this.userService.user?.companyId);
 
     } catch (error) {
-      console.error("ERROR", "User", this.userService.user, "Settings", this._settingService.settings)
+      if (!environment.production)
+        console.error("ERROR", "User", this.userService.user, "Settings", this._settingService.settings)
     }
   }
 

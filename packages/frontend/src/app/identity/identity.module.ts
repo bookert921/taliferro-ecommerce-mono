@@ -8,7 +8,7 @@ import { SignOutComponent } from './sign-out/sign-out.component';
 import { CheckInboxComponent } from './check-inbox/check-inbox.component';
 import { ErrorComponent } from './error/error.component';
 import { LoggedInComponent } from './logged-in/logged-in.component';
-
+import { SavedCartCheckComponent } from './saved-cart-check/saved-cart-check.component';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { LoggedInComponent } from './logged-in/logged-in.component';
     SignOutComponent,
     CheckInboxComponent,
     ErrorComponent,
-    LoggedInComponent
+    LoggedInComponent,
+    SavedCartCheckComponent
   ],
   imports: [
     CommonModule,

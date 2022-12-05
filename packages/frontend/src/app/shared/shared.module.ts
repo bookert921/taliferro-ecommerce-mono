@@ -67,6 +67,8 @@ import { MarketingCarouselComponent } from './components/marketing-carousel/mark
 import { Catalog2Component } from './components/catalog2/catalog2.component';
 import { ConsentAuthorizationComponent } from './components/consent-authorization/consent-authorization.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StoreNavInlineBoxComponent } from './components/store-nav-inline-box/store-nav-inline-box.component';
+import { StoreNavStaticTopComponent } from './components/store-nav-static-top/store-nav-static-top.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CatalogProductFilterPipe,
     CustomerFilterPipe,
     DailyReportPipe,
-    DataCheckMarkPipe, 
+    DataCheckMarkPipe,
     DataMaxlengthColumnPipe,
     DateSortDescPipe,
     LabOrderFilterPipe,
@@ -132,6 +134,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     Catalog2Component,
     ConsentAuthorizationComponent,
     DashboardComponent,
+    StoreNavInlineBoxComponent,
+    StoreNavStaticTopComponent,
   ],
   imports: [
     CommonModule,
@@ -178,7 +182,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     Catalog2Component,
     ConsentAuthorizationComponent,
     DashboardComponent,
-    
+
     AppointmentFilterPipe,
     AppointmentTimeSortPipe,
     CartFilterPipe,
@@ -186,7 +190,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CatalogProductFilterPipe,
     CustomerFilterPipe,
     DailyReportPipe,
-    DataCheckMarkPipe, 
+    DataCheckMarkPipe,
     DataMaxlengthColumnPipe,
     DateSortDescPipe,
     LabOrderFilterPipe,
@@ -204,7 +208,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SortPositionPipe,
     StatusPipe,
     TitleSortPipe,
-    TypeofPipe
+    TypeofPipe,
+    StoreNavInlineBoxComponent,
+    StoreNavStaticTopComponent
 
   ]
 })

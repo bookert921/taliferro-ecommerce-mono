@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -37,10 +38,10 @@ export class HomeComponent implements OnInit {
   public isAdmin: boolean = false;
 
   public colStyle = 'none';
-  
 
-  constructor(private _location: Location, public userService: UserService) {
-    
+
+  constructor(private _router: Router, private _location: Location, public userService: UserService) {
+
   }
 
   ngOnInit(): void {
@@ -49,6 +50,15 @@ export class HomeComponent implements OnInit {
     });
 
   }
+
+  onDashboard(): void {
+    this._router.navigate(['admin']);
+  }
+
+  onSignOut(): void {
+    this._router.navigate(['identity', 'bye']);
+  }
+
 
   back(): void {
     this._location.back()

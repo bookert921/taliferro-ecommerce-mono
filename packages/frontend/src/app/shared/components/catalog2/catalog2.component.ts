@@ -38,8 +38,8 @@ export class Catalog2Component implements OnInit {
   @Input() allProducts: any;
 
 
-  constructor(private _viewportScroller: ViewportScroller, public authService:AuthService, public userService: UserService, public subCategoryService: SubCategoryService, public colorService: ColorsService, public productTypeService: ProductTypeService, public productService: ProductService, public categoryService: CategoryService, public cartService: CartService) {
-    
+  constructor(private _viewportScroller: ViewportScroller, public authService: AuthService, public userService: UserService, public subCategoryService: SubCategoryService, public colorService: ColorsService, public productTypeService: ProductTypeService, public productService: ProductService, public categoryService: CategoryService, public cartService: CartService) {
+
   }
 
   ngOnInit(): void {
@@ -75,7 +75,9 @@ export class Catalog2Component implements OnInit {
       console.log("dependencyCodeCount", this.dependencyCodeCount);
 
     this.cartService.cart.lineItems?.forEach((item) => {
-      console.log("Loop", item.product);
+      if (!environment.production)
+        console.log("Loop", item.product);
+
       if (item.product && item.product.dependency && item.product.dependency.dependencyCode && !item.product.dependency.priceDependent) {
         if (this.dependencyCodeCount > 0)
           this.dependencyCodes += ","

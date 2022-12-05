@@ -3,52 +3,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="section__title text-capitalize  wow fadeInUp"
-                        [ngStyle]="{'color': colorService.secondaryColor}">Simple {{companyData?.checkOutSectionTitle}}</h2>
+                    <h2 class="section__title text-capitalize  wow fadeInUp" [ngStyle]="{'color': colorService.secondaryColor}">Simple {{companyData?.checkOutSectionTitle}}</h2>
                 </div>
             </div>
             <div class="row mt-2  wow fadeInUp">
                 <div class="col-12">
                     <div class="row mt-2">
                         <div class="col-12 col-md-6">
-                            <input [(ngModel)]="contact.firstName" type="text" name="firstName" id="firstName"
-                                placeholder="First Name" class="form-control form-control-lg" required
+                            <input [(ngModel)]="contact.firstName" type="text" name="firstName" id="firstName" placeholder="First Name" class="form-control form-control-lg" required
                                 #firstName="ngModel" pattern="^[ A-Za-z_'-]*$" style="">
                         </div>
                         <div class="col-12 col-md-6">
-                            <input [(ngModel)]="contact.lastName" type="text" name="lastName" id="lastName"
-                                placeholder="Last Name" class="form-control form-control-lg" required
-                                #lastName="ngModel" pattern="^[ A-Za-z_'-]*$" style="color:black">
+                            <input [(ngModel)]="contact.lastName" type="text" name="lastName" id="lastName" placeholder="Last Name" class="form-control form-control-lg" required #lastName="ngModel"
+                                pattern="^[ A-Za-z_'-]*$" style="color:black">
                         </div>
                     </div>
                     <div class="row  mt-2">
                         <div class="col-12  col-md-6">
-                            <input [(ngModel)]="emailAddress.emailAddress" type="email" name="email" id="email"
-                                class="form-control form-control-lg" placeholder="Email Address" required
+                            <input [(ngModel)]="emailAddress.emailAddress" type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Email Address" required
                                 #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                         </div>
                         <div class="col-12 col-md-6">
-                            <input [(ngModel)]="phone.phoneNumber" type="tel" name="phone" id="phone"
-                                class="form-control form-control-lg" placeholder="Phone Number" required>
+                            <input [(ngModel)]="phone.phoneNumber" type="tel" name="phone" id="phone" class="form-control form-control-lg" placeholder="Phone Number" required>
                         </div>
                     </div>
                     <div class="row  mt-5">
                         <div class="col-12  col-md-6">
-                            <input [(ngModel)]="address.streetAddress1" type="text" name="streetAddress1" id="streetAddress1"
-                                class="form-control form-control-lg" placeholder="Billing Address 1" required>
+                            <input [(ngModel)]="address.streetAddress1" type="text" name="streetAddress1" id="streetAddress1" class="form-control form-control-lg" placeholder="Billing Address 1"
+                                required>
                         </div>
                         <div class="col-12 col-md-6">
-                            <input [(ngModel)]="address.streetAddress2" type="text" name="streetAddress2" id="streetAddress2"
-                                class="form-control form-control-lg" placeholder="Billing Address 2">
+                            <input [(ngModel)]="address.streetAddress2" type="text" name="streetAddress2" id="streetAddress2" class="form-control form-control-lg" placeholder="Billing Address 2">
                         </div>
                     </div>
                     <div class="row  mt-2">
-                        <div class="col-12 col-md-6"> <input [(ngModel)]="address.city" type="text"
-                                name="city" id="city" class="form-control form-control-lg" placeholder="City" required>
+                        <div class="col-12 col-md-6"> <input [(ngModel)]="address.city" type="text" name="city" id="city" class="form-control form-control-lg" placeholder="City" required>
                         </div>
-                        <div class="col-12 col-md-6"><select [(ngModel)]="address.province" name="province"
-                                id="province" class="form-select form-select-lg" required>
-                                <option value="" selected disabled hidden>Province</option>
+                        <div class="col-12 col-md-6"><select [(ngModel)]="address.province" name="province" id="province" class="form-select form-select-lg" required>
+                                <option value="" selected disabled hidden>State or Province</option>
                                 <option value="AL">Alabama [AL]</option>
                                 <option value="AK">Alaska [AK]</option>
                                 <option value="AS">American Samoa [AS]</option>
@@ -124,11 +116,9 @@
                             </select></div>
                     </div>
                     <div class="row  mt-2">
-                        <div class="col-12 col-md-6"><input [(ngModel)]="address.zipCode" type="text" name="zip"
-                                id="zip" class="form-control form-control-lg" placeholder="Billing Zip Code" required>
+                        <div class="col-12 col-md-6"><input [(ngModel)]="address.zipCode" type="text" name="zip" id="zip" class="form-control form-control-lg" placeholder="Billing Zip Code" required>
                         </div>
-                        <div class="col-12 col-md-6"><select [(ngModel)]="address.country" name="country"
-                                id="country" class="form-select form-select-lg" required>
+                        <div class="col-12 col-md-6"><select [(ngModel)]="address.country" name="country" id="country" class="form-select form-select-lg" required>
                                 <option value="" selected disabled hidden>Country</option>
                                 <option value="US">United States of America [US]</option>
                                 <option value="CA" disabled>Canada [CA]</option>
@@ -377,47 +367,37 @@
                     <div class="row  mt-2">
                         <div class="col-12 col-md-6">
                             <div class="form-check">
-                                <input [(ngModel)]="cartService.cart.billingShipping" class="form-check-input" type="checkbox"
-                                    id="billingShipping" name="billingShipping" checked>
-                                <label class="form-check-label" for="billingShipping"> Billing and Shipping are the
-                                    same </label>
+                                <input [(ngModel)]="cartService.cart.billingShipping" class="form-check-input" type="checkbox" id="billingShipping" name="billingShipping" checked>
+                                <label class="form-check-label" for="billingShipping"> Billing and Shipping are the same </label>
                             </div>
                         </div>
                     </div>
                     <div *ngIf="!cartService.cart.billingShipping">
                         <div class="row  mt-2">
                             <div class="col-12 col-md-6">
-                                <input [(ngModel)]="shippingAddress.firstName" type="text"
-                                    name="shipping_firstName" id="shipping_firstName"
-                                    class="form-control form-control-lg" placeholder="Shipping First Name"
-                                    #shipping_firstName="ngModel" pattern="^[ A-Za-z_'-]*$">
+                                <input [(ngModel)]="shippingAddress.firstName" type="text" name="shipping_firstName" id="shipping_firstName" class="form-control form-control-lg"
+                                    placeholder="Shipping First Name" #shipping_firstName="ngModel" pattern="^[ A-Za-z_'-]*$">
                             </div>
                             <div class="col-12 col-md-6">
-                                <input [(ngModel)]="shippingAddress.lastName" type="text" name="shipping_lastName"
-                                    id="shipping_lastName" class="form-control form-control-lg"
-                                    placeholder="Shipping Last Name" #shipping_lastName="ngModel"
-                                    pattern="^[ A-Za-z_'-]*$">
+                                <input [(ngModel)]="shippingAddress.lastName" type="text" name="shipping_lastName" id="shipping_lastName" class="form-control form-control-lg"
+                                    placeholder="Shipping Last Name" #shipping_lastName="ngModel" pattern="^[ A-Za-z_'-]*$">
                             </div>
                         </div>
                         <div class="row  mt-2">
                             <div class="col-12 col-md-6">
-                                <input [(ngModel)]="shippingAddress.streetAddress1" type="text" name="shippingstreetAddress1"
-                                    id="shippingstreetAddress1" class="form-control form-control-lg"
+                                <input [(ngModel)]="shippingAddress.streetAddress1" type="text" name="shippingstreetAddress1" id="shippingstreetAddress1" class="form-control form-control-lg"
                                     placeholder="Shipping Address 1">
                             </div>
                             <div class="col-12 col-md-6">
-                                <input [(ngModel)]="shippingAddress.streetAddress2" type="text" name="shippingstreetAddress2"
-                                    id="shippingstreetAddress2" class="form-control form-control-lg"
+                                <input [(ngModel)]="shippingAddress.streetAddress2" type="text" name="shippingstreetAddress2" id="shippingstreetAddress2" class="form-control form-control-lg"
                                     placeholder="Shipping Address 2">
                             </div>
                         </div>
                         <div class="row  mt-2">
-                            <div class="col-12 col-md-6"> <input [(ngModel)]="shippingAddress.city" type="text"
-                                    name="shipping_city" id="shipping_city" class="form-control form-control-lg"
+                            <div class="col-12 col-md-6"> <input [(ngModel)]="shippingAddress.city" type="text" name="shipping_city" id="shipping_city" class="form-control form-control-lg"
                                     placeholder="Shipping City"></div>
-                            <div class="col-12 col-md-6"><select [(ngModel)]="shippingAddress.province"
-                                    name="shipping_province" id="shipping_province" class="form-select form-select-lg">
-                                    <option value="" selected disabled hidden>Shipping Province</option>
+                            <div class="col-12 col-md-6"><select [(ngModel)]="shippingAddress.province" name="shipping_province" id="shipping_province" class="form-select form-select-lg">
+                                    <option value="" selected disabled hidden>Shipping State or Province</option>
                                     <option value="AL">Alabama [AL]</option>
                                     <option value="AK">Alaska [AK]</option>
                                     <option value="AS">American Samoa [AS]</option>
@@ -493,11 +473,9 @@
                                 </select></div>
                         </div>
                         <div class="row  mt-2">
-                            <div class="col-12 col-md-6"><input [(ngModel)]="shippingAddress.zipCode" type="text"
-                                    name="shipping_zip" id="shipping_zip" class="form-control form-control-lg"
+                            <div class="col-12 col-md-6"><input [(ngModel)]="shippingAddress.zipCode" type="text" name="shipping_zip" id="shipping_zip" class="form-control form-control-lg"
                                     placeholder="Shipping Zip Code"></div>
-                            <div class="col-12 col-md-6"><select [(ngModel)]="shippingAddress.country"
-                                    name="shipping_country" id="shipping_country" class="form-select form-select-lg">
+                            <div class="col-12 col-md-6"><select [(ngModel)]="shippingAddress.country" name="shipping_country" id="shipping_country" class="form-select form-select-lg">
                                     <option value="" selected disabled hidden>Country</option>
                                     <option value="US">United States of America [US]</option>
                                     <option value="CA" disabled>Canada [CA]</option>
@@ -752,44 +730,36 @@
                     <div class="row mt-2">
                         <div class="col-12 col-md-6">
                             <div class="form__group">
-                                <input [(ngModel)]="paymentDetails.ccNameOnCard" type="text" name="ccNameOnCard"
-                                    id="ccNameOnCard" placeholder="Name on Card" class="form-control form-control-lg"
+                                <input [(ngModel)]="paymentDetails.ccNameOnCard" type="text" name="ccNameOnCard" id="ccNameOnCard" placeholder="Name on Card" class="form-control form-control-lg"
                                     required minlength="3" #ccNameOnCard="ngModel" pattern="^[ A-Za-z_'-]*$">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="input-group">
-                                <input [(ngModel)]="paymentDetails.ccNumber" type="password" id="ccNumber" name="ccNumber"
-                                    placeholder="Credit Card Number" class="form-control form-control-lg" required
-                                    #ccNumber="ngModel" pattern="[0-9]{13,16}">
-                                <span class="input-group-text" id="basic-addon1" (click)="showContent()"
-                                    style="cursor: pointer;"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                <input [(ngModel)]="paymentDetails.ccNumber" type="password" id="ccNumber" name="ccNumber" placeholder="Credit Card Number" class="form-control form-control-lg"
+                                    required #ccNumber="ngModel" pattern="[0-9]{13,16}">
+                                <span class="input-group-text" id="basic-addon1" (click)="showContent()" style="cursor: pointer;"><i class="fa fa-eye" aria-hidden="true"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-6 col-md-6">
                             <div class="form__group">
-                                <input [(ngModel)]="paymentDetails.ccExpDate" type="month" name="ccExpDate"
-                                    id="ccExpDate" placeholder="Expiration Date - YYYY-MM"
-                                    class="form-control form-control-lg" required #ccExpDate="ngModel"
-                                    pattern="^[\d]{4}-[\d]{2}$">
+                                <input [(ngModel)]="paymentDetails.ccExpDate" type="month" name="ccExpDate" id="ccExpDate" placeholder="Expiration Date - YYYY-MM" class="form-control form-control-lg"
+                                    required #ccExpDate="ngModel" pattern="^[\d]{4}-[\d]{2}$">
                             </div>
                         </div>
                         <div class="col-6 col-md-6">
                             <div class="form__group">
-                                <input [(ngModel)]="paymentDetails.ccSecurityCode" type="text" name="ccSecurityCode"
-                                    id="ccSecurityCode" placeholder="Security Code"
-                                    class="form-control form-control-lg" required #ccSecurityCode="ngModel"
-                                    pattern="[0-9]{3,4}">
+                                <input [(ngModel)]="paymentDetails.ccSecurityCode" type="text" name="ccSecurityCode" id="ccSecurityCode" placeholder="Security Code"
+                                    class="form-control form-control-lg" required #ccSecurityCode="ngModel" pattern="[0-9]{3,4}">
                             </div>
                         </div>
                     </div>
                     <div class="row  mt-2">
                         <div class="col-12 col-md-6">
                             <div class="form__group form__group--select">
-                                <select class="form-select form-select-lg" [(ngModel)]="cartService.cart.deliveryTime"
-                                    name="deliveryTime" id="deliveryTime">
+                                <select class="form-select form-select-lg" [(ngModel)]="cartService.cart.deliveryTime" name="deliveryTime" id="deliveryTime">
                                     <option value="" selected disabled hidden>Rush Delivery?</option>
                                     <option value="No">No Rush Delivery</option>
                                     <option value="Yes">Yes Rush Delivery</option>
@@ -800,28 +770,21 @@
                     <div class="row  mt-2">
                         <div class="col-md-6">
                             <div class="form-check">
-                                <input [(ngModel)]="cartService.cart.termsOfService" class="form-check-input" type="checkbox"
-                                    id="termsOfService" name="termsOfService" required>
-                                <label class="form-check-label" for="termsOfService"> I have read the <a href="#"
-                                        data-bs-toggle="modal" data-bs-target="#tos">terms of service</a>. </label>
+                                <input [(ngModel)]="cartService.cart.termsOfService" class="form-check-input" type="checkbox" id="termsOfService" name="termsOfService" required>
+                                <label class="form-check-label" for="termsOfService"> I have read the <a href="#" data-bs-toggle="modal" data-bs-target="#tos">terms of service</a>. </label>
                             </div>
                         </div>
                         <div class="col-md-6" *ngIf="companyData && companyData.apple_verification">
-                            <div class="form-check"
-                                *ngIf="!(userService.authService.firebaseUser && userService.authService.firebaseUser.email)">
-                                <input [(ngModel)]="cartService.cart.apple_auth" class="form-check-input" type="checkbox"
-                                    id="apple_auth" name="apple_auth">
-                                <label class="form-check-label" for="apple_auth"> Use <i class="fa fa-apple"
-                                        aria-hidden="true"></i> Apple to authenticate the purchase. </label>
+                            <div class="form-check" *ngIf="!(userService.authService.firebaseUser && userService.authService.firebaseUser.email)">
+                                <input [(ngModel)]="cartService.cart.apple_auth" class="form-check-input" type="checkbox" id="apple_auth" name="apple_auth">
+                                <label class="form-check-label" for="apple_auth"> Use <i class="fa fa-apple" aria-hidden="true"></i> Apple to authenticate the purchase. </label>
                             </div>
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-12 text-center mt-3"
-                            *ngIf="(cartService.cart.lineItems && (cartService.cart.lineItems.length > 0))">
-                            <button type="submit"
-                                [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}"
-                                class="btn btn-primary" [disabled]="!dataForm.form.valid">Place Order</button>
+                        <div class="col-12 text-center mt-3" *ngIf="(cartService.cart.lineItems && (cartService.cart.lineItems.length > 0))">
+                            <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                                [disabled]="!dataForm.form.valid">Place Order</button>
                         </div>
                     </div>
                 </div>
@@ -833,8 +796,7 @@
     <div class="row">
         <div class="col-12">
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [checked]="diagnostic"
-                    (click)="setDiagnostic()">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" [checked]="diagnostic" (click)="setDiagnostic()">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Show diagnostic?</label>
             </div>
         </div>
@@ -844,13 +806,13 @@
             <pre>{{authService.firebaseUser}}</pre>
         </div>
         <div class="col-12">
-            <pre >{{contact | json}}</pre>
+            <pre>{{contact | json}}</pre>
         </div>
         <div class="col-12">
-            <pre >{{cartService.cart | json}}</pre>
+            <pre>{{cartService.cart | json}}</pre>
         </div>
         <div class="col-12">
-            <pre >{{companyData | json}}</pre>
+            <pre>{{companyData | json}}</pre>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
 import { CategoryService } from '../../services/category.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -421,7 +422,8 @@ export class DashboardComponent implements OnInit {
       }
     }
     catch (err) {
-      console.error(null, err)
+      if (!environment.production)
+        console.error(null, err)
     }
 
   }
@@ -451,7 +453,8 @@ export class DashboardComponent implements OnInit {
       }
     }
     catch (err) {
-      console.error(null, err)
+      if (!environment.production)
+        console.error(null, err)
     }
 
   }
@@ -481,7 +484,8 @@ export class DashboardComponent implements OnInit {
       }
     }
     catch (err) {
-      console.error(null, err)
+      if (!environment.production)
+        console.error(null, err)
     }
 
   }
@@ -510,7 +514,8 @@ export class DashboardComponent implements OnInit {
         })
       }
     } catch (err) {
-      console.error(null, err)
+      if (!environment.production)
+        console.error(null, err)
     }
 
   }

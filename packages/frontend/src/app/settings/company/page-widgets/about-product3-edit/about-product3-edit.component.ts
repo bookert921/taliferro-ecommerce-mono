@@ -70,7 +70,8 @@ export class AboutProduct3EditComponent extends DataHandlerComponent implements 
       }
       this.uploaded = true;
     } catch (error) {
-      console.error("ON DROP");
+      if (!environment.production)
+        console.error("ON DROP");
       this.uploaded = false;
     }
   }
@@ -83,7 +84,8 @@ export class AboutProduct3EditComponent extends DataHandlerComponent implements 
       }
       this.uploaded = true;
     } catch (error) {
-      console.error("ON DROP");
+      if (!environment.production)
+        console.error("ON DROP");
       this.uploaded = false;
     }
   }
@@ -109,7 +111,8 @@ export class AboutProduct3EditComponent extends DataHandlerComponent implements 
 
       this.processImage1Upload(event, path);
     } catch (error) {
-      console.error("UPLOAD", error);
+      if (!environment.production)
+        console.error("UPLOAD", error);
     }
   }
 
@@ -119,7 +122,8 @@ export class AboutProduct3EditComponent extends DataHandlerComponent implements 
 
       this.processImage2Upload(event, path);
     } catch (error) {
-      console.error("UPLOAD", error);
+      if (!environment.production)
+        console.error("UPLOAD", error);
     }
   }
 
@@ -140,7 +144,8 @@ export class AboutProduct3EditComponent extends DataHandlerComponent implements 
         })
       ).subscribe();
     } catch (error) {
-      console.error("PROCESS UPLOAD", error);
+      if (!environment.production)
+        console.error("PROCESS UPLOAD", error);
     }
   }
   processImage2Upload(event: any, path: string): void {
@@ -160,7 +165,8 @@ export class AboutProduct3EditComponent extends DataHandlerComponent implements 
         })
       ).subscribe();
     } catch (error) {
-      console.error("PROCESS UPLOAD", error);
+      if (!environment.production)
+        console.error("PROCESS UPLOAD", error);
     }
   }
 

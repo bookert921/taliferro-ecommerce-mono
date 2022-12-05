@@ -5,7 +5,10 @@
         <div class="col-md text-center">
             <strong>Web Orders</strong>
         </div>
-        <div class="col"></div>
+        <div class="col-md text-end">
+            <button type="button" class="btn btn-success" (click)="onDashboard()">Administration</button>
+            <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+        </div>
     </div>
     <div class="row" *ngIf="!isEditMode">
         <div class="col">
@@ -27,7 +30,7 @@
                     <app-order-view [data]="data" [isDiagnostic]="isDiagnostic" *ngIf="!viewToggle" (editItem)="onEdit($event)"></app-order-view>
                     <app-appointment-print-list [data]="data" *ngIf="viewToggle"></app-appointment-print-list>
                 </div>
-                <div class="col-md-6 no-print" [ngStyle]="{'display': colStyle}"> 
+                <div class="col-md-6 no-print" [ngStyle]="{'display': colStyle}">
                     <pre *ngIf="isDiagnostic">{{data | json}}</pre>
                     <app-order-edit-address [data]="data" *ngIf="isOrderAddress" (done)="editReset()"></app-order-edit-address>
                     <app-order-edit-dob [data]="data" *ngIf="isOrderDob" (done)="editReset()"></app-order-edit-dob>
@@ -41,7 +44,7 @@
                     <app-order-edit-phone-number [data]="data" *ngIf="isOrderPhoneNumber" (done)="editReset()"></app-order-edit-phone-number>
                     <app-order-edit-ssn [data]="data" *ngIf="isOrderSsn" (done)="editReset()"></app-order-edit-ssn>
                     <app-order-edit-status [data]="data" *ngIf="isStatus" (done)="editReset()"></app-order-edit-status>
-                    <app-order-edit-lis-number [data]="data" *ngIf="isLIS"  (done)="editReset()"></app-order-edit-lis-number>
+                    <app-order-edit-lis-number [data]="data" *ngIf="isLIS" (done)="editReset()"></app-order-edit-lis-number>
                 </div>
             </div>
         </div>

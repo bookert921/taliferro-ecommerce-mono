@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { ViewportScroller } from '@angular/common';
+
 import { Subscription } from 'rxjs';
 import { CategoryService } from '../../services/category.service';
 import { CartService } from '../../services/cart.service';
@@ -24,10 +26,10 @@ export class CatalogComponent implements OnInit {
   productType = "";
   activeBackground = "#ffffff";
   currentFilter = '';
-  
 
-  constructor(public subCategoryService: SubCategoryService, public productTypeService: ProductTypeService, public productService: ProductService, public categoryService: CategoryService, private _cartService: CartService, public colorService: ColorsService) {
-    
+
+  constructor(private _viewportScroller: ViewportScroller, public subCategoryService: SubCategoryService, public productTypeService: ProductTypeService, public productService: ProductService, public categoryService: CategoryService, private _cartService: CartService, public colorService: ColorsService) {
+
   }
 
   ngOnInit(): void {
@@ -39,6 +41,8 @@ export class CatalogComponent implements OnInit {
   }
 
   addToCart(item: any): void {
+    this._viewportScroller.scrollToAnchor("cart");
+
     if (!this.isInCartAlready(item)) {
       this._cartService.cart.lineItems?.push({ 'product': item, 'quantity': 1 });
       this.itemAdded.emit();
@@ -66,7 +70,7 @@ export class CatalogComponent implements OnInit {
 
     item.subCategorySelected[x] = { name: name, checked: element.checked };
     item.subCategorySelectedText = name;
-    
+
     if (!environment.production)
       console.log("onSubCategory", item);
   }

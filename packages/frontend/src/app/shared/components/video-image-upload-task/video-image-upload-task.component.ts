@@ -20,10 +20,10 @@ export class VideoImageUploadTaskComponent implements OnInit, OnDestroy {
   private _task?: AngularFireUploadTask;
   public downloadURL?: any;
   private _taskSubscription?: Subscription
-  
+
 
   constructor(private _storage: AngularFireStorage, private _db: AngularFirestore) {
-    
+
   }
 
   ngOnInit(): void {
@@ -61,7 +61,8 @@ export class VideoImageUploadTaskComponent implements OnInit, OnDestroy {
         })
       ).subscribe();
     } catch (error) {
-      console.error("PROCESS UPLOAD");
+      if (!environment.production)
+        console.error("PROCESS UPLOAD");
     }
   }
 }

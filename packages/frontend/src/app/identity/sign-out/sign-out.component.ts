@@ -13,7 +13,7 @@ export class SignOutComponent implements OnInit {
   public logoName = environment.COMPANY_NAME;
   public logoURL = "http://via.placeholder.com/100x100";
   public homePageLink = "/";
-  public headingText = "You are logged out";
+  public headingText = "Courtesy passwordless sign-in";
 
   constructor(private _authService: AuthService, private _userService: UserService) { }
 

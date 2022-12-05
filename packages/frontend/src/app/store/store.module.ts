@@ -8,6 +8,7 @@ import { YourStoreUnderConstructionComponent } from './your-store-under-construc
 import { SetupRequiredComponent } from './setup-required/setup-required.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FooterComponent } from './footer/footer.component';
     YourStoreUnderConstructionComponent,
     SetupRequiredComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,8 @@ import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 import { SettingService } from './setting.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +21,11 @@ export class GeneralDataService implements OnDestroy {
   private _ipSubscription?: Subscription;
   public ipAddress = '';
 
-  constructor(protected _firestore: AngularFirestore, private _ipService: IpService, protected _authService: AuthService, protected _userService: UserService, protected _settingService: SettingService) { 
+  constructor(private _router: Router, protected _firestore: AngularFirestore, private _ipService: IpService, protected _authService: AuthService, protected _userService: UserService, protected _settingService: SettingService) {
     this.getIP();
   }
 
-  ngOnDestroy() : void {
+  ngOnDestroy(): void {
     if (this._ipSubscription)
       this._ipSubscription.unsubscribe();
   }
@@ -35,8 +37,20 @@ export class GeneralDataService implements OnDestroy {
   }
 
   getAll(collectionName: string) {
-    this._itemDocs = this._firestore.collection(collectionName, ref => ref.where("companyId", "==", this._settingService.settings._id));
-    this.items = this._itemDocs.valueChanges({ idField: '_id' });
+    try {
+      if (!environment.production)
+        console.log("general-data getAll", this._settingService.settings._id);
+
+      this._itemDocs = this._firestore.collection(collectionName, ref => ref.where("companyId", "==", this._settingService.settings._id));
+      this.items = this._itemDocs.valueChanges({ idField: '_id' });
+
+    } catch (error) {
+      if (!environment.production)
+        console.log("general-data getAll ERROR", error)
+      this._authService.signOut();
+      this._router.navigate(['identity']);
+    }
+
   }
 
   create(data: any, collectionName: string) {

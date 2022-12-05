@@ -19,6 +19,7 @@
 <ng-template #finished>
     <div class="container-fluid mt-3">
         <div class="card" *ngIf="((orderService.items | async)?.length != 0) else nodata">
+            <!-- <div class="card"> -->
             <div class="card-header no-print">
                 <div class="row">
                     <div class="col-md-8">

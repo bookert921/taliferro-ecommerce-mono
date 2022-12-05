@@ -25,7 +25,7 @@ export class OrderListComponent implements OnInit, OnDestroy {
   public queryDateDisplay = "none"
   public queryDate: any;
   public ordersHolding: any;
-  
+
   public data3: any;
   public prodEnv: boolean = false;
   public today = new Date();
@@ -37,7 +37,7 @@ export class OrderListComponent implements OnInit, OnDestroy {
   public MONTH = MONTHS;
 
   constructor(public orderService: OrderService) {
-    
+
     this.prodEnv = (environment.firebaseConfig.projectId == 'white-form-303916');
     this.past30Days();
   }

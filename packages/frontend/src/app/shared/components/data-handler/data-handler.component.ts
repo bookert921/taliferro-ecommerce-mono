@@ -16,7 +16,7 @@ export class DataHandlerComponent implements OnInit {
   public transaction_complete: boolean = false;
 
   constructor(protected _dataService: DataService) {
-    
+
   }
 
   ngOnInit(): void {
@@ -27,7 +27,8 @@ export class DataHandlerComponent implements OnInit {
       this._dataService.updateByUID(collectionName, this.data);
       this.complete();
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     }
   }
 
@@ -43,7 +44,8 @@ export class DataHandlerComponent implements OnInit {
       this._dataService.update(collectionName, this.data._id, this.data);
       this.complete();
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     }
   }
 
@@ -55,7 +57,8 @@ export class DataHandlerComponent implements OnInit {
       })
       this.complete();
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     }
   }
 

@@ -4,13 +4,13 @@
 		<!-- Start Navigation -->
 		<nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgba(255, 255, 255, 0.95);">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/"><img src="https://taliferro.com/assets/icons/favicon-32x32.webp" alt="Taliferro Group Logo" class="img-fluid" class="d-inline-block align-text-top">
-					Taliferro Group</a>
+				<a class="navbar-brand" href="https://taliferro.com"><img src="https://taliferro.com/assets/icons/favicon-32x32.webp" alt="Taliferro Group Logo" class="img-fluid"
+						class="d-inline-block align-text-top"> Taliferro Group</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
 							<a href="https://taliferro.com/#op-service" class="button button-simple" title="Services">Services</a>
 						</li>
@@ -29,11 +29,8 @@
 						<li class="nav-item">
 							<a href="https://taliferro.com/#op-contact" class="button button-simple" title="Contact Us">Contact</a>
 						</li>
-						<!-- <li class="nav-item">
-							<a routerLink="/identity" class="button button-simple" title="Contact Us">Sign In</a>
-						</li> -->
-					</ul>
-					<span class="navbar-text float-end ">425.305.3748</span>
+					</ul> -->
+					<!-- <span class="navbar-text float-end ">425.305.3748</span> -->
 				</div>
 			</div>
 		</nav>
@@ -58,7 +55,7 @@
 										<li><a routerLink="/admin" class="button button-white" title="Sign In">Dashboard</a></li>
 									</ul>
 									<ul class="header-nav-buttons" *ngIf="(userService.authService.firebaseUser && userService.user) && !userService.user.companyId">
-										<li><a routerLink="/my" class="button button-white" title="Sign In">My Account</a></li>
+										<li><a routerLink="/my" class="button button-white" title="My Account">My Account</a></li>
 									</ul>
 									<!-- <ng-template #signedIn>
 										<ul class="header-nav-buttons" *ngIf="!userService.user  else userAndSignedIn">
@@ -105,19 +102,11 @@
 									either simple selling or price dependent selling. Set the look and feel specific to your business. Find information fast. Our search is robust and quick. Never say
 									again you can't find a piece of information.</p>
 								<div class="container-fluid">
-									<h2 style="font-weight: 300;">Sample Sites</h2>
+									<h2 style="font-weight: 300;">Featured Store</h2>
 									<div class="row">
 										<div class="col text-center">
-											<a routerLink="/shop/31e2rvCZiYgxf7lEXxX0" class="wow fadeInUp" title="Food and Beverage e-Commerce Example"><img class="img-thumbnail img-fluid"
-													src="assets/images/store1.webp" alt="Food and Beverage e-Commerce"><br>Food</a>
-										</div>
-										<div class="col text-center">
-											<a routerLink="/shop/0TZu74MdTKAjiCJnAzXo" class="wow fadeInUp" title="Clothing Website Example"><img class="img-thumbnail img-fluid"
-													src="assets/images/store2.webp" alt="Clothing Website"><br>Clothing</a>
-										</div>
-										<div class="col text-center">
-											<a routerLink="/shop/q3oLK77KwdQdLk7wpbVn" class="wow fadeInUp" title="Dental Website Example"><img class="img-thumbnail img-fluid"
-													src="assets/images/dental-website.webp" alt="Dental Website"><br>Dental</a>
+											<a routerLink="/shop/yrZNdcfkRIiuWE02H8Mq" class="wow fadeInUp" title="Orrefilat"><img class="img-thumbnail img-fluid" src="assets/images/store1.webp"
+													alt="Pet Store e-Commerce"><br>Pet Store</a>
 										</div>
 									</div>
 								</div>

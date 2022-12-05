@@ -64,13 +64,18 @@ export class EmailCheckComponent implements OnInit {
     let loginOK = await this._authService.confirmSignIn(email, url);
     const isLoginOK: boolean = (loginOK == 'true');
 
+    if (!environment.production)
+      console.log("isLoginOK", isLoginOK);
+
     if (isLoginOK) {
-      // if (!environment.production)
-      console.log("LOG IN OK", email);
+      if (!environment.production)
+        console.log("LOG IN OK", email);
+
       this.associateUser(email);
     } else {
-      // if (!environment.production)
-      console.log("LOG NOT OK", email);
+      if (!environment.production)
+        console.log("LOG NOT OK", email);
+
       this.isRelogin = true;
       this.errorMessage = "Something went wrong. Either your email address is wrong, or you are using a different browser other than the browser you used to identify yourself, or the link in your email is expired. Make sure you use the same browser for both signing in and verifying. If you are unsure copy the link in the email that was sent to you and paste it in the address bar of the same browser you that says 'Check Your Email'.";
       setTimeout(() => {
@@ -82,6 +87,8 @@ export class EmailCheckComponent implements OnInit {
   }
 
   private async associateUser(email: any) {
+    if (!environment.production)
+      console.log("associateUser", "firebaseUser", this._authService.firebaseUser)
     if (this._authService.firebaseUser) {
       let user = await this.getUser(this._authService.firebaseUser);
       // let u = this.userService.getNewUserRecordUsingFirebase(this._authService.firebaseUser);
@@ -89,7 +96,7 @@ export class EmailCheckComponent implements OnInit {
       this.checkUserRecord(user);
 
     } else {
-      this._router.navigate(['my', 'error']);
+      this._router.navigate(['error']);
     }
   }
 
@@ -107,7 +114,7 @@ export class EmailCheckComponent implements OnInit {
 
       this.associateSettings();
     } else {
-      this._router.navigate(['my', 'error']);
+      this._router.navigate(['error']);
     }
 
   }
@@ -191,8 +198,8 @@ export class EmailCheckComponent implements OnInit {
     this.removeNewSignUpInfo();
 
     if (firstName && lastName) {
-      // if (!environment.production)
-      console.log("Must be new registration", companyName, companyId, firstName, lastName);
+      if (!environment.production)
+        console.log("Must be new registration", companyName, companyId, firstName, lastName);
 
       user.companyName = (companyName) ? companyName : '';
       user.firstName = firstName;

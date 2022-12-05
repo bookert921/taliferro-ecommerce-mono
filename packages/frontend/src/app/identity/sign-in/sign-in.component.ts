@@ -17,7 +17,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  logoName = environment.COMPANY_NAME;
+  logoName = "Courtesy " + environment.COMPANY_NAME;
   homePageLink = "/";
   headingText = "No password required.";
   subText = "Simple Sign In.";

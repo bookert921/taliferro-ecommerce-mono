@@ -1,5 +1,5 @@
-<app-inline-box-nav *ngIf="(settingService.settings && !settingService.settings.colorBlock)" [data]="settingService.settings" [isHome]="false"></app-inline-box-nav>
-<app-static-top-nav *ngIf="settingService.settings && settingService.settings.colorBlock" [data]="settingService.settings" [isHome]="false"></app-static-top-nav>
+<!-- <app-inline-box-nav *ngIf="(settingService.settings && !settingService.settings.colorBlock)" [data]="settingService.settings" [isHome]="false"></app-inline-box-nav>
+<app-static-top-nav *ngIf="settingService.settings && settingService.settings.colorBlock" [data]="settingService.settings" [isHome]="false"></app-static-top-nav> -->
 <div class="loader" *ngIf="!(orderService.items | async) else finished">
   <div class="loader-inner">
     <div class="spinner multicolor">
@@ -19,13 +19,15 @@
   </div>
 </div>
 <ng-template #finished>
-  <div class="container-fluid mt-3">
+  <div class="container mt-3">
     <div class="row">
       <div class="col"><span (click)="back()" style="cursor: pointer;"><i class="fa fa-chevron-left fa-2x text-muted"></i></span> </div>
       <div class="col-md text-center">
         <h1 [ngStyle]="{'color': colorService.darkBackground}">Orders</h1>
       </div>
-      <div class="col"></div>
+      <div class="col text-end">
+        <button type="button" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+      </div>
     </div>
     <div class="row" *ngIf="((orderService.items | async)?.length != 0) else nodata">
       <div class="col">
@@ -35,7 +37,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Response</th>
+                  <th>Charge Amount</th>
                   <th>Status</th>
                   <th>Date</th>
                 </tr>
@@ -43,9 +45,9 @@
               <tbody>
                 <tr *ngFor="let item of orderService.items | async | dateSortDesc; let i = index" (click)="onView(item)" style="cursor: pointer;">
                   <td>{{item?._id}}</td>
-                  <td>
-                    <span *ngIf="item.chargeResponse && item.chargeResponse.outcome && item.chargeResponse.outcome.seller_message">{{item?.chargeResponse?.outcome?.seller_message}}</span>
-                    <span *ngIf="!(item.chargeResponse && item.chargeResponse.outcome && item.chargeResponse.outcome.seller_message)">{{item?.chargeResponse | slice:0:30}}</span>
+                  <td>{{item?.cart?.amount | currency}}
+                    <!-- <span *ngIf="item.chargeResponse && item.chargeResponse.outcome && item.chargeResponse.outcome.seller_message">{{item?.chargeResponse?.outcome?.seller_message}}</span>
+                    <span *ngIf="!(item.chargeResponse && item.chargeResponse.outcome && item.chargeResponse.outcome.seller_message)">{{item?.chargeResponse}}</span> -->
                   </td>
                   <td class="text-capitalize">{{item?.status | sentence}}</td>
                   <td>{{item?.cart.lastUpdated | date:'medium'}}</td>

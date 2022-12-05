@@ -51,7 +51,8 @@ export class LogoComponent implements OnInit, OnDestroy {
       this._dataService.update(environment.SETTINGS, this.data._id, this.data);
       this.complete();
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     }
   }
 
@@ -62,7 +63,8 @@ export class LogoComponent implements OnInit, OnDestroy {
         this.complete();
       })
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     }
   }
 
@@ -84,7 +86,8 @@ export class LogoComponent implements OnInit, OnDestroy {
       }
       this.uploaded = true;
     } catch (error) {
-      console.error("ON DROP");
+      if (!environment.production)
+        console.error("ON DROP");
       this.uploaded = false;
     }
   }
@@ -104,7 +107,8 @@ export class LogoComponent implements OnInit, OnDestroy {
 
       this.processUpload(event, path);
     } catch (error) {
-      console.error("UPLOAD", error);
+      if (!environment.production)
+        console.error("UPLOAD", error);
     }
   }
 
@@ -126,7 +130,8 @@ export class LogoComponent implements OnInit, OnDestroy {
         })
       ).subscribe();
     } catch (error) {
-      console.error("PROCESS UPLOAD", error);
+      if (!environment.production)
+        console.error("PROCESS UPLOAD", error);
     }
   }
 }

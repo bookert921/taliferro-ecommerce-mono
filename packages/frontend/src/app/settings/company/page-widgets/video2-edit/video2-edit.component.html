@@ -36,7 +36,8 @@
                             <div class="col">
                                 <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
                                     <p><i>Drag and Drop File for Video Image</i> </p>
-                                    <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="upload($event)" accept=".png,.jpg,.gif,.jpeg">
+                                    <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="upload($event)"
+                                        accept=".webp,.png,.jpg,.gif,.jpeg">
                                 </div>
                             </div>
                         </div>

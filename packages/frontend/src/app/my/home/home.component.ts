@@ -15,12 +15,12 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit, OnDestroy {
 
   public settings: any;
-  private _settingSubscription?: Subscription; 
-  
+  private _settingSubscription?: Subscription;
 
-  constructor(private _location: Location, public userService: UserService, public settingService: SettingService, public colorService: ColorsService, private _router:Router) { 
+
+  constructor(private _location: Location, public userService: UserService, public settingService: SettingService, public colorService: ColorsService, private _router: Router) {
     if (!environment.production)
-      console.log("my HomeComponent");
+      console.log("MY-HomeComponent/Settings", this.settingService.settings);
   }
 
   ngOnInit(): void {

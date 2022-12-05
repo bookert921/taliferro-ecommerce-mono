@@ -51,7 +51,8 @@
                         <div class="col">
                             <div class="dropzone" dropzone (hovered)="toggleHover($event)" (dropped)="onDrop($event)" [class.hovering]="isHovering">
                                 <p><i>Drag and Drop File for Image 1</i> </p>
-                                <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage1($event)" accept=".png,.jpg,.gif,.jpeg">
+                                <input [(ngModel)]="resultsFile" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage1($event)"
+                                    accept=".webp,.png,.jpg,.gif,.jpeg">
                             </div>
                         </div>
                     </div>
@@ -84,7 +85,8 @@
                         <div class="col">
                             <div class="dropzone" dropzone (hovered)="toggleHover2($event)" (dropped)="onDrop2($event)" [class.hovering]="isHovering2">
                                 <p><i>Drag and Drop File for Image 2</i> </p>
-                                <input [(ngModel)]="resultsFile2" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage2($event)" accept=".png,.jpg,.gif,.jpeg">
+                                <input [(ngModel)]="resultsFile2" type="file" name="file" id="file" class="form-control form-control-lg" (change)="uploadImage2($event)"
+                                    accept=".webp,.png,.jpg,.gif,.jpeg">
                             </div>
                         </div>
                     </div>

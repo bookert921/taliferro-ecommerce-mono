@@ -5,6 +5,7 @@ export class ShoppingCart implements IShoppingCart {
   termsOfService: boolean = false;
   apple_auth: any;
   companyId: string = '';
+  storeId: string = '';
 
   shippingRequired: boolean = false;
   emailAddress: string = '';
@@ -43,6 +44,7 @@ export interface IShoppingCart {
   termsOfService?: boolean;
   apple_auth?: any;
   companyId?: string;
+  storeId?: string;
 
   shippingRequired?: boolean;
   emailAddress?: string;

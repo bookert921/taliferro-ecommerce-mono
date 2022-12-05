@@ -81,6 +81,12 @@ export class UserService implements OnDestroy {
     return user;
   }
 
+  public isAdmin(): boolean {
+    if (this.user && this.user.roles) {
+      return this.user.roles.includes("admin");
+    }
+    else return false;
+  }
 
 
   setLoggedInUser(user: IUser): void {
@@ -106,7 +112,8 @@ export class UserService implements OnDestroy {
 
   update(): void {
     if (this.user) {
-      console.log("Updating User", this.user);
+      if (!environment.production)
+        console.log("Updating User", this.user);
       this.user.lastUpdated = new Date().getTime();
       this.user.browserIp = this.ipAddress;
       this._firestore.collection(this._collectionName).doc(this.user._id).set(this.user, { merge: true });

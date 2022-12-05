@@ -27,8 +27,8 @@ import { PaymentDetails } from '../../data/payment-details.model';
 export class CheckOutComponent extends DataHandlerComponent implements OnInit, OnDestroy {
 
   data: any;
-  stripeStatus: string;
-  
+  stripeStatus: any;
+
   @Input() companyData: any;
   public diagnostic: boolean = false;
   public contact: IContact = {
@@ -105,7 +105,8 @@ export class CheckOutComponent extends DataHandlerComponent implements OnInit, O
         this.cartService.cart.companyId = this.companyData._id;
       }
     } catch (error) {
-      console.error("Could not properly initialize", error);
+      if (!environment.production)
+        console.error("Could not properly initialize", error);
     }
 
   }

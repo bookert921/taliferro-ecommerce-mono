@@ -1,2 +1,3 @@
-<app-inline-box-nav *ngIf="(company && !company.colorBlock) || !company" [data]="company" [isHome]="isHome" [isSpecialHome]="isSpecialHome" [isSignIn]="isSignIn" [color]="color"></app-inline-box-nav>
-<app-static-top-nav *ngIf="company && company.colorBlock" [data]="company" [isHome]="isHome" [isSignIn]="isSignIn" [isSpecialHome]="isSpecialHome" [color]="color"></app-static-top-nav>
+<app-store-nav-inline-box *ngIf="(company && !company.colorBlock) || !company" [data]="company" [isHome]="false" [isSpecialHome]="isSpecialHome" [isSignIn]="isSignIn" [color]="color">
+</app-store-nav-inline-box>
+<app-store-nav-static-top *ngIf="company && company.colorBlock" [data]="company" [isHome]="false" [isSignIn]="isSignIn" [isSpecialHome]="isSpecialHome" [color]="color"></app-store-nav-static-top>

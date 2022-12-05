@@ -36,7 +36,7 @@ export class OrderService extends GeneralDataService {
   }
 
   getAllByEmail(email: any): void {
-    this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.where('email', '==', email).where("companyId", "==", this._settingService.settings._id))
+    this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.where('email', '==', email));
     this.items = this._itemDocs.valueChanges({ idField: '_id' });
   }
 
@@ -49,22 +49,24 @@ export class OrderService extends GeneralDataService {
 
   getAllByAppointmentDate(appointmentDate: any): void {
     if (!environment.production)
-      console.log("Getting Orders for ", appointmentDate)
+      console.log("getAllByAppointmentDate ", appointmentDate)
     this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.where('appointment.date', '==', appointmentDate).where("companyId", "==", this._settingService.settings._id));
     this.items = this._itemDocs.valueChanges({ idField: '_id' });
   }
 
   getAllByDate(createdDate: any): void {
     if (!environment.production)
-      console.log("Getting Orders for ", createdDate)
+      console.log("getAllByDate ", createdDate)
     this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.where('createdAt', '==', createdDate).where("companyId", "==", this._settingService.settings._id));
     this.items = this._itemDocs.valueChanges({ idField: '_id' });
   }
 
   getAllByGreaterDate(queryDate: any): void {
     if (!environment.production)
-      console.log("Getting Orders for ", queryDate)
-    this._itemDocs = this._firestore.collection(this._collectionName, ref => ref.where('lastUpdated', '>=', queryDate).where("companyId", "==", this._settingService.settings._id));
+      console.log("getAllByGreaterDate ", queryDate, this._collectionName, this._settingService.settings._id);
+    this._itemDocs = this._firestore.collection(this._collectionName,
+      ref => ref.where('lastUpdated', '>=', queryDate)
+        .where("companyId", "==", this._settingService.settings._id));
     this.items = this._itemDocs.valueChanges({ idField: '_id' });
   }
 

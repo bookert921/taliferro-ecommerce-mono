@@ -88,22 +88,26 @@ export class CartService implements OnDestroy {
   }
 
 
-  saveTempCart() {
+  saveTempCart(storeId: any) {
     this.cart.browserIp = this.ipAddress;
     this.cart.createdAt = new Date().getTime();
     this.cart.environment = environment.firebaseConfig.projectId;
+    this.cart.storeId = storeId;
+    this.cart.companyId = storeId;
 
     // this._firestore.collection(environment.SAVED_CARTS).doc(email).set(this.cart);
     if (this.cart._id) {
       if (!environment.production)
         console.log("Updating temp cart")
       this._firestore.collection(environment.SAVED_CARTS).doc(this.cart._id).set(this.cart);
+      window.localStorage.setItem('tempCart', this.cart._id);
+
     } else {
       if (!environment.production)
         console.log("Saving new temp cart")
       this._firestore.collection(environment.SAVED_CARTS).add(this.cart).then((result) => {
         this.cart._id = result.id;
-        // this.savedCartID = result.id;
+        window.localStorage.setItem('tempCart', this.cart._id);
       });
     }
 
@@ -114,10 +118,13 @@ export class CartService implements OnDestroy {
   }
 
 
-  saveCart() {
+  saveCart(storeId: any) {
     this.cart.browserIp = this.ipAddress;
     this.cart.createdAt = new Date().getTime();
     this.cart.environment = environment.firebaseConfig.projectId;
+    this.cart.storeId = storeId;
+    this.cart.companyId = storeId;
+
     if (!environment.production)
       console.log("Cart User", this.userService.authService.firebaseUser)
     if (this.userService.authService.firebaseUser) {

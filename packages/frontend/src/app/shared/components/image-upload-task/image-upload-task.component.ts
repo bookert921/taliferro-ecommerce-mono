@@ -20,10 +20,10 @@ export class ImageUploadTaskComponent implements OnInit, OnDestroy {
   private _task?: AngularFireUploadTask;
   public downloadURL?: any;
   private _taskSubscription?: Subscription
-  
+
 
   constructor(private _storage: AngularFireStorage, private _db: AngularFirestore) {
-    
+
 
   }
 
@@ -43,7 +43,8 @@ export class ImageUploadTaskComponent implements OnInit, OnDestroy {
       this._ref = this._storage.ref(path);
       this.processUpload(path);
     } catch (error) {
-      console.error("START UPLOAD", error);
+      if (!environment.production)
+        console.error("START UPLOAD", error);
     }
   }
 
@@ -62,7 +63,8 @@ export class ImageUploadTaskComponent implements OnInit, OnDestroy {
         })
       ).subscribe();
     } catch (error) {
-      console.error("PROCESS UPLOAD");
+      if (!environment.production)
+        console.error("PROCESS UPLOAD");
     }
   }
 

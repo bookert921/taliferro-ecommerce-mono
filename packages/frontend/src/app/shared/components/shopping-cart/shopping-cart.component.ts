@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { LineItem } from '../../data/shopping-cart.model';
 import { ColorsService } from '../../services/colors.service';
@@ -6,6 +7,7 @@ import { ShoppingCart } from '../../data/shopping-cart.model';
 import { Product } from '../../data/product.model';
 import { UserService } from '../../services/user.service';
 import { SettingService } from '../../services/setting.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -21,12 +23,17 @@ export class ShoppingCartComponent implements OnInit {
   @Output() itemRemoved = new EventEmitter();
   @Input() forPrac = false;
 
-  constructor(public cartService: CartService, public colorService: ColorsService, public settingService: SettingService) { 
+  constructor(private _viewportScroller: ViewportScroller, public cartService: CartService, public colorService: ColorsService, public settingService: SettingService) {
 
   }
 
   ngOnInit(): void {
     this.totalUp();
+  }
+
+  continueShopping(): void {
+    this._viewportScroller.scrollToAnchor("catalog");
+
   }
 
   onIncrementeQuantity(item: LineItem): void {
@@ -47,7 +54,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   onDecrementQuantity(item: LineItem): void {
-    if (this.forPrac) 
+    if (this.forPrac)
       this.onPracDecrementQuantity(item)
     else if (item.quantity > 1) {
       item.quantity--;
@@ -69,7 +76,7 @@ export class ShoppingCartComponent implements OnInit {
       this.cartService.cart.lineItems?.splice(at, 1);
       this.totalUp();
       this.itemRemoved.emit();
-      }  
+    }
   }
 
   removePracItem(at: number): void {
@@ -138,7 +145,12 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   updateCart(): void {
-    this.cartService.saveCart();
+    try {
+      this.cartService.saveCart(this.settingService.settings._id);
+    } catch (error) {
+      if (!environment.production)
+        console.error("SETTINTS ERROR", this.settingService.settings)
+    }
   }
 
 }

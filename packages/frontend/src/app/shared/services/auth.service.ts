@@ -44,8 +44,10 @@ export class AuthService {
         window.localStorage.setItem('emailForSignIn', emailAddress);
         if (!environment.production)
           console.info("Email Sent", emailAddress, new Date().toLocaleTimeString());
-        else
-          console.info("Email Sent", new Date().toLocaleTimeString())
+        else {
+          if (!environment.production)
+            console.info("Email Sent", new Date().toLocaleTimeString())
+        }
         this.emailSent = true;
       })
       .catch((error) => {
@@ -61,7 +63,8 @@ export class AuthService {
       firebase.auth().signInWithPopup(provider)
         .then((result) => {
           let credential = result.credential;
-          console.info(result.user);
+          if (!environment.production)
+            console.info(result.user);
           resolve(result);
         }).catch((error) => {
           var errorCode = error.code;
@@ -70,7 +73,8 @@ export class AuthService {
           var email = error.email;
           // The firebase.auth.AuthCredential type that was used.
           var credential = error.credential;
-          console.error(errorCode, errorMessage, email, credential);
+          if (!environment.production)
+            console.error(errorCode, errorMessage, email, credential);
           resolve(null);
         });
     })
@@ -83,7 +87,8 @@ export class AuthService {
       firebase.auth().signInWithPopup(provider)
         .then((result) => {
           let credential = result.credential;
-          console.info(result.user);
+          if (!environment.production)
+            console.info(result.user);
           resolve(result);
         }).catch((error) => {
           var errorCode = error.code;
@@ -92,7 +97,8 @@ export class AuthService {
           var email = error.email;
           // The firebase.auth.AuthCredential type that was used.
           var credential = error.credential;
-          console.error(errorCode, errorMessage, email, credential);
+          if (!environment.production)
+            console.error(errorCode, errorMessage, email, credential);
           resolve(null);
         });
     })
@@ -105,7 +111,8 @@ export class AuthService {
       firebase.auth().signInWithPopup(provider)
         .then((result) => {
           let credential = result.credential;
-          console.info(result.user);
+          if (!environment.production)
+            console.info(result.user);
           resolve(result);
         }).catch((error) => {
           var errorCode = error.code;
@@ -114,7 +121,8 @@ export class AuthService {
           var email = error.email;
           // The firebase.auth.AuthCredential type that was used.
           var credential = error.credential;
-          console.error(errorCode, errorMessage, email, credential);
+          if (!environment.production)
+            console.error(errorCode, errorMessage, email, credential);
           resolve(null);
         });
     })
@@ -127,15 +135,18 @@ export class AuthService {
           window.localStorage.setItem('emailForSignIn', emailAddress);
           if (!environment.production)
             console.info("Email Sent", emailAddress, new Date().toLocaleTimeString());
-          else
-            console.info("Email Sent", new Date().toLocaleTimeString());
+          else {
+            if (!environment.production)
+              console.info("Email Sent", new Date().toLocaleTimeString());
+          }
           this.emailSent = true;
           resolve(result);
         })
         .catch((error) => {
           var errorCode = error.code;
           this.errorMessage = error.message;
-          console.error(errorCode, this.errorMessage);
+          if (!environment.production)
+            console.error(errorCode, this.errorMessage);
           resolve(null);
         });
     })
@@ -152,7 +163,8 @@ export class AuthService {
 
       } else return 'false'
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
       this.errorMessage = error;
       return 'false';
     }
@@ -161,14 +173,16 @@ export class AuthService {
   public resetPassword(emailAddress: string): void {
     this._afAuth.sendPasswordResetEmail(emailAddress).then(() => {
     }).catch(error => {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     })
   }
 
   public changePassword(newPassword: string): void {
     this.firebaseUser?.updatePassword(newPassword).then(() => {
     }).catch(error => {
-      console.error(error)
+      if (!environment.production)
+        console.error(error)
     })
   }
 
@@ -182,7 +196,8 @@ export class AuthService {
   public reauthenticateUser(credential: any): void {
     this.firebaseUser?.reauthenticateWithCredential(credential).then(() => {
     }).catch(error => {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
     })
   }
 
@@ -196,10 +211,12 @@ export class AuthService {
       firebase.auth().signOut().then(() => {
         this.firebaseUser = undefined;
       }).catch((error) => {
-        console.error(error);
+        if (!environment.production)
+          console.error(error);
       })
     } catch (error) {
-      console.error(error);
+      if (!environment.production)
+        console.error(error);
       this.firebaseUser = undefined;
     }
   }
@@ -217,7 +234,8 @@ export class AuthService {
       });
 
     } catch (error) {
-      console.error("Auth Change", error);
+      if (!environment.production)
+        console.error("Auth Change", error);
     }
   }
 }

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { SettingService } from 'src/app/shared/services/setting.service';
 import { ColorsService } from 'src/app/shared/services/colors.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -25,10 +26,11 @@ export class ProfileComponent implements OnInit {
   public isCompanyNameEdit: boolean = false;
   public isPracticeEdit: boolean = false;
   public isUserTypeEdit: boolean = false;
+  public environment = environment;
 
-  constructor(private _userService: UserService, private _location: Location, public settingService: SettingService, public colorService: ColorsService) { 
+  constructor(private _router: Router, private _userService: UserService, private _location: Location, public settingService: SettingService, public colorService: ColorsService) {
     this.user = this._userService.user;
-    
+
   }
 
   ngOnInit(): void {
@@ -42,6 +44,11 @@ export class ProfileComponent implements OnInit {
     this.diagnostic = !this.diagnostic;
     this.editReset();
   }
+
+  onSignOut(): void {
+    this._router.navigate(['identity', 'bye']);
+  }
+
 
   onPracName(): void {
     this.editReset();
@@ -92,7 +99,7 @@ export class ProfileComponent implements OnInit {
     this.isPhoneEdit = true;
   }
 
-  editReset() : void {
+  editReset(): void {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 

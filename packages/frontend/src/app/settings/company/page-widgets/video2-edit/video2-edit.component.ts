@@ -69,7 +69,8 @@ export class Video2EditComponent extends DataHandlerComponent implements OnInit,
       }
       this.uploaded = true;
     } catch (error) {
-      console.error("ON DROP");
+      if (!environment.production)
+        console.error("ON DROP");
       this.uploaded = false;
     }
   }
@@ -89,7 +90,8 @@ export class Video2EditComponent extends DataHandlerComponent implements OnInit,
 
       this.processUpload(event, path);
     } catch (error) {
-      console.error("UPLOAD", error);
+      if (!environment.production)
+        console.error("UPLOAD", error);
     }
   }
 
@@ -111,13 +113,14 @@ export class Video2EditComponent extends DataHandlerComponent implements OnInit,
             'url': downloadURL,
             'uploadedAt': new Date().getTime()
           });
-          
+
           if (!environment.production)
             console.log(this.data.video2);
         })
       ).subscribe();
     } catch (error) {
-      console.error("PROCESS UPLOAD", error);
+      if (!environment.production)
+        console.error("PROCESS UPLOAD", error);
     }
   }
 
