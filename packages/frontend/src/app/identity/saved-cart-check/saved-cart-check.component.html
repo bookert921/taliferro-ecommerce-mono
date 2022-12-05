@@ -1,0 +1,35 @@
+<div *ngIf="errorMessage">
+    <div class="alert alert-warning" role="alert"> {{errorMessage}} </div>
+</div>
+<form #dataForm="ngForm" *ngIf="isRelogin" (ngSubmit)="onSubmit()">
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col"> </div>
+                <div class="col-md text-center mb-3">
+                    <h1 [ngStyle]="{'color': colorService.darkBackground}">Re-Verification</h1>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card mx-auto">
+                        <div class="card-body">
+                            <div class="input-group mb-3 mt-3">
+                                <span class="input-group-text" id="basic-addon1">@</span>
+                                <input [(ngModel)]="emailAddress" tabindex="1" type="email" autocorrect="off" autocapitalize="off" spellcheck="off" autocomplete="off" id="email" name="email"
+                                    placeholder="Re-Enter Your Email Address" class="form-control form-control-lg" autofocus required>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col text-center">
+                                    <button type="submit" [ngStyle]="{'background-color': colorService.secondaryColor, 'border-color': colorService.secondaryColor}" class="btn btn-primary"
+                                        [disabled]="!dataForm.form.valid">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
